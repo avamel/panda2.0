@@ -1,0 +1,510 @@
+.header-top-bg
+  .header
+    .logo
+      =link_to(image_tag("logo.png"), root_path)
+    .weather
+      %select.customSelect
+        %option{:value => ""}  выберите город
+        %option{:value => "one"} Барселона
+        %option{:value => "two"} Париж
+        %option{:value => "three"} Берлин
+        %option{:value => "four"} Лондон
+      .indicator
+        =image_tag("weather.png")
+      -
+      =link_to "Найти туры", "#", :class => "find-tours"
+    .money
+      .dollars
+        %span= image_tag("dollar.png")
+        %span.course
+          7600 бел. руб.
+      .euro
+        %span= image_tag("euro.png")
+        %span
+          11600 бел. руб.
+
+.menu-bg
+  %ul.slider
+    %li.slide
+      = image_tag("france.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+
+    %li.slide
+      = image_tag("marsell.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+    %li.slide
+      = image_tag("elisey.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+    %li.slide
+      = image_tag("france.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+    %li.slide
+      = image_tag("france.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+    %li.slide
+      = image_tag("france.jpg")
+      .caption
+        .caption-title
+          = link_to "Насладитесь городом света Парижем этим летом!", "#"
+        .caption-text
+          Цена тура на 29.06 всего 350 евро!
+
+  .menu
+    .menu-top
+      %ul.menu-nav
+        %li.menu-item
+          = link_to "Каталог туров", "#"
+        %li.menu-item
+          = link_to "Визы", "#"
+        %li.menu-item
+          = link_to "Путеводитель", "#"
+        %li.menu-item
+          = link_to "Страны", "#"
+        %li.menu-item
+          = link_to "Контакты", "#"
+    .menu-bottom
+      Полный спектр туристических услуг для всей семьи
+      .address
+        %span= image_tag("map.png")
+        = link_to "Минск, пр. Независимости, 28, офис 2", "#"
+      %select.phoneSelect
+        %option{:value => ""} +375 29 127 86 05
+        %option{:value => "one"} +375 29 127 86 05
+        %option{:value => "two"} +375 29 127 86 05
+        %option{:value => "three"} +375 29 127 86 05
+        %option{:value => "four"} +375 29 127 86 05
+      .social
+        = link_to(image_tag("twitter.png"), "#")
+        = link_to(image_tag("fb.png"), "#")
+        = link_to(image_tag("vk.png"), "#")
+
+
+.search-bg
+  .search
+    .search-nav
+      %select.placeSelect
+        %option{:value => ""} Где хотелось бы отдохнуть?
+        %option{:value => "one"} +375 29 127 86 05
+        %option{:value => "two"} +375 29 127 86 05
+        %option{:value => "three"} +375 29 127 86 05
+        %option{:value => "four"} +375 29 127 86 05
+
+      %select.dateSelect
+        %option{:value => ""} 23 сентября
+        %option{:value => "one"} +375 29 127 86 05
+        %option{:value => "two"} +375 29 127 86 05
+        %option{:value => "three"} +375 29 127 86 05
+        %option{:value => "four"} +375 29 127 86 05
+
+      %select.rangeSelect
+        %option{:value => ""} диапазон?
+        %option{:value => "one"} ???????
+        %option{:value => "two"} ???????
+        %option{:value => "three"} ???????
+        %option{:value => "four"} ???????
+
+      = link_to "Подобрать варианты", "#", :class => "search-btn"
+      = link_to(image_tag("tourtrans.png"), "#", :class => "tourtrans")
+
+.hits-bg
+  .hits
+    %h2.hits-header
+      Хиты продаж
+    .hits-masonry
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 45$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+          .hits-cost
+            от 455$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+          Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item.center
+        .hit-photo
+          = link_to(image_tag("france.jpg"), "#")
+          .hits-cost.center
+            от 459$
+          .center-meta
+            .center-title Ближайший автобусный тур
+            .center-time Франция, отправление 23 июня
+            = link_to "Берлин – Амстердам – Париж (2 дня) - Версаль - Ницца - Монако - Венеция", "#", :class => "center-route"
+            .center-shadow
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("hit-image.png"), "#")
+          .hits-cost
+            от 459$
+        .hit-meta
+          = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
+          Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+.about-bg
+  .about
+    .about-left
+      .left-title
+        Мы предлагаем только лучший отдых
+      .bus
+        .icon
+          = image_tag("bus.png")
+        .text
+          Автобусные туры по Европе, отдых на море  на лучших курортах туры по Европе, отдых на море  на лучших курортах
+          Автобусные туры по Европе, отдых на море  на лучших курортах туры по Европе, отдых на море  на лучших курортах
+      .weare
+        .icon
+          = image_tag("weare.png")
+        .text
+          Автобусные туры по Европе, отдых на море  на лучших курортах туры по Европе, отдых на море  на лучших курортах
+      .db
+        .icon
+          = image_tag("db.png")
+        .text
+          Автобусные туры по Европе, отдых на море  на лучших курортах туры по Европе, отдых на море  на лучших курортах
+      .card
+        = image_tag("card.png")
+    .about-right
+      .right-title
+        Новости компании
+      %ul.news-list
+        %li.news-item
+          = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
+          .news-date
+            23 июня
+        %li.news-item
+          = link_to "Посольство Франции  прекращает выдачу виз в Испанию", "#", :class => "news-link"
+          .news-date
+            21 июня
+        %li.news-item
+          = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
+          .news-date
+            23 июня
+        %li.news-item
+          = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
+          .news-date
+            23 июня
+
+
+
+.travels-bg
+  .travels
+    .travels-header
+      Путешествия
+    .hits-masonry
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+
+      .hits-item.center
+        .hit-photo
+          = link_to(image_tag("greece.png"), "#")
+          .travels-meta
+            .travels-title Страна месяца
+            = link_to "Греция", "#", :class => "country-name"
+            .travels-hint
+              Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+
+      .hits-item
+        .hit-photo
+          = link_to(image_tag("travels-image.png"), "#")
+        .hit-meta
+          = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+  .countries-line
+  .countries
+    .countries-title
+      Страны
+    %ul.europe
+      .region-title
+        Европа:
+      %li.country
+        = link_to "Австрия", "#"
+      %li.country
+        = link_to "Беларусь", "#"
+      %li.country
+        = link_to "Бельгия", "#"
+      %li.country
+        = link_to "Болгария", "#"
+      %li.country
+        = link_to "Великобритания", "#"
+      %li.country
+        = link_to "Венгрия", "#"
+      %li.country
+        = link_to "Германия", "#"
+      %li.country
+        = link_to "Греция", "#"
+      %li.country
+        = link_to "Дания", "#"
+      %li.country
+        = link_to "Испания", "#"
+      %li.country
+        = link_to "Италия", "#"
+      %li.country
+        = link_to "Кипр", "#"
+      %li.country
+        = link_to "Латвия", "#"
+      %li.country
+        = link_to "Литва", "#"
+      %li.country
+        = link_to "Нидерланды", "#"
+      %li.country
+        = link_to "Норвегия", "#"
+      %li.country
+        = link_to "Польша", "#"
+      %li.country
+        = link_to "Португалия", "#"
+      %li.country
+        = link_to "Россия", "#"
+      %li.country
+        = link_to "Словения", "#"
+      %li.country
+        = link_to "Украина", "#"
+      %li.country
+        = link_to "Финляндия", "#"
+      %li.country
+        = link_to "Франция", "#"
+      %li.country
+        = link_to "Хорватия", "#"
+      %li.country
+        = link_to "Черногория", "#"
+      %li.country
+        = link_to "Эстония", "#"
+
+
+
+    .to-left
+      %ul.asia
+        .region-title
+          Азия:
+        %li.country
+          = link_to "Индия", "#"
+        %li.country
+          = link_to "Индонезия", "#"
+        %li.country
+          = link_to "Китай", "#"
+        %li.country
+          = link_to "Тайланд", "#"
+        %li.country
+          = link_to "Турция", "#"
+        %li.country
+          = link_to "ОАЭ", "#"
+      %ul.africa
+        .region-title
+          Африка:
+        %li.country
+          = link_to "Египет", "#"
+        %li.country
+          = link_to "Тунис", "#"
+
+    .to-left
+      %ul.south-america
+        .region-title
+          Южная Америка:
+        %li.country
+          = link_to "Куба", "#"
+        %li.country
+          = link_to "Мексика", "#"
+      %ul.also
+        .region-title
+          А также:
+        %li.country
+          = link_to "Доминикана", "#"
+        %li.country
+          = link_to "Мальдивы", "#"
+
+.footer-bg
+  .footer
+    .footer-left
+      .ft-title
+        Приезжайте, звоните, пишите
+      .ft-address
+        Минск, пр. Независимости, 28, офис 2
+      %ul.ft-phones
+        %li
+          +375 (33) 328 38 08
+          .type Городской
+        %li
+          +375 (33) 328 38 08
+          .type Velcom
+        %li
+          +375 (33) 328 38 08
+          .type МТС
+      .ft-contacts
+        .ft-mail
+          <a href="mailto:hello@panda-travel.by">hello@panda-travel.by</a>
+        .ft-skype
+          %span= image_tag("skype.png")
+          panda-travel.by
+      .ft-logo
+        = link_to(image_tag("ft-logo.png"), root_path)
+        %span.credits
+          ЧТУП "Панда Трэвел" УНП 191675650
+    %ul.footer-links
+      %li= link_to "Каталог туров", "#"
+      %li= link_to "Визы", "#"
+      %li= link_to "Страны", "#"
+      %li= link_to "Путешествия", "#"
+      %li= link_to "Контакты", "#"
+
+    %ul.footer-features
+      %li= link_to "Экскурсионные автобусные туры", "#"
+      %li= link_to "Экскурсионные туры с отдыхом на море", "#"
+      %li= link_to "Страны", "#"
+      %li= link_to "Путешествия", "#"
+      %li= link_to "Контакты", "#"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
