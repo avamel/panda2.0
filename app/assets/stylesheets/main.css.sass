@@ -54,7 +54,7 @@ body, img
 .hits-item
   width: 210px
   min-height: 210px
-  margin-bottom: 20px
+  margin-bottom: 48px
   img
     width: 100%
 
@@ -79,7 +79,7 @@ body, img
   position: absolute
   width: 100%
   height: 170px
-  background: rgba(0,0,0,0.55)
+  background: rgba(0,0,0,0.8)
   top: 0
 
 .center-meta
@@ -121,10 +121,10 @@ a.center-route
 
 a.hit-title, .news-link
   display: inline-block
-  margin: 16px 0
+  margin: 12px 0
   font-family: NovaB
   font-size: 20px
-  color: #0088cc
+  color: #0081bd
   text-decoration: none
   &:hover
     color: #005580
@@ -256,6 +256,7 @@ a.find-tours
     vertical-align: -3px
 
 .bus, .weare, .db, .card
+  font-size: 15px
   display: inline-block
   width: 310px
   padding-bottom: 32px
@@ -266,11 +267,15 @@ a.find-tours
 
 .about-left
   display: inline-block
-  // float: left
   width: 710px
-  // margin-right: 34px
   div
     vertical-align: top
+  a
+    color: #0088cc
+    text-decoration: none
+    &:hover
+      color: #005580
+      text-decoration: underline
 .about-right
   vertical-align: top
   margin-top: 4px
@@ -282,13 +287,13 @@ a.find-tours
 
 .weare
   .text
-    padding-top: 10px
+    padding-top: 12px
     padding-bottom: 36px
 
 
 .text
   font-family: NovaR
-  padding-top: 22px
+  padding-top: 12px
 
 .left-title
   font-family: NovaB
@@ -305,10 +310,14 @@ a.find-tours
 .news-date
   color: #868686
 
-.news-item
+.news-item.all-news
+  a
+    color: #0081bd
+    font-family: NovaR
 
 ul.news-list
   padding: 0
+  font-size: 15px
   li
     list-style: none
 
@@ -319,7 +328,7 @@ ul.news-list
   padding-bottom: 38px
 
 .travels-title
-  padding-top: 32px
+  padding: 26px 0 6px
   font-family: NovaB
   font-size: 23px
   color: #fff
@@ -336,7 +345,7 @@ ul.news-list
   color: #d0d0d0
   font-family: NovaR
   font-size: 15px
-  padding: 14px 98px
+  padding: 12px 98px 12px
 
 .hits-cost
   position: absolute
@@ -441,7 +450,7 @@ ul.news-list
 .ft-logo
   padding: 18px 0
   .credits
-    color: #79b948
+    color: #a1d375
     vertical-align: 10px
     padding-left: 28px
     font-size: 15px
@@ -474,7 +483,8 @@ ul.footer-links
     padding-right: 4px
     a
       text-decoration: none
-      color: #a0e16b
+      color: #b7f582
+      font-size: 15px
       &:hover
         text-decoration: underline
 
@@ -505,12 +515,13 @@ ul.slider
     padding: 0
 
 .caption
-  padding: 10px
-  padding-bottom: 0px
+  padding: 0 16px
+  padding-top: 12px
+  padding-bottom: 16px
   position: absolute
   bottom: 0
-  height: 93px
-  width: 96%
+  height: 75px
+  width: 95.33333%
   background: rgba(0,0,0, 0.65)
 .bx-viewport
   height: 352px!important
@@ -534,10 +545,10 @@ ul.slider
   .bx-viewport
     height: 330px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.33333%
+    height: 64px
   .menu-bg
-    min-height: 364px!important
+    min-height: 360px!important
   .search-nav
     padding-top: 112px
   .search-bg, .search
@@ -562,10 +573,12 @@ ul.slider
   .bx-viewport
     height: 315px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.33333%
+    height: 64px
+    a
+      font-size: 16px!important
   .menu-bg
-    min-height: 349px!important
+    min-height: 345px!important
 
 @media (max-width: 1280px)
   .slide
@@ -586,10 +599,10 @@ ul.slider
   .bx-viewport
     height: 300px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.33333%
+    height: 64px
   .menu-bg
-    min-height: 334px!important
+    min-height: 330px!important
 
 @media (max-width: 1200px)
   .slide
@@ -610,10 +623,10 @@ ul.slider
   .bx-viewport
     height: 280px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.333333%
+    height: 64px
   .menu-bg
-    min-height: 314px!important
+    min-height: 310px!important
 
 @media (max-width: 1130px)
   .slide
@@ -634,10 +647,10 @@ ul.slider
   .bx-viewport
     height: 262px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.333333%
+    height: 64px
   .menu-bg
-    min-height: 296px!important
+    min-height: 292px!important
 
 @media (max-width: 1050px)
   .slide
@@ -658,10 +671,10 @@ ul.slider
   .bx-viewport
     height: 256px!important
   .caption
-    width: 96%
-    height: 78px
+    width: 93.333333%
+    height: 64px
   .menu-bg
-    min-height: 290px!important
+    min-height: 286px!important
 
 
 
@@ -670,6 +683,7 @@ ul.slider
   font-family: NovaB
   a
     color: #fff
+    font-size: 19px
     text-decoration: none
     &:hover
       text-decoration: underline
