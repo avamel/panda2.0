@@ -15,13 +15,10 @@ ready = ->
       itemSelector: '.hits-item'
 
    $(".slider").bxSlider
-    slideWidth: 300
-    minSlides: 2
+    minSlides: 3
     maxSlides: 3
     moveSlides: 3
-    auto: true
     controls: false
-    pause: 5000
 
 
 $(document).ready(ready)
