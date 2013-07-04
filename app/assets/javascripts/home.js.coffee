@@ -8,7 +8,6 @@ ready = ->
 
 
   $container = $(".hits-masonry")
-  console.log $container
   $container.imagesLoaded ->
     $container.masonry
       columnWidth: 240,
