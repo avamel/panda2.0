@@ -12,10 +12,59 @@ body, img
   -moz-transition:all 4s linear
   -webkit-transition:all 4s linear
 
-span.phoneSelectInner
+ul.phoneSelectList, ul.weatherSelectList
+  display: none
+  padding: 0
+  list-style: none
+  margin: 0px
+  li
+    padding: 0px 18px
+    font-family: NovaR
+    color: #6b6a6a
+    padding-bottom: 3px
+    &:hover
+      background-color: #f2f2f2
+
+b.caret
+  position: absolute
+  right: 12px
+  top: 5px
+
+.phoneSelectWrapper, .weatherSelectWrapper
+  top: 0
+  background-color: #fff
+  z-index: 2
+  position: absolute
+  cursor: pointer
+  padding: 5px 7px 2px
+  width: 172px
   font-family: NovaR
   color: #6b6a6a
+  display: inline-block
+  list-style: none
+  margin: 0px
+  vertical-align: 0px
+  border: 3px solid #eaeaea!important
+  margin-left: 20px
+  border: 3px solid rgba(255,255,255, 0.3)
+  -moz-border-radius: 12px
+  -webkit-border-radius: 12px
+  border-radius: 12px 12px
+  &.active
+    ul
+      display: block
 
+
+
+.phone-icon
+  vertical-align: -4px
+
+
+
+
+.bold
+  font-family: NovaB
+  color: #6b6a6a
 
 .header-top-bg, .menu-bg, .search-bg, .hits-bg, .about-bg, .travels-bg, .footer-bg
   min-width: 960px
@@ -220,10 +269,10 @@ a.hit-title, .news-link
 .menu-bottom
   font-size: 15px
   position: relative
+  padding-top: 8px
 
 .social
   float: right
-  padding-top: 6px
   a
     margin-left: 10px
 
@@ -512,7 +561,7 @@ ul.footer-links
   left: 50%
   margin-left: -700px
   max-width: 1400px!important
-  z-index: 999
+  z-index: 1
 .slide
   min-width: 468px
   max-width: 468px
@@ -528,200 +577,3 @@ ul.slider
   li
     margin: 0
     padding: 0
-
-.caption
-  padding: 0 16px
-  padding-top: 12px
-  padding-bottom: 16px
-  position: absolute
-  bottom: 0
-  height: 75px
-  width: 95.33333%
-  background: rgba(0,0,0, 0.65)
-.bx-viewport
-  height: 352px!important
-
-@media (max-width: 1410px)
-  .slide
-    min-width: 440px
-    max-width: 440px
-    img
-      max-width: 100%
-      width: 100%
-      height: 330px
-      min-height: 100%
-  .bx-wrapper
-    height: 330px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -660px
-    max-width: 1320px!important
-  .bx-viewport
-    height: 330px!important
-  .caption
-    width: 93.33333%
-    height: 64px
-  .menu-bg
-    min-height: 360px!important
-  .search-nav
-    padding-top: 112px
-  .search-bg, .search
-    min-height: 180px
-
-@media (max-width: 1340px)
-  .slide
-    min-width: 417px
-    max-width: 417px
-    img
-      max-width: 100%
-      width: 100%
-      height: 315px
-      min-height: 100%
-  .bx-wrapper
-    height: 315px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -625px
-    max-width: 1250px!important
-  .bx-viewport
-    height: 315px!important
-  .caption
-    width: 93.33333%
-    height: 64px
-    a
-      font-size: 16px!important
-  .menu-bg
-    min-height: 345px!important
-
-@media (max-width: 1280px)
-  .slide
-    min-width: 397px
-    max-width: 397px
-    img
-      max-width: 100%
-      width: 100%
-      height: 300px
-      min-height: 100%
-  .bx-wrapper
-    height: 300px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -595px
-    max-width: 1190px!important
-  .bx-viewport
-    height: 300px!important
-  .caption
-    width: 93.33333%
-    height: 64px
-  .menu-bg
-    min-height: 330px!important
-
-@media (max-width: 1200px)
-  .slide
-    min-width: 370px
-    max-width: 370px
-    img
-      max-width: 100%
-      width: 100%
-      height: 280px
-      min-height: 100%
-  .bx-wrapper
-    height: 280px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -555px
-    max-width: 1110px!important
-  .bx-viewport
-    height: 280px!important
-  .caption
-    width: 93.333333%
-    height: 64px
-  .menu-bg
-    min-height: 310px!important
-
-@media (max-width: 1130px)
-  .slide
-    min-width: 347px
-    max-width: 347px
-    img
-      max-width: 100%
-      width: 100%
-      height: 262px
-      min-height: 100%
-  .bx-wrapper
-    height: 262px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -520px
-    max-width: 1040px!important
-  .bx-viewport
-    height: 262px!important
-  .caption
-    width: 93.333333%
-    height: 64px
-  .menu-bg
-    min-height: 292px!important
-
-@media (max-width: 1050px)
-  .slide
-    min-width: 320px
-    max-width: 320px
-    img
-      max-width: 100%
-      width: 100%
-      height: 256px
-      min-height: 100%
-  .bx-wrapper
-    height: 256px
-    position: absolute
-    top: 117px
-    left: 50%
-    margin-left: -480px
-    max-width: 960px!important
-  .bx-viewport
-    height: 256px!important
-  .caption
-    width: 93.333333%
-    height: 64px
-  .menu-bg
-    min-height: 286px!important
-
-
-
-.caption-title
-  display: inline-block
-  font-family: NovaB
-  a
-    color: #fff
-    font-size: 19px
-    text-decoration: none
-    &:hover
-      text-decoration: underline
-
-.caption-text
-  display: inline
-  color: #fff
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

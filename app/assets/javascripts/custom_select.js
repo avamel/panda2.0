@@ -5,6 +5,151 @@
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
- * @license http://www.gnu.org/licenses/gpl.html GPL2 License
+ * @license http://www.gnu.org/licenses/gpl.html GPL2 License 
  */
-(function(a){a.fn.extend({customSelect:function(c){if(typeof document.body.style.maxHeight==="undefined"){return this}var e={customClass:"customSelect",mapClass:true,mapStyle:true},c=a.extend(e,c),d=c.customClass,f=function(h,k){var g=h.find(":selected"),j=k.children(":first"),i=g.html()||"&nbsp;";j.html(i);if(g.attr("disabled")){k.addClass(b("DisabledOption"))}else{k.removeClass(b("DisabledOption"))}setTimeout(function(){k.removeClass(b("Open"));a(document).off("mouseup."+b("Open"))},60)},b=function(g){return d+g};return this.each(function(){var h=a(this),j=a("<span />").addClass(b("Inner")),i=a("<span />"),g=h.position();h.after(i.append(j));i.addClass(d);if(c.mapClass){i.addClass(h.attr("class"))}if(c.mapStyle){i.attr("style",h.attr("style"))}h.addClass("hasCustomSelect").on("update",function(){f(h,i);var l=parseInt(h.outerWidth(),10)-(parseInt(i.outerWidth(),10)-parseInt(i.width(),10));i.css({display:"inline-block"});var k=i.outerHeight();if(h.attr("disabled")){i.addClass(b("Disabled"))}else{i.removeClass(b("Disabled"))}j.css({width:l,display:"inline-block"});h.css({"-webkit-appearance":"menulist-button",width:i.outerWidth(),position:"absolute",opacity:0,height:k,fontSize:i.css("font-size"),left:g.left,top:g.top})}).on("change",function(){i.addClass(b("Changed"));f(h,i)}).on("keyup",function(k){if(!i.hasClass(b("Open"))){h.blur();h.focus()}else{if(k.which==13||k.which==27||k.which==9){f(h,i)}}}).on("mousedown",function(k){i.removeClass(b("Changed"))}).on("mouseup",function(k){if(!i.hasClass(b("Open"))){if(a("."+b("Open")).not(i).length>0&&typeof InstallTrigger!=="undefined"){h.focus()}else{i.addClass(b("Open"));k.stopPropagation();a(document).one("mouseup."+b("Open"),function(l){if(l.target!=h.get(0)&&a.inArray(l.target,h.find("*").get())<0){h.blur()}else{f(h,i)}})}}}).focus(function(){i.removeClass(b("Changed")).addClass(b("Focus"))}).blur(function(){i.removeClass(b("Focus")+" "+b("Open"))}).hover(function(){i.addClass(b("Hover"))},function(){i.removeClass(b("Hover"))}).trigger("update")})}})})(jQuery);
+
+(function ($) {
+    'use strict';
+
+    $.fn.extend({
+        customSelect: function (options) {
+            // filter out <= IE6
+            if (typeof document.body.style.maxHeight === 'undefined') {
+                return this;
+            }
+            var defaults = {
+                    customClass: 'customSelect',
+                    mapClass:    true,
+                    mapStyle:    true
+            },
+            options = $.extend(defaults, options),
+            prefix = options.customClass,
+            changed = function ($select,customSelectSpan) {
+                var currentSelected = $select.find(':selected'),
+                customSelectSpanInner = customSelectSpan.children(':first'),
+                html = currentSelected.html() || '&nbsp;';
+
+                customSelectSpanInner.html(html);
+                
+                if (currentSelected.attr('disabled')) {
+                  customSelectSpan.addClass(getClass('DisabledOption'));
+                } else {
+                  customSelectSpan.removeClass(getClass('DisabledOption'));
+                }
+                
+                setTimeout(function () {
+                    customSelectSpan.removeClass(getClass('Open'));
+                    $(document).off('mouseup.'+getClass('Open'));                  
+                }, 60);
+            },
+            getClass = function(suffix){
+                return prefix + suffix;
+            };
+
+            return this.each(function () {
+                var $select = $(this),
+                    customSelectInnerSpan = $('<span />').addClass(getClass('Inner')),
+                    customSelectSpan = $('<span />'),
+                    position = $select.position();
+
+                $select.after(customSelectSpan.append(customSelectInnerSpan));
+                
+                customSelectSpan.addClass(prefix);
+
+                if (options.mapClass) {
+                    customSelectSpan.addClass($select.attr('class'));
+                }
+                if (options.mapStyle) {
+                    customSelectSpan.attr('style', $select.attr('style'));
+                }
+
+                $select
+                    .addClass('hasCustomSelect')
+                    .on('update', function () {
+            changed($select,customSelectSpan);
+            
+                        var selectBoxWidth = parseInt($select.outerWidth(), 10) -
+                                (parseInt(customSelectSpan.outerWidth(), 10) -
+                                    parseInt(customSelectSpan.width(), 10));
+            
+            // Set to inline-block before calculating outerHeight
+            customSelectSpan.css({
+                            display: 'inline-block'
+                        });
+            
+                        var selectBoxHeight = customSelectSpan.outerHeight();
+
+                        if ($select.attr('disabled')) {
+                            customSelectSpan.addClass(getClass('Disabled'));
+                        } else {
+                            customSelectSpan.removeClass(getClass('Disabled'));
+                        }
+
+                        customSelectInnerSpan.css({
+                            width:   selectBoxWidth,
+                            display: 'inline-block'
+                        });
+
+                        $select.css({
+                            '-webkit-appearance': 'menulist-button',
+                            width:                customSelectSpan.outerWidth(),
+                            position:             'absolute',
+                            opacity:              0,
+                            height:               selectBoxHeight,
+                            fontSize:             customSelectSpan.css('font-size'),
+                            left:                 position.left,
+                            top:                  position.top
+                        });
+                    })
+                    .on('change', function () {
+                        customSelectSpan.addClass(getClass('Changed'));
+                        changed($select,customSelectSpan);
+                    })
+                    .on('keyup', function (e) {
+                        if(!customSelectSpan.hasClass(getClass('Open'))){
+                            $select.blur();
+                            $select.focus();
+                        }else{
+                            if(e.which==13||e.which==27||e.which==9){
+                                changed($select,customSelectSpan);
+                            }
+                        }
+                    })
+                    .on('mousedown', function (e) {
+                        customSelectSpan.removeClass(getClass('Changed'));
+                    })
+                    .on('mouseup', function (e) {
+                        
+                        if( !customSelectSpan.hasClass(getClass('Open'))){
+                            // if FF and there are other selects open, just apply focus
+                            if($('.'+getClass('Open')).not(customSelectSpan).length>0 && typeof InstallTrigger !== 'undefined'){
+                                $select.focus();
+                            }else{
+                                customSelectSpan.addClass(getClass('Open'));
+                                e.stopPropagation();
+                                $(document).one('mouseup.'+getClass('Open'), function (e) {
+                                    if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
+                                        $select.blur();
+                                    }else{
+                                        changed($select,customSelectSpan);
+                                    }
+                                });
+                            }
+                        }
+                    })
+                    .focus(function () {
+                        customSelectSpan.removeClass(getClass('Changed')).addClass(getClass('Focus'));
+                    })
+                    .blur(function () {
+                        customSelectSpan.removeClass(getClass('Focus')+' '+getClass('Open'));
+                    })
+                    .hover(function () {
+                        customSelectSpan.addClass(getClass('Hover'));
+                    }, function () {
+                        customSelectSpan.removeClass(getClass('Hover'));
+                    })
+                    .trigger('update');
+            });
+        }
+    });
+})(jQuery);
