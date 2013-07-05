@@ -1,4 +1,23 @@
 Panda20::Application.routes.draw do
+
+  resources :tours do
+  end
+
+  resources :visas do
+  end
+
+  resources :travels do
+  end
+
+  resources :countries do
+  end
+
+  resources :news do
+  end
+
+  resource :contacts do
+  end
+
   get "home/index"
   root "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

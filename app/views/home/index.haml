@@ -4,25 +4,25 @@
       =link_to(image_tag("logo.png"), root_path)
     .weather
 
+      .weatherSelectWrapper
+        %span.phone-icon
+        %span.weather1
+          Выберите город
+        %span.weather2
+          Погода
+        %b.caret
 
-      / .weatherSelectWrapper
-      /   %span.phone-icon
-      /     = image_tag('phone-icon.png')
-      /   %span.weather
-      /   %b.caret
-      /     = image_tag('grey-arrow.png')
-
-      /   %ul.weatherSelectList
-      /     %li.weatherOption
-      /       %span.weather
+        %ul.weatherSelectList
+          %li.weatherOption
+            = text_field_tag "city", "",class: 'weatherInput'
 
 
-      %select.customSelect
-        %option{:value => ""}  выберите город
-        %option{:value => "one"} Барселона
-        %option{:value => "two"} Париж
-        %option{:value => "three"} Берлин
-        %option{:value => "four"} Лондон
+      / %select.customSelect
+      /   %option{:value => ""}  выберите город
+      /   %option{:value => "one"} Барселона
+      /   %option{:value => "two"} Париж
+      /   %option{:value => "three"} Берлин
+      /   %option{:value => "four"} Лондон
       .indicator
         =image_tag("weather.png")
       -
@@ -85,22 +85,30 @@
         %span.phone-icon
           = image_tag('phone-icon.png')
         %span.number
+          +375 29
+          %span.bold 127 86 05
         %b.caret
-          = image_tag('grey-arrow.png')
 
         %ul.phoneSelectList
           %li.phoneOption
             %span.number
-              +375 29
-              %span.bold 127 86 05
+              %span.type Velcom
           %li.phoneOption
             %span.number
               +375 29
               %span.bold 127 86 06
+              %span.type МТС
           %li.phoneOption
             %span.number
               +375 29
               %span.bold 127 86 07
+            %span.number
+              +375 29
+              %span.bold 127 86 07
+            %span.number
+              +375 29
+              %span.bold 127 86 07
+              %span.type Городские
 
       .social
         = link_to(image_tag("twitter.png"), "#")
