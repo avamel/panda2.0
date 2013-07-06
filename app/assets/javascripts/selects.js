@@ -9,6 +9,11 @@ $(function() {
         event.stopPropagation();
       });
 
+      $('.city').click(function(e) {
+        $(wrapper).removeClass('.active');
+        $(wrapper_inner).text($(this).text());
+      });
+
       $(input).bind('keyup', function(e) {
           if ( e.keyCode === 13 ) {
             $(wrapper_inner).text($(input).val());
