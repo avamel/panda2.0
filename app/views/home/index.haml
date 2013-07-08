@@ -50,14 +50,6 @@
                 .city
                   Краков
 
-
-
-      / %select.customSelect
-      /   %option{:value => ""}  выберите город
-      /   %option{:value => "one"} Барселона
-      /   %option{:value => "two"} Париж
-      /   %option{:value => "three"} Берлин
-      /   %option{:value => "four"} Лондон
       .indicator
         =image_tag("weather.png")
       -
@@ -150,30 +142,198 @@
         = link_to(image_tag("fb.png"), "#")
         = link_to(image_tag("vk.png"), "#")
 
-
 .search-bg
   .search
     .search-nav
-      %select.placeSelect
-        %option{:value => ""} Где хотелось бы отдохнуть?
-        %option{:value => "one"} +375 29 127 86 05
-        %option{:value => "two"} +375 29 127 86 05
-        %option{:value => "three"} +375 29 127 86 05
-        %option{:value => "four"} +375 29 127 86 05
+      .placeSelectWrapper
+        %span.place
+          Где хотелось бы отдохнуть?
+        %b.caret
+        %ul.placeSelectList
+          .li.countriesWrapper
+            %ul.europe
+              .region-title
+                Европа:
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Австрия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Беларусь
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Бельгия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Болгария
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Великобритания
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Венгрия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Германия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Греция
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Дания
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Испания
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Италия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Кипр
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Латвия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Литва
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Нидерланды
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Норвегия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Польша
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Португалия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Россия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Словения
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Украина
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Финляндия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Франция
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Хорватия
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Черногория
+              %li.country
+                %span.flag
+                  = image_tag("blr.png")
+                .countryName Эстония
+            .to-left
+              %ul.asia
+                .region-title
+                  Азия:
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Индия
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Индонезия
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Китай
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Тайланд
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Турция
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName ОАЭ
+              %ul.africa
+                .region-title
+                  Африка:
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Египет
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Тунис
 
-      %select.dateSelect
-        %option{:value => ""} 23 сентября
-        %option{:value => "one"} +375 29 127 86 05
-        %option{:value => "two"} +375 29 127 86 05
-        %option{:value => "three"} +375 29 127 86 05
-        %option{:value => "four"} +375 29 127 86 05
+            .to-left
+              %ul.south-america
+                .region-title
+                  Южная Америка:
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Куба
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Мексика
+              %ul.also
+                .region-title
+                  А также:
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Доминикана
+                %li.country
+                  %span.flag
+                    = image_tag("blr.png")
+                  .countryName Мальдивы
 
-      %select.rangeSelect
-        %option{:value => ""} диапазон?
-        %option{:value => "one"} ???????
-        %option{:value => "two"} ???????
-        %option{:value => "three"} ???????
-        %option{:value => "four"} ???????
+
+      .dateSelectWrapper
+        %span.calendar-icon
+        %span.date
+          Дата отъезда
+        %b.caret
+        %ul.dateSelectList
+          %li.dateOption
+            #datePicker
+
+      #slider-range
+        .rangeText
 
       = link_to "Подобрать варианты", "#", :class => "search-btn"
       = link_to(image_tag("tourtrans.png"), "#", :class => "tourtrans")
@@ -406,56 +566,108 @@
       .region-title
         Европа:
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Австрия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Беларусь", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Бельгия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Болгария", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Великобритания", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Венгрия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Германия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Греция", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Дания", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Испания", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Италия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Кипр", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Латвия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Литва", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Нидерланды", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Норвегия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Польша", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Португалия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Россия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Словения", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Украина", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Финляндия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Франция", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Хорватия", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Черногория", "#"
       %li.country
+        %span.flag
+          = image_tag("blr_big.png")
         = link_to "Эстония", "#"
 
 
@@ -465,23 +677,39 @@
         .region-title
           Азия:
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Индия", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Индонезия", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Китай", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Тайланд", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Турция", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "ОАЭ", "#"
       %ul.africa
         .region-title
           Африка:
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Египет", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Тунис", "#"
 
     .to-left
@@ -489,15 +717,23 @@
         .region-title
           Южная Америка:
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Куба", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Мексика", "#"
       %ul.also
         .region-title
           А также:
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Доминикана", "#"
         %li.country
+          %span.flag
+            = image_tag("blr_big.png")
           = link_to "Мальдивы", "#"
 
 .footer-bg

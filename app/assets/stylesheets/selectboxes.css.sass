@@ -1,4 +1,4 @@
-ul.phoneSelectList, ul.weatherSelectList
+ul.phoneSelectList, ul.weatherSelectList, ul.dateSelectList, ul.placeSelectList
   display: none
   padding: 0
   list-style: none
@@ -66,7 +66,7 @@ ul.weatherSelectList
     height: 18px
     background: url('select-arrow.png') no-repeat center 7px
   &.active
-    padding: 5px 0px 0px 7px
+    padding: 5px 7px 0px 7px
     font-family: NovaB
     color: #000
     background: #fff
@@ -98,7 +98,7 @@ ul.weatherSelectList
     border: 1px solid #cacaca
 
 
-.phoneSelectWrapper, .weatherSelectWrapper
+.phoneSelectWrapper, .weatherSelectWrapper, .dateSelectWrapper, .placeSelectWrapper
   z-index: 2
   cursor: pointer
   font-family: NovaR
@@ -142,107 +142,145 @@ ul.weatherSelectList
   color: #000
   padding-bottom: 10px
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-select.placeSelect
-  left: auto!important
-  top: auto!important
-
-span.placeSelect
-  padding-top: 7px!important
-  padding-left: 14px!important
-  background: url(select-arrow.png) 238px center no-repeat rgba(255,255,255,0.3)
-  vertical-align: 16px
-  min-width: 200px
+.dateSelectWrapper
+  top: 133px
+  left: 280px
+  width: 150px
+  border: 3px solid #7bb847
   color: #fff
-  padding: 5px 7px
-  -moz-border-radius: 12px
-  -webkit-border-radius: 12px
-  border-radius: 12px 12px
-  &.changed
-    background-color: #f0dea4
+  position: absolute
+  display: inline-block
+  padding: 4px 7px
+  background-color: #7bb847
+  b.caret
+    right: 11px
+    top: 6px
+    width: 12px
+    height: 18px
+    position: absolute
+    background: url('select-arrow.png') no-repeat center center
+  .date
+    padding-left: 26px
+  .calendar-icon
+    width: 18px
+    height: 18px
+    position: absolute
+    background: url('datepick.png') no-repeat center center
+  &.active
+    box-shadow: 0px 0px 8px #6b6a6a
+    height: 54px
+    color: #000
+    background: #fff
+    border: 3px solid #fff
+    b.caret
+      background: url('green-up-arrow.png') no-repeat center center
+    .calendar-icon
+      background: url('bw-calendar.png') no-repeat center center
+    .dateSelectList
+      color: #000
+      display: block
+      border-radius: 12px 12px
+      margin: 7px 0px -3px -10px
 
-.placeSelectInner
-  height: 22px
-  width: 246px!important
+.placeSelectWrapper
+  top: 133px
+  padding: 4px 7px
+  background-color: #7bb847
+  position: absolute
+  display: inline-block
+  border: 3px solid #7bb847
+  color: #fff
+  width: 232px
+  .countriesWrapper
+    margin-top: 22px
+    box-shadow: 0px 3px 0px -3px #6b6a6a, 3px 3px 5px -2px #6b6a6a, -3px 3px 5px -4px #6b6a6a
+    border-radius: 12px
+    min-width: 865px
+    height: 385px
+    background: #fff
+    font-size: 15px
+    padding: 14px
+  .south-america
+    margin-top: 0
+  .europe
+    max-width: 521px
+  .europe, .asia, .africa, .south-america, .also
+    height: 100%
+    .countryName
+      display: inline
+      color: #0088cc
+      font-family: NovaB
+      border-radius: 6px
+      font-size: 15px
+      vertical-align: 8px
+      padding: 6px
+      &:hover
+        background-color: #489c00
+        color: white
+        text-decoration: none
+    .region-title
+      padding-left: 8px
+      font-size: 13px
+      font-family: NovaR
+    .country
+      padding: 0
+      width: 171px
+  .dateOption
+    position: relative
+  b.caret
+    right: 11px
+    top: 6px
+    width: 12px
+    height: 18px
+    position: absolute
+    background: url('select-arrow.png') no-repeat center center
+  &.active
+    height: 448px
+    box-shadow: 0px 0px 8px #6b6a6a
+    color: #000
+    background: #fff
+    border: 3px solid #fff
+    b.caret
+      background: url('green-up-arrow.png') no-repeat center center
+    .placeSelectList
+      color: #000
+      display: block
+      border-radius: 12px 12px
+      margin: 7px 0px -3px -10px
 
-select.customSelect, .phoneSelect
-  left: auto!important
-  top: auto!important
+#slider-range
+  position: absolute
+  top: 133px
+  left: 470px
+  width: 180px
+  height: 34px!important
+  background-color: #7bb847!important
+  // border: 3px solid #7bb847
+  border: none
+  border-radius: 12px
+  background-image: none
+  .ui-slider-handle
+    width: 3px
+    top: 0
+    margin: 0
+    height: 100%
+    background-color: #d8eac8!important
+.ui-slider-range .ui-widget-header .ui-corner-all
+  border-radius: 0px
+.ui-slider-range
+  width: 46%
+  background-color: #95c66c
+  background-image: none
+.rangeText
+  position: absolute
+  color: #fff
+  top: 8px
+  left: 38px
+  z-index: 999
+  font-size: 15px
 
-span.customSelect, .phoneSelect
-  background: url(select-arrow.png) 142px center no-repeat
-  vertical-align: 16px
-  min-width: 152px
-  color: #e7f1e0
-  padding: 5px 7px
-  border: 3px solid rgba(255,255,255, 0.3)
-  -moz-border-radius: 12px
-  -webkit-border-radius: 12px
-  border-radius: 12px 12px
-  &.changed
-    background-color: #f0dea4
 
-.customSelectInner
-  height: 20px
-  width: 144px!important
 
-.dateSelect, .rangeSelect
-  margin-left: 8px
 
-span.rangeSelect
-  background: rgba(255,255,255,0.3)
 
-select.dateSelect, .rangeSelect
-  left: auto!important
-  top: auto!important
 
-span.dateSelect, .rangeSelect
-  padding-top: 7px!important
-  padding-left: 12px!important
-  background: url(select-arrow.png) 152px center no-repeat rgba(255,255,255,0.3)
-  vertical-align: 16px
-  min-width: 160px
-  color: #e7f1e0
-  padding: 5px 7px
-  -moz-border-radius: 12px
-  -webkit-border-radius: 12px
-  border-radius: 12px 12px
-  &.changed
-    background-color: #f0dea4
-
-.dateSelectInner
-  padding-left: 36px
-  background: url(datepick.png) 0px 0px no-repeat
-  height: 22px
-
-.rangeSelectInner
-  height: 22px
