@@ -15,6 +15,9 @@ $(function($) {
       $(this).toggleClass('active');
       $(input).val(null);
 
+      var active = $(':not('+wrapper+').active');
+      $(active).removeClass('active');
+
       $(input).click(function(event) {
         event.stopPropagation();
       });
