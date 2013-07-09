@@ -37,6 +37,7 @@ $(function($) {
     });
   };
 
+
   $.datepicker.regional['ru'] = {
           closeText: 'Закрыть',
           prevText: '&#x3c;Пред',

@@ -4,7 +4,7 @@
       =link_to(image_tag("logo.png"), root_path)
     .weather
 
-      .weatherSelectWrapper
+      .weatherSelectWrapper.container
         %span.phone-icon
         %span.weather1
           Выберите город
@@ -108,7 +108,7 @@
         %span= image_tag("map.png")
         = link_to "Минск, пр. Независимости, 28, офис 2", "#"
 
-      .phoneSelectWrapper
+      .phoneSelectWrapper.container.container.container
         %span.phone-icon
           = image_tag('phone-icon.png')
         %span.number
@@ -145,7 +145,7 @@
 .search-bg
   .search
     .search-nav
-      .placeSelectWrapper
+      .placeSelectWrapper.container.container
         %span.place
           Где хотелось бы отдохнуть?
         %b.caret
@@ -323,7 +323,7 @@
                   .countryName Мальдивы
 
 
-      .dateSelectWrapper
+      .dateSelectWrapper.container
         %span.calendar-icon
         %span.date
           Дата отъезда
