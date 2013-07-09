@@ -1,5 +1,6 @@
 Panda20::Application.routes.draw do
 
+  get "contacts/index"
   resources :tours do
   end
 
@@ -15,8 +16,7 @@ Panda20::Application.routes.draw do
   resources :news do
   end
 
-  resource :contacts do
-  end
+  get 'contacts', to: 'contacts#index'
 
   get "home/index"
   root "home#index"

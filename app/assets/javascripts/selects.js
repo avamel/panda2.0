@@ -3,9 +3,10 @@ $(function($) {
   var makeUnactive = function makeUnactive (list, wrapper) {
       $(list).on({
         mouseleave: function() {
+          // alert('lol');
           setTimeout(function(){
             $(wrapper).removeClass('active');
-          }, 2000);
+          }, 3000);
         }
       });
   };
@@ -33,7 +34,7 @@ $(function($) {
           $(wrapper).removeClass('active');
         }
       });
-      makeUnactive(list, wrapper);
+      // makeUnactive(list, wrapper);
     });
   };
 

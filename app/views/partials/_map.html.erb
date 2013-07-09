@@ -1,0 +1,5 @@
+<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
+<script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?coordorder=longlat&load=package.full&wizard=constructor&lang=ru-RU"></script>
+<script type="text/javascript">ymaps.ready(function() {var map = new ymaps.Map("ymaps-map-container", {center: [27.565478, 53.903435], zoom: 16, type: "yandex#map"}, {geoObjectHint: false});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([27.565478, 53.903435], {balloonContent: "Туристическая компания &quot;Панда Тревел&quot;"}, {preset: "twirl#lightblueDotIcon"}));});</script>
+<div id="ymaps-map-container" style="width: 960px; height: 450px;"></div>
+<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->

@@ -1,0 +1,109 @@
+.menu-bg.contacts-menu-bg
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.contacts-bg
+  .contacts
+    .contacts-meta
+      .cm-header
+        Контактная информация
+      .cm-description
+        Частное туристическое унитарное предприятие «Панда Трэвел»
+      .cm-phones
+        .cm-phones-header
+          Звоните:
+        .cm-numbers
+          %span.number
+            +375 29
+            %span.bold 127 86 06
+            %span.type МТС
+          %span.number
+            +375 29
+            %span.bold 127 86 06
+            %span.type Velcom
+          .home-number
+            %span.number
+              +375 29
+              %span.bold 127 86 06
+            %span.number
+              +375 29
+              %span.bold 127 86 06
+            %span.number
+              +375 29
+              %span.bold 127 86 06
+      .cm-mails
+        .cm-mails-header
+          Пишите:
+        .cm-mails-meta
+          .cm-email
+            %span.cm-icon.email
+            <a href="mailto:hello@panda-travel.by">hello@panda-travel.by</a>
+          .cm-skype
+            %span.cm-icon.skype
+            %span panda-travel
+      .cm-address
+        .cm-address-header
+          Приезжайте:
+        .cm-addreess-meta
+          220030, Беларусь, Минск, пр. Независимости, 28, офис 2 (вход с проспекта)
+    .cm-time
+      .time
+        .time-img-wrapper
+          .time-img
+            = image_tag('time-contacts.png')
+        .time-caption
+          .worktime
+            .time-item
+              10
+              %sup 00
+              = "-"
+              19
+              %sup 00
+              .ti-days
+                понедельник - пятница
+
+            .time-item
+              11
+              %sup 00
+              = "-"
+              15
+              %sup 00
+              .ti-days
+                суббота
+
+            .time-item.weekend
+              Выходной
+              .ti-days
+                воскресенье
+    .contacts-map
+      = render partial: 'partials/map'
+      .undermap
+        = render partial: 'partials/share'
+        .print-page
+          %span.print-icon
+          = link_to 'Распечатать страницу', "#"
+
+
+.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Новые туры
+    = render partial: 'partials/slider'
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'
+
+
+
+
+
+
+
+
+
+
+
+
+
+

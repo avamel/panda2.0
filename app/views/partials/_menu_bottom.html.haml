@@ -1,0 +1,39 @@
+.menu-bottom
+  Полный спектр туристических услуг для всей семьи
+  .address
+    %span= image_tag("map.png")
+    = link_to "Минск, пр. Независимости, 28, офис 2", "#"
+
+  .phoneSelectWrapper.container.container.container
+    %span.phone-icon
+      = image_tag('phone-icon.png')
+    %span.number
+      +375 29
+      %span.bold 127 86 05
+    %b.caret
+
+    %ul.phoneSelectList
+      %li.phoneOption
+        %span.number
+          %span.type Velcom
+      %li.phoneOption
+        %span.number
+          +375 29
+          %span.bold 127 86 06
+          %span.type МТС
+      %li.phoneOption
+        %span.number
+          +375 29
+          %span.bold 127 86 07
+        %span.number
+          +375 29
+          %span.bold 127 86 07
+        %span.number
+          +375 29
+          %span.bold 127 86 07
+          %span.type Городские
+
+  .social
+    = link_to(image_tag("twitter.png"), "#")
+    = link_to(image_tag("fb.png"), "#")
+    = link_to(image_tag("vk.png"), "#")

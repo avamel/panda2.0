@@ -1,0 +1,23 @@
+.search
+  .search-nav
+    .placeSelectWrapper.container.container
+      %span.place
+        Где хотелось бы отдохнуть?
+      %b.caret
+      %ul.placeSelectList
+        .li.countriesWrapper
+          = render partial: 'partials/countries_small'
+
+    .dateSelectWrapper.container
+      %span.calendar-icon
+      %span.date
+        Дата отъезда
+      %b.caret
+      %ul.dateSelectList
+        %li.dateOption
+          #datePicker
+
+    #slider-range
+      .rangeText
+    = link_to "Подобрать варианты", "#", :class => "search-btn"
+    = link_to(image_tag("tourtrans.png"), "#", :class => "tourtrans")

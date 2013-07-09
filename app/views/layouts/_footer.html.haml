@@ -1,0 +1,40 @@
+.footer-bg
+  .footer
+    .footer-left
+      .ft-title
+        Приезжайте, звоните, пишите
+      .ft-address
+        Минск, пр. Независимости, 28, офис 2
+      %ul.ft-phones
+        %li
+          +375 (33) 328 38 08
+          .type Городской
+        %li
+          +375 (33) 328 38 08
+          .type Velcom
+        %li
+          +375 (33) 328 38 08
+          .type МТС
+      .ft-contacts
+        .ft-mail
+          <a href="mailto:hello@panda-travel.by">hello@panda-travel.by</a>
+        .ft-skype
+          %span= image_tag("skype.png")
+          panda-travel.by
+      .ft-logo
+        = link_to(image_tag("ft-logo.png"), root_path)
+        %span.credits
+          ЧТУП "Панда Трэвел" УНП 191675650
+    %ul.footer-links
+      %li= link_to "Каталог туров", "#"
+      %li= link_to "Визы", "#"
+      %li= link_to "Страны", "#"
+      %li= link_to "Путешествия", "#"
+      %li= link_to "Контакты", "#"
+
+    %ul.footer-features
+      %li= link_to "Экскурсионные автобусные туры", "#"
+      %li= link_to "Экскурсионные туры с отдыхом на море", "#"
+      %li= link_to "Страны", "#"
+      %li= link_to "Путешествия", "#"
+      %li= link_to "Контакты", "#"

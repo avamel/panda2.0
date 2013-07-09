@@ -1,0 +1,65 @@
+.header-top-bg
+  .header
+    .logo
+      =link_to(image_tag("logo.png"), root_path)
+    .weather
+
+      .weatherSelectWrapper.container
+        %span.phone-icon
+        %span.weather1
+          Выберите город
+        %span.weather2
+          Погода
+        %b.caret
+
+        %ul.weatherSelectList
+          %li.weatherOption
+            = text_field_tag "city", "",class: 'weatherInput'
+          %li.popularCities
+            .popularTitle
+              Популярные города:
+            %ul.citiesList
+              %li.city-wrapper
+                .city
+                  Мадрид
+              %li.city-wrapper
+                .city
+                  Берлин
+              %li.city-wrapper
+                .city
+                  Лондон
+              %li.city-wrapper
+                .city
+                  Барселона
+              %li.city-wrapper
+                .city
+                  Вена
+              %li.city-wrapper
+                .city
+                  Гамбург
+              %li.city-wrapper
+                .city
+                  Варшава
+              %li.city-wrapper
+                .city
+                  Прага
+              %li.city-wrapper
+                .city
+                  Вильнюс
+              %li.city-wrapper
+                .city
+                  Краков
+
+      .indicator
+        =image_tag("weather.png")
+      -
+      =link_to "Найти туры", "#", :class => "find-tours"
+    .money
+      .dollars
+        %span= image_tag("dollar.png")
+        %span.course
+          7600 бел. руб.
+      .euro
+        %span= image_tag("euro.png")
+        %span
+          11600 бел. руб.
