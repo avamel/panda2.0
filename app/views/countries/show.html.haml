@@ -5,6 +5,32 @@
 .country-bg
   .country-show
     .country-tabs
+      .tabs-title
+        = @country.title
+      #tab-container.tab-container
+        %ul.etabs
+          %li.tab
+            %a{:href => "#info"} Информация о стране
+          %li.tab
+            %a{:href => "#tours"} Туры
+            %span.tours-count
+              12
+          %li.tab
+            %a{:href => "#visas"} Визы
+        .panel-container
+          #info
+            = raw @country.overview
+          #tours
+            %h2 JS for these tabs
+          #visas
+            %h2 CSS Styles for these tabs
+        .undermap
+          = render partial: 'partials/share'
+          .print-page
+            %span.print-icon
+            = link_to 'Распечатать страницу', "#"
+
+
     .tl-news
       = render partial: 'partials/news'
       .hits-item.center
@@ -15,7 +41,12 @@
             = link_to "Греция", "#", :class => "country-name"
             .travels-hint
               Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
-  .countries
-    .countries-title
-      Страны
-    = render partial: 'partials/countries'
+.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Смотрите также
+    = render partial: 'partials/slider'
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'

@@ -7,20 +7,20 @@
         Минск, пр. Независимости, 28, офис 2
       %ul.ft-phones
         %li
-          +375 (33) 328 38 08
+          = link_to "+375 (33) 328 38 08", "tel:+375333283808"
           .type Городской
         %li
-          +375 (33) 328 38 08
+          = link_to "+375 (33) 328 38 08", "tel:+375333283808"
           .type Velcom
         %li
-          +375 (33) 328 38 08
+          = link_to "+375 (33) 328 38 08", "tel:+375333283808"
           .type МТС
       .ft-contacts
         .ft-mail
           <a href="mailto:hello@panda-travel.by">hello@panda-travel.by</a>
         .ft-skype
           %span= image_tag("skype.png")
-          panda-travel.by
+          <a href="skype:panda-travel?call">panda-travel.by</a>
       .ft-logo
         = link_to(image_tag("ft-logo.png"), root_path)
         %span.credits
