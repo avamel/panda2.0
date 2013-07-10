@@ -1,5 +1,7 @@
 Panda20::Application.routes.draw do
 
+  get "tours/index"
+  get "tours/show"
   get "countries/index"
   get "countries/show"
   get "contacts/index"
