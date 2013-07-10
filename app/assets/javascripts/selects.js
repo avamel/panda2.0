@@ -38,6 +38,15 @@ $(function($) {
     });
   };
 
+  $(document).mouseup(function (e)
+  {
+    var container = $(".container");
+    if (container.has(e.target).length === 0)
+    {
+      $(container).removeClass('active');
+    }
+  });
+
 
   $.datepicker.regional['ru'] = {
           closeText: 'Закрыть',

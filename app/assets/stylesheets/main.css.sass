@@ -12,7 +12,7 @@ body, img
   -moz-transition:all 4s linear
   -webkit-transition:all 4s linear
 
-.header-top-bg, .menu-bg, .search-bg, .hits-bg, .about-bg, .travels-bg, .footer-bg, .contacts-bg, .new-tours-bg, .tours-list-bg
+.header-top-bg, .menu-bg, .search-bg, .hits-bg, .about-bg, .travels-bg, .footer-bg, .contacts-bg, .new-tours-bg, .tours-list-bg, .country-bg
   min-width: 960px
   position: relative
 
@@ -143,7 +143,7 @@ a.hit-title, .news-link
   min-width: 960px
   max-width: 960px
 
-.menu, .search, .hits, .about, .travels, .countries, .footer, .contacts, .new-tours, .tours-list
+.menu, .search, .hits, .about, .travels, .countries, .footer, .contacts, .new-tours, .tours-list, .country-show
   min-width: 960px
   max-width: 960px
   margin: auto
@@ -457,6 +457,11 @@ ul.news-list
     list-style: none
     display: inline-block
     margin-right: 12px
+    a
+      color: #dbe9d4
+      text-decoration: none
+      &:hover
+        text-decoration: underline
     .type
       font-size: 15px
       padding-left: 8px
@@ -535,3 +540,36 @@ ul.slider
   li
     margin: 0
     padding: 0
+
+.caption
+  padding: 10px
+  padding-bottom: 0px
+  position: absolute
+  bottom: 0
+  height: 84px
+  width: 96%
+  background: rgba(0,0,0, 0.65)
+
+// @media (max-width: 1410px)
+//   .bx-wrapper
+//     position: absolute
+//     top: 95px
+//     left: 50%
+//     margin-left: -468px
+//     max-width: 936px!important
+
+.bx-viewport
+  height: 352px!important
+
+.caption-title
+  display: inline-block
+  font-family: NovaB
+  a
+    color: #fff
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+.caption-text
+  display: inline
+  color: #fff

@@ -1,3 +1,4 @@
+
 .contacts-bg
   box-shadow: inset 0  8px 8px -8px #696868
 .contacts
@@ -27,16 +28,19 @@
     padding-right: 18px
     width: 136px
     display: inline-block
+    a
+      text-decoration: none
+      color: #000
   .bold
     color: #000
   .type
     padding-left: 7px
     color: #9c9c9c
-.cm-email a
+.cm-email a, .cm-skype a
   text-decoration: none
   &:hover
     text-decoration: underline
-.cm-email a, .cm-skype span
+.cm-email a, .cm-skype a
   vertical-align: 6px
   font-size: 18px
   color: #0081bd
@@ -75,6 +79,8 @@
     box-shadow: 0px 0px 8px #6b6a6a
     height: 184px
     padding: 10px
+    position: relative
+    z-index: 2
   .time-caption
     z-index: -1
     position: absolute

@@ -13,24 +13,31 @@
         .cm-phones-header
           Звоните:
         .cm-numbers
+
           %span.number
-            +375 29
-            %span.bold 127 86 06
+            = link_to "tel:+375291278606" do
+              +375 29
+              %span.bold 127 86 06
             %span.type МТС
+
           %span.number
-            +375 29
-            %span.bold 127 86 06
-            %span.type Velcom
+            = link_to "tel:+375291278606" do
+              +375 29
+              %span.bold 127 86 06
+            %span.type МТС
           .home-number
             %span.number
-              +375 29
-              %span.bold 127 86 06
+              = link_to "tel:+375291278606" do
+                +375 29
+                %span.bold 127 86 06
             %span.number
-              +375 29
-              %span.bold 127 86 06
+              = link_to "tel:+375291278606" do
+                +375 29
+                %span.bold 127 86 06
             %span.number
-              +375 29
-              %span.bold 127 86 06
+              = link_to "tel:+375291278606" do
+                +375 29
+                %span.bold 127 86 06
       .cm-mails
         .cm-mails-header
           Пишите:
@@ -40,7 +47,7 @@
             <a href="mailto:hello@panda-travel.by">hello@panda-travel.by</a>
           .cm-skype
             %span.cm-icon.skype
-            %span panda-travel
+            <a href="skype:panda-travel?call">panda-travel</a>
       .cm-address
         .cm-address-header
           Приезжайте:

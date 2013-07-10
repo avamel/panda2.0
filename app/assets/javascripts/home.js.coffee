@@ -17,6 +17,8 @@ ready = ->
     minSlides: 3
     maxSlides: 3
     moveSlides: 3
+    responsive: true
+    auto: false
     controls: false
 
 
