@@ -18,7 +18,7 @@ Panda20::Application.routes.draw do
   resources :news do
   end
 
-  resource :dayses do
+  resource :days do
 
   end
 
