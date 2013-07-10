@@ -18,10 +18,6 @@ Panda20::Application.routes.draw do
   resources :news do
   end
 
-  resource :days do
-
-  end
-
   get 'contacts', to: 'contacts#index'
 
   get "home/index"
