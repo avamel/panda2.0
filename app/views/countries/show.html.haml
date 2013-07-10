@@ -1,2 +1,21 @@
-%h1 Countries#show
-%p Find me in app/views/countries/show.html.haml
+.menu-bg.contacts-menu-bg
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.country-bg
+  .country-show
+    .country-tabs
+    .tl-news
+      = render partial: 'partials/news'
+      .hits-item.center
+        .hit-photo
+          = link_to(image_tag("greece.png"), "#")
+          .travels-meta
+            .travels-title Страна месяца
+            = link_to "Греция", "#", :class => "country-name"
+            .travels-hint
+              Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+  .countries
+    .countries-title
+      Страны
+    = render partial: 'partials/countries'
