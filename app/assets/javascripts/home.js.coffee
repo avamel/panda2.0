@@ -13,13 +13,21 @@ ready = ->
       columnWidth: 240,
       itemSelector: '.hits-item'
 
-   $(".slider").bxSlider
-    minSlides: 3
-    maxSlides: 3
-    moveSlides: 3
-    responsive: true
-    auto: false
-    controls: false
+    $(".slider2").bxSlider
+      minSlides: 1
+      maxSlides: 1
+      moveSlides: 1
+      responsive: true
+      auto: false
+      controls: true
+      pagerCustom: '#bx-pager'
+    $(".slider").bxSlider
+      minSlides: 3
+      maxSlides: 3
+      moveSlides: 3
+      responsive: true
+      auto: false
+      controls: false
 
 
 $(document).ready(ready)
