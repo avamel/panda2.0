@@ -27,8 +27,6 @@ $(document).ready(function() {
     var stopHeight = catcher.offset().top + catcher.height();
     var stickyFoot = sticky.offset().top + sticky.height();
     
-    console.log(stopHeight);
-
     if(stickyFoot > $('.show-tour').offset().top + $('.show-tour').height() - 12){
       sticky.css({
         position:'absolute',

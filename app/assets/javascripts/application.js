@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
-//= require masonry.js
+//= require_tree ./plugins
 //= require_tree .

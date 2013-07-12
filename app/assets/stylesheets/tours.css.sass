@@ -214,6 +214,8 @@ ul.show-tour-days
     font-family: NovaB
     font-size: 15px
     vertical-align: 4px
+    &:hover
+      text-decoration: underline
 .cost
   font-family: NovaB
   font-size: 26px
@@ -344,21 +346,29 @@ ul.show-tour-days
     border-radius: 150px
     overflow: hidden
 .manager-phone
-  background: url('phone-icon.png') no-repeat 18px center
-  padding-left: 44px
+  background: url('phone-icon.png') no-repeat left center
+  padding-left: 24px
+  a
+    color: #000
+    text-decoration: none
+    font-size: 15px
+    &:hover
+      text-decoration: underline
   .bold
     color: #000
 .manager-mail
-  background: url('grey-mail.png') no-repeat 18px 5px
+  background: url('grey-mail.png') no-repeat left 5px
 .manager-skype
-  background: url('grey-skype.png') no-repeat 18px center
+  background: url('grey-skype.png') no-repeat left center
 .manager-skype, .manager-mail
-  padding-left: 44px
+  padding-left: 26px
   a
     color: #0081bd
     font-size: 15px
     font-family: NovaR
     text-decoration: none
+    &:hover
+      text-decoration: underline
 .side-manager-block
   margin: 32px 0px
 .manager-skype, .manager-mail, .manager-phone
