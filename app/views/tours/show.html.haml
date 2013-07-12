@@ -77,12 +77,19 @@
             305 евро!
         .buy-btn
           = link_to "Заказать тур", "#"
-      .mardown-tour
+      .markdown-tour
+        = render partial: 'partials/tour_overview_example'
+        = render partial: 'partials/tour_overview_example'
+        = render partial: 'partials/tour_overview_example'
       .undermap
         = render partial: 'partials/share'
         .print-page
           %span.print-icon
           = link_to 'Распечатать страницу', "#"
+
+
+
+
     .show-sidebar
       .side-buy-block
         .base-cost
