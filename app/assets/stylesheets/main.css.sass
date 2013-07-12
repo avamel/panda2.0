@@ -12,6 +12,9 @@ body, img
   -moz-transition:all 4s linear
   -webkit-transition:all 4s linear
 
+.slide img, .caption
+  display: none
+
 .header-top-bg, .menu-bg, .search-bg, .hits-bg, .about-bg, .travels-bg, .footer-bg, .contacts-bg, .new-tours-bg, .tours-list-bg, .country-bg
   min-width: 960px
   position: relative
@@ -50,7 +53,7 @@ body, img
   text-align: center
   font-family: NovaB
   font-size: 30px
-  margin: 16px 0 24px
+  margin: 24px 0 24px
 
 .hits-item
   width: 210px
@@ -143,6 +146,7 @@ a.hit-title, .news-link
   margin: auto
   min-width: 960px
   max-width: 960px
+  position: relative
 
 .menu, .search, .hits, .about, .travels, .countries, .footer, .contacts, .new-tours, .tours-list, .country-show, .show-tour
   min-width: 960px
@@ -171,6 +175,7 @@ a.hit-title, .news-link
 
 .search
   // min-height: 200px
+  padding-bottom: 28px
   position: relative
 
 .footer
@@ -217,12 +222,15 @@ a.hit-title, .news-link
       text-decoration: none
 
 .logo
-  display: inline-block
+  position: absolute
+  // display: inline-block
   padding-top: 16px
-  margin-right: 16px
+  // margin-right: 16px
 
 .weather, .indicator, .money
   display: inline-block
+.weather
+  margin: 28px 0px 0px 318px
 
 .menu-bottom
   font-size: 15px
@@ -381,6 +389,7 @@ ul.news-list
   margin: auto
 
 .countries-title
+  margin-bottom: 22px
   text-align: center
   font-family: NovaB
   font-size: 30px
