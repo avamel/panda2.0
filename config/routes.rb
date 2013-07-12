@@ -1,23 +1,18 @@
 Panda20::Application.routes.draw do
 
-  get "tours/index"
-  get "tours/show"
-  get "countries/index"
-  get "countries/show"
-  get "contacts/index"
-  resources :tours do
+  resources :tours, only: [:index, :show] do
   end
 
-  resources :visas do
+  resources :visas, only: [:index, :show] do
   end
 
-  resources :travels do
+  resources :travels, only: [:index, :show] do
   end
 
-  resources :countries do
+  resources :countries, only: [:index, :show] do
   end
 
-  resources :news do
+  resources :news, only: [:index, :show] do
   end
 
   get 'contacts', to: 'contacts#index'
