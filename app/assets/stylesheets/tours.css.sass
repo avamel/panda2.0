@@ -204,18 +204,6 @@ ul.show-tour-days
   margin-right: 36px
   span
     vertical-align: 2px
-.tour-links
-  padding-bottom: 28px
-  padding-left: 80px
-  border-bottom: 1px solid #d1d1d1
-  a
-    color: #0081bd
-    text-decoration: none
-    font-family: NovaB
-    font-size: 15px
-    vertical-align: 4px
-    &:hover
-      text-decoration: underline
 .cost
   font-family: NovaB
   font-size: 26px
@@ -247,6 +235,8 @@ ul.show-tour-days
     font-size: 22px
     font-family: NovaB
     text-decoration: none
+    &:hover
+      text-decoration: underline
 .side-buy-block
   padding: 36px 0px 32px 0px
   box-shadow: inset 0 8px 8px -8px #696868
@@ -268,13 +258,21 @@ ul.show-tour-days
   .country
     height: 30px
     width: 100%
-    a
-      color: #0081bd
-      text-decoration: none
-      font-family: NovaB
-      font-size: 15px
-      &:hover
-        text-decoration: underline
+.tour-links
+  padding-bottom: 28px
+  padding-left: 80px
+  border-bottom: 1px solid #d1d1d1
+.tour-links, .country
+  a
+    color: #0081bd
+    text-decoration: none
+    font-family: NovaB
+    font-size: 15px
+    &:hover
+      text-decoration: underline
+.tour-links, .country
+  a
+    vertical-align: 4px
 .show-sidebar
   box-shadow: inset 0 8px 8px -8px #696868
   vertical-align: top
@@ -345,6 +343,8 @@ ul.show-tour-days
     max-height: 100%
     border-radius: 150px
     overflow: hidden
+    img
+      width: 100%
 .manager-phone
   background: url('phone-icon.png') no-repeat left center
   padding-left: 24px
