@@ -260,6 +260,10 @@ ul.weatherSelectList
   border: none
   border-radius: 12px
   background-image: none
+  a
+    cursor: w-resize
+  a:last-child
+    cursor: e-resize
   &:before
     background-color: #7bb847!important
     content: ""
@@ -294,6 +298,7 @@ ul.weatherSelectList
   background-color: #95c66c
   background-image: none
 .rangeText
+  pointer-events: none
   position: absolute
   color: #fff
   top: 8px
