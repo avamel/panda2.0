@@ -51,7 +51,10 @@
                   Краков
 
       .indicator
-        =image_tag("weather.png")
+        %span.weather-text
+          + 25 &deg
+        %span.weahter-icon
+          =image_tag("weather-icon.png")
       -
       =link_to "Найти туры", "#", :class => "find-tours"
     .money
