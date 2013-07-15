@@ -3,8 +3,7 @@
     Европа:
   - Country.europe.each do |country|
     %li.country
-      %span.flag
-        = image_tag("blr_big.png")
+      %span.flag{:country => "#{country.title}"}
       = link_to "#{country.title}", country_path(country.id)
 
 .to-left
@@ -13,8 +12,7 @@
       Азия:
     - Country.asia.each do |country|
       %li.country
-        %span.flag
-          = image_tag("blr_big.png")
+        %span.flag{:country => "#{country.title}"}
         = link_to "#{country.title}", country_path(country.id)
 
 .to-left
@@ -23,14 +21,12 @@
       Южная Америка:
     - Country.south_america.each do |country|
       %li.country
-        %span.flag
-          = image_tag("blr_big.png")
+        %span.flag{:country => "#{country.title}"}
         = link_to "#{country.title}", country_path(country.id)
   %ul.also
     .region-title
       А также:
     - Country.also.each do |country|
       %li.country
-        %span.flag
-          = image_tag("blr_big.png")
+        %span.flag{:country => "#{country.title}"}
         = link_to "#{country.title}", country_path(country.id)

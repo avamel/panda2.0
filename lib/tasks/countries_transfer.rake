@@ -17,4 +17,17 @@ namespace :countries_transfer do
       new_country.save!
     end
   end
+
+
+  task regions: :environment do
+
+    require "active_record"
+    array = ["Доминикана"]
+    Country.all.each do |country|
+      if array.include?(country.title)
+        country.region = "Also"
+      end
+      country.save!
+    end
+  end
 end
