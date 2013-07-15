@@ -17,7 +17,8 @@ $(document).ready(function() {
       responsive: true,
       auto: false,
       controls: true,
-      pagerCustom: '#bx-pager'
+      pagerCustom: '#bx-pager',
+      touchEnabled: false
     });
     return $(".slider").bxSlider({
       minSlides: 3,
@@ -25,7 +26,8 @@ $(document).ready(function() {
       moveSlides: 3,
       responsive: true,
       auto: false,
-      controls: false
+      controls: false,
+      touchEnabled: false
     });
   });
 });
