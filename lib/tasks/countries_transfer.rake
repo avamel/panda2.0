@@ -22,12 +22,12 @@ namespace :countries_transfer do
   task regions: :environment do
 
     require "active_record"
-    array = ["Доминикана"]
+    array = ["Доминиканы", "Мальдивы"]
     Country.all.each do |country|
       if array.include?(country.title)
         country.region = "Also"
+        country.save!
       end
-      country.save!
     end
   end
 end

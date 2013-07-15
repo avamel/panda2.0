@@ -4,6 +4,8 @@ GIT
   branch: rails4
   specs:
     friendly_id (4.1.0.beta.2)
+
+GIT
   remote: git://github.com/ernie/ransack.git
   revision: 43fff052ca7a850103c2ac122c99541cd34cf48d
   branch: rails-4
@@ -223,9 +225,9 @@ DEPENDENCIES
   activeadmin!
   ckeditor
   coffee-rails (~> 4.0.0)
-  friendly_id!
   devise!
   formtastic!
+  friendly_id!
   haml-rails
   inherited_resources!
   jbuilder (~> 1.2)

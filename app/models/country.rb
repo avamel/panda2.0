@@ -6,6 +6,6 @@ class Country < ActiveRecord::Base
   scope :asia, -> { where(:region => "Asia") }
   scope :also, -> { where(:region => "Also") }
 
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+  # extend FriendlyId
+  # friendly_id :title, use: :slugged
 end
