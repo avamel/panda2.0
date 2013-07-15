@@ -35,6 +35,7 @@ end
 gem 'thin'
 gem 'haml-rails'
 gem 'jquery-ui-rails'
+gem 'mysql2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
