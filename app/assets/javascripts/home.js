@@ -5,6 +5,7 @@ $(document).ready(function() {
   return $container.imagesLoaded(function() {
     $('.slide img').css('display', 'block');
     $('.caption').css('display', 'block');
+    $('.tour-slide img').css('display', 'block');
     $container.masonry({
       columnWidth: 240,
       itemSelector: '.hits-item'
