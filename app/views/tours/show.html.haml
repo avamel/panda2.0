@@ -1,2 +1,218 @@
-%h1 Tours#show
-%p Find me in app/views/tours/show.html.haml
+.menu-bg.contacts-menu-bg
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.show-tour-bg
+  .show-tour
+    .show-main
+      .show-tour-title
+        Берлин – Амстердам – Брюссель* – Париж  (3 дня) – Версаль* – Прага
+      .show-tour-slider
+        %ul.slider2
+          %li.tour-slide
+            = link_to(image_tag("france.jpg"), "#")
+          %li.tour-slide
+            = link_to(image_tag("france.jpg"), "#")
+          %li.tour-slide
+            = link_to(image_tag("elisey.jpg"), "#")
+        #bx-pager
+          %a{"data-slide-index" => "0", :href => ""}
+            .pager-thumb
+              = image_tag("france.jpg")
+          %a{"data-slide-index" => "1", :href => ""}
+            .pager-thumb
+              = image_tag("france.jpg")
+          %a{"data-slide-index" => "2", :href => ""}
+            .pager-thumb
+              = image_tag("elisey.jpg")
+        .tour-slider-title
+          Эйфелева башня, Париж, Франция
+
+      %ul.show-tour-days
+        %li.days-item.first-item
+          .day-number.first
+            Дни
+          .day-description.first
+            Программа тура
+        %li.days-item
+          .day-number
+            .number-bg 1
+          .day-description
+            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
+        %li.days-item
+          .day-number
+            .number-bg 2
+          .day-description
+            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
+        %li.days-item
+          .day-number
+            .number-bg 3
+          .day-description
+            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
+        %li.days-item
+          .day-number
+            .number-bg 4
+          .day-description
+            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
+      .tour-links
+        .roadmap
+          %span= image_tag('roadmap.png')
+          = link_to "Маршрут на карте", "#"
+        .tour-pdf
+          %span= image_tag('compass.png')
+          = link_to "Скачать программу тура", "#"
+          %span.pdf-meta
+            PDF, 2MB
+
+      .buy-block
+        .base-cost
+          .title
+            Базовая стоимость:
+          .cost
+            335 евро
+        .special-cost
+          .title
+            Специальная цена  на 29.06 и 27.07
+          .cost
+            305 евро!
+        .buy-btn
+          = link_to "Заказать тур", "#"
+      .markdown-tour
+        = render partial: 'partials/tour_overview_example'
+      .undermap
+        = render partial: 'partials/share'
+        .print-page
+          %span.print-icon
+          = link_to 'Распечатать страницу', "#"
+
+
+
+
+    .show-sidebar
+      .side-buy-block
+        .base-cost
+          .title
+            Базовая стоимость:
+          .cost
+            335 евро
+        .special-cost
+          .title
+            Специальная цена  на 29.06 и 27.07
+          .cost
+            305 евро!
+        .buy-btn
+          = link_to "Заказать тур", "#"
+      .side-country-block
+        %ul
+          .title
+            Страны:
+          %li.country
+            %span.flag
+              = image_tag("blr.png")
+            .countryName
+              = link_to "Австрия", "#"
+          %li.country
+            %span.flag
+              = image_tag("blr.png")
+            .countryName
+              = link_to "Австрия", "#"
+          %li.country
+            %span.flag
+              = image_tag("blr.png")
+            .countryName
+              = link_to "Великобритания", "#"
+      .side-dates-block
+        .dates-title
+          Даты выездов:
+        %ul.tour-dates-list
+          %li.td-season
+            Лето 2013
+          %li.td-item
+            27 июля
+          %li.td-item
+            10 августа
+          %li.td-item
+            21 августа
+      .links-dates-block
+        .tour-links
+          .visa
+            %span= image_tag('visa.png')
+            = link_to "Визовые документы", "#"
+          .roadmap
+            %span= image_tag('roadmap.png')
+            = link_to "Маршрут на карте", "#"
+          .tour-pdf
+            %span= image_tag('compass.png')
+            = link_to "Скачать программу тура", "#"
+            %span.pdf-meta
+              PDF, 2MB
+        .print-page
+          %span.print-icon
+          = link_to 'Распечатать страницу', "#"
+
+      #catcher
+      #sticky
+        #catcher
+        .side-manager-block
+          .manager-title
+            %span.greetings
+              Знакомьтесь,
+            Евгения Петрова
+          .manager-meta
+            Менеджер этого тура
+          .manager-photo
+            .circular
+              = image_tag('octocat1.png')
+          .manager-contacts
+            .manager-phone
+              %span.number
+                <a href="tel:+375291278606">+375 29 <span class="bold">127 86 06</span></a>
+            .manager-skype
+              <a href="skype:evg.petrova?call">evg.petrova</a>
+            .manager-mail
+              <a href="mailto:evg@panda-travel.by">evg@panda-travel.by</a>
+        .side-history-block
+          .history-title
+            Вы смотрели:
+          %ul.tl.mini-list
+            %li.tl-item.mini-item
+              .tl-thumb
+                = image_tag("tour_thumb.png")
+              .tl-body
+                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
+                %br
+                .tl-cost
+                  от 487 $
+            %li.tl-item.mini-item
+              .tl-thumb
+                = image_tag("tour_thumb.png")
+              .tl-body
+                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
+                %br
+                .tl-cost
+                  от 487 $
+            %li.tl-item.mini-item
+              .tl-thumb
+                = image_tag("tour_thumb.png")
+              .tl-body
+                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
+                %br
+                .tl-cost
+                  от 487 $
+            %li.tl-item.mini-item
+              .tl-thumb
+                = image_tag("tour_thumb.png")
+              .tl-body
+                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
+                %br
+                .tl-cost
+                  от 487 $
+#footer.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Смотрите также
+    = render partial: 'partials/slider'
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'

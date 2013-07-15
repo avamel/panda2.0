@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  overview: MyString
+  title: Берлин – Амстердам – Париж (3 дня) – Фонтенбло* – Прага – Вена
 
-two:
-  title: MyString
-  overview: MyString

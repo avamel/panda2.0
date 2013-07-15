@@ -1,55 +1,56 @@
+.ui-datepicker-prev-hover
+  left: 2px!important
+  top: 2px!important
+.ui-datepicker-next-hover
+  right: 2px!important
+  top: 2px!important
 body
   font-family: NovaR
   margin: 0
-  transition: all 4s linear
-  -o-transition: all 4s linear
-  -moz-transition: all 4s linear
-  -webkit-transition: all 4s linear
-
-body, img
-  transition:all 4s linear
-  -o-transition:all 4s linear
-  -moz-transition:all 4s linear
-  -webkit-transition:all 4s linear
-
+.slide img, .caption
+  display: none
 .header-top-bg, .menu-bg, .search-bg, .hits-bg, .about-bg, .travels-bg, .footer-bg, .contacts-bg, .new-tours-bg, .tours-list-bg, .country-bg
   min-width: 960px
   position: relative
-
+  padding: 0 32px
+.show-tour-bg
+  min-width: 960px
 .header-top-bg
   background: url(header-top-bg.png)
   background-repeat: repeat-x
   height: 76px
 
+@media (max-width: 1050px)
+
 .footer-bg
-  min-height: 364px
+  // min-height: 364px
   background-color: #489c00
 
 .travels-bg
-  min-height: 1200px
+  // min-height: 1200px
 
 .menu-bg
-  min-height: 366px
+  min-height: 361px
 
 .search-bg
   box-shadow: inset 0 8px 8px -8px #696868
   // box-shadow: 0 -10px 22px -26px black inset, 0 10px 68px -26px black inset
-  min-height: 200px
+  // min-height: 200px
   background-color: #489c00
 
 .hits-bg
-  min-height: 1372px
+  // min-height: 1372px
   padding-left: 10px
 
 .about-bg
   background-color: #ececec
-  min-height: 512px
+  // min-height: 512px
 
 .hits-header
   text-align: center
   font-family: NovaB
   font-size: 30px
-  margin: 16px 0 24px
+  margin: 24px 0 24px
 
 .hits-item
   width: 210px
@@ -142,36 +143,40 @@ a.hit-title, .news-link
   margin: auto
   min-width: 960px
   max-width: 960px
+  position: relative
 
-.menu, .search, .hits, .about, .travels, .countries, .footer, .contacts, .new-tours, .tours-list, .country-show
+.menu, .search, .hits, .about, .travels, .countries, .footer, .contacts, .new-tours, .tours-list, .country-show, .show-tour
   min-width: 960px
   max-width: 960px
   margin: auto
+
+.show-tour
 
 .menu
   padding-top: 6px
 
 .countries
-  min-height: 408px
+  // min-height: 408px
   padding: 32px 0
 
 .travels
-  min-height: 912px
+  // min-height: 912px
   padding: 38px 0
 
 .about
-  min-height: 512px
+  // min-height: 512px
   padding-bottom: 22px
 
 .hits
   padding-bottom: 34px
 
 .search
-  min-height: 200px
+  // min-height: 200px
+  padding-bottom: 28px
   position: relative
 
 .footer
-  min-height: 312px
+  // min-height: 312px
   padding: 36px 0px
 
 .search-nav
@@ -214,12 +219,22 @@ a.hit-title, .news-link
       text-decoration: none
 
 .logo
-  display: inline-block
+  position: absolute
+  // display: inline-block
   padding-top: 16px
-  margin-right: 16px
+  // margin-right: 16px
 
 .weather, .indicator, .money
   display: inline-block
+.weather
+  margin: 28px 0px 0px 318px
+.weather2
+  width: 100%
+.weather-text
+  color: #fff
+  font-size: 16px
+  font-family: NovaR
+  vertical-align: 6px
 
 .menu-bottom
   font-size: 15px
@@ -378,6 +393,7 @@ ul.news-list
   margin: auto
 
 .countries-title
+  margin-bottom: 22px
   text-align: center
   font-family: NovaB
   font-size: 30px
@@ -409,7 +425,7 @@ ul.news-list
     font-family: NovaB
     font-size: 18px
     text-decoration: none
-    vertical-align: 10px
+    vertical-align: 12px
     &:hover
       color: #005580
       text-decoration: underline
