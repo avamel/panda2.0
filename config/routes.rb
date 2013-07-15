@@ -1,5 +1,8 @@
 Panda20::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :tours, only: [:index, :show] do
   end
 

@@ -36,6 +36,15 @@ gem 'thin'
 gem 'haml-rails'
 gem 'jquery-ui-rails'
 
+gem 'devise',              github: 'plataformatec/devise'
+gem 'responders',          github: 'plataformatec/responders'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'ransack',             github: 'ernie/ransack', branch: 'rails-4'
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'formtastic',          github: 'justinfrench/formtastic'
+
+gem 'ckeditor'
+gem 'paperclip'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
