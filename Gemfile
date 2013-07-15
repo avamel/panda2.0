@@ -36,6 +36,7 @@ gem 'thin'
 gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'mysql2'
+gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

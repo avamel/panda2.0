@@ -1,173 +1,36 @@
 %ul.europe
   .region-title
     Европа:
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Австрия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Беларусь", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Бельгия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Болгария", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Великобритания", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Венгрия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Германия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Греция", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Дания", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Испания", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Италия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Кипр", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Латвия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Литва", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Нидерланды", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Норвегия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Польша", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Португалия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Россия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Словения", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Украина", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Финляндия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Франция", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Хорватия", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Черногория", "#"
-  %li.country
-    %span.flag
-      = image_tag("blr_big.png")
-    = link_to "Эстония", "#"
-
-
+  - Country.europe.each do |country|
+    %li.country
+      %span.flag
+        = image_tag("blr_big.png")
+      = link_to "#{country.title}", country_path(country.id)
 
 .to-left
   %ul.asia
     .region-title
       Азия:
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Индия", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Индонезия", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Китай", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Тайланд", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Турция", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "ОАЭ", "#"
-  %ul.africa
-    .region-title
-      Африка:
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Египет", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Тунис", "#"
+    - Country.asia.each do |country|
+      %li.country
+        %span.flag
+          = image_tag("blr_big.png")
+        = link_to "#{country.title}", country_path(country.id)
 
 .to-left
   %ul.south-america
     .region-title
       Южная Америка:
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Куба", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Мексика", "#"
+    - Country.south_america.each do |country|
+      %li.country
+        %span.flag
+          = image_tag("blr_big.png")
+        = link_to "#{country.title}", country_path(country.id)
   %ul.also
     .region-title
       А также:
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Доминикана", "#"
-    %li.country
-      %span.flag
-        = image_tag("blr_big.png")
-      = link_to "Мальдивы", "#"
+    - Country.also.each do |country|
+      %li.country
+        %span.flag
+          = image_tag("blr_big.png")
+        = link_to "#{country.title}", country_path(country.id)

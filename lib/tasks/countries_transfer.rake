@@ -13,6 +13,7 @@ namespace :countries_transfer do
       new_country = Country.new
       new_country.title = old_country.title
       new_country.overview = old_country.overview
+      new_country.slug = old_country.slug
       new_country.save!
     end
   end
