@@ -17,4 +17,11 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
+
+  controller do
+    def resource_params
+      return [] if request.get?
+      [ params.require(:country).permit(:email, :password, :password_confirmation) ]
+    end
+  end
 end
