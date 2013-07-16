@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20130716113017) do
 
   create_table "tours", force: true do |t|
     t.string   "title"
-    t.string   "overview"
+    t.text   "overview"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",         precision: 10, scale: 0
