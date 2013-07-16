@@ -2,9 +2,8 @@
   .region-title
     Европа:
   - Country.europe.each do |country|
-    %li.country
-      %span.flag
-        = image_tag("blr.png")
+    %li.country.small_flag
+      %span.flag{:country => "#{country.title}-small"}
       .countryName= country.title
 
 .to-left
@@ -12,18 +11,16 @@
     .region-title
       Азия:
     - Country.asia.each do |country|
-      %li.country
-        %span.flag
-          = image_tag("blr.png")
+      %li.country.small_flag
+        %span.flag{:country => "#{country.title}-small"}
         .countryName= country.title
 
   %ul.africa
     .region-title
       Африка:
     - Country.africa.each do |country|
-      %li.country
-        %span.flag
-          = image_tag("blr.png")
+      %li.country.small_flag
+        %span.flag{:country => "#{country.title}-small"}
         .countryName= country.title
 
 .to-left
@@ -31,15 +28,13 @@
     .region-title
       Южная Америка:
     - Country.south_america.each do |country|
-      %li.country
-        %span.flag
-          = image_tag("blr.png")
+      %li.country.small_flag
+        %span.flag{:country => "#{country.title}-small"}
         .countryName= country.title
   %ul.also
     .region-title
       А также:
     - Country.also.each do |country|
-      %li.country
-        %span.flag
-          = image_tag("blr.png")
+      %li.country.small_flag
+        %span.flag{:country => "#{country.title}-small"}
         .countryName= country.title
