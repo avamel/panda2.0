@@ -1,6 +1,7 @@
 %ul.europe
   .region-title
-    Европа:
+    - if Country.europe.size != 0
+      Европа:
   - Country.europe.each do |country|
     %li.country
       %span.flag{:country => "#{country.title}"}
@@ -9,7 +10,8 @@
 .to-left
   %ul.asia
     .region-title
-      Азия:
+      - if Country.asia.size != 0
+        Азия:
     - Country.asia.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}
@@ -18,14 +20,16 @@
 .to-left
   %ul.south-america
     .region-title
-      Южная Америка:
+      - if Country.south_america.size != 0
+        Южна  я Америка:
     - Country.south_america.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}
         = link_to "#{country.title}", country_path(country.id)
   %ul.also
     .region-title
-      А также:
+      - if Country.also.size != 0
+        А т акже:
     - Country.also.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}

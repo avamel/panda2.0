@@ -1,6 +1,7 @@
 %ul.europe
   .region-title
-    Европа:
+    - if Country.europe.length != 0
+      Европа:
   - Country.europe.each do |country|
     %li.country.small_flag
       %span.flag{:country => "#{country.title}-small"}
@@ -9,7 +10,8 @@
 .to-left
   %ul.asia
     .region-title
-      Азия:
+      - if Country.asia.length != 0
+        Азия:
     - Country.asia.each do |country|
       %li.country.small_flag
         %span.flag{:country => "#{country.title}-small"}
@@ -17,7 +19,8 @@
 
   %ul.africa
     .region-title
-      Африка:
+      - if Country.africa.length != 0
+        Африка:
     - Country.africa.each do |country|
       %li.country.small_flag
         %span.flag{:country => "#{country.title}-small"}
@@ -26,14 +29,16 @@
 .to-left
   %ul.south-america
     .region-title
-      Южная Америка:
+      - if Country.south_america.length != 0
+        Южная Америка:
     - Country.south_america.each do |country|
       %li.country.small_flag
         %span.flag{:country => "#{country.title}-small"}
         .countryName= country.title
   %ul.also
     .region-title
-      А также:
+      - if Country.also.length != 0
+        А также:
     - Country.also.each do |country|
       %li.country.small_flag
         %span.flag{:country => "#{country.title}-small"}
