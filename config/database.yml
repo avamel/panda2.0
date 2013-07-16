@@ -9,13 +9,9 @@ development:
   reconnect: false
   database: panda2
   pool: 5
-  username: panda
-  password: killpop99
+  username: <%= ENV['BD_USERNAME'] %>
+  password: <%= ENV['BD_PASSWORD'] %>
   host: localhost
-  # adapter: sqlite3
-  # database: db/development.sqlite3
-  # pool: 5
-  # timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -38,6 +34,6 @@ old_panda:
   reconnect: false
   database: panda
   pool: 5
-  username: panda
-  password: killpop99
+  username: <%= ENV['BD_USERNAME'] %>
+  password: <%= ENV['BD_PASSWORD'] %>
   host: localhost
