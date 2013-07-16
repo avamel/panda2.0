@@ -1,0 +1,35 @@
+%h1 Search
+%p
+  = form_tag search_index_path, method: :get do
+    %p
+      = text_field_tag :search, params[:search]
+
+      %p Страна:
+      %ul
+        - Country.all.each do |tag|
+          %li
+            \
+            = tag.title
+            \
+            = check_box_tag 'country_name[]', tag.title
+      %p Дата туры:
+      %p
+        = date_field_tag :start
+        = date_field_tag :end
+      %p Цена тура:
+      %p
+        = text_field_tag :min
+        = text_field_tag :max
+      %p
+        = submit_tag "Search", :name => nil
+%h1 Доступные туры
+%table
+  - @tours.each do |tour|
+    %tr
+      %td
+        %dl
+          %dt= tour.title
+          %dd
+            %ul
+            - tour.tour_dates.each do |dates|
+              %li= dates.date
