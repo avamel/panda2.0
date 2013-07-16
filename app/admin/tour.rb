@@ -9,9 +9,8 @@ ActiveAdmin.register Tour do
       f.input :country_ids, :as => :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }]
       f.has_many :tour_dates do |fu|
         fu.input :date
-        fu.input :_destroy, :as => :boolean, :required => false, :label => "Delete date"
+        fu.input :_destroy, :as => :boolean, :required => false, :label => "Удалить"
       end
-
 
 
       f.has_many :galleries do |g|
@@ -23,6 +22,11 @@ ActiveAdmin.register Tour do
           g.input :attachment, :label => "Файл"
         end
       end
+
+      f.has_many :days do |d|
+        d.input :overview, :as => :html
+      end
+
       f.buttons
     end
   end
@@ -33,7 +37,8 @@ ActiveAdmin.register Tour do
       [params.require(:tour).permit(:title, :overview, :price, :special_price,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
                                     galleries_attributes: [:imageable_type, :imageable_id, :id, :title, :_destroy, :attachment, :attachment_file_name,
-                                                           :attachment_content_type, :attachment_file_size, :attachment_updated_at])]
+                                                           :attachment_content_type, :attachment_file_size, :attachment_updated_at],
+                                    days_attributes: [:id, :overview, :_destroy])]
     end
   end
 
