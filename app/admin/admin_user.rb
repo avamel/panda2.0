@@ -21,7 +21,7 @@ ActiveAdmin.register AdminUser do
   controller do
     def resource_params
       return [] if request.get?
-      [ params.require(:country).permit(:email, :password, :password_confirmation) ]
+      [ params.require(:admin_user).permit(:email, :password, :password_confirmation) ]
     end
   end
 end

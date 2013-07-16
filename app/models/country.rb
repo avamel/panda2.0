@@ -1,5 +1,8 @@
 class Country < ActiveRecord::Base
 
+  has_many :country_tours
+  has_many :tour, :through => :country_tours
+
   scope :europe, -> { where(:region => "Europe") }
   scope :africa, -> { where(:region => "Africa") }
   scope :south_america, -> { where(:region => "South_america") }
