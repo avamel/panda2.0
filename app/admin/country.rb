@@ -16,6 +16,7 @@ ActiveAdmin.register Country do
     f.inputs do
       f.input :title
       f.input :overview, :as => :html
+      f.input :region, :collection => ["Европа","Азия","Южная Америка","Африка","а также"]
     end
     f.buttons
   end
@@ -23,7 +24,7 @@ ActiveAdmin.register Country do
   controller do
     def resource_params
       return [] if request.get?
-      [ params.require(:country).permit(:title,:overview) ]
+      [ params.require(:country).permit(:title,:overview, :region) ]
     end
   end
 
