@@ -22,7 +22,7 @@
             .tl-dates
               - tour.tour_dates.each do |date|
                 .date-item
-                  = date.date
+                  = time_tag(date.date) if date.date.present?
           .tl-cost
             415
             %span €
