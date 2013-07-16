@@ -6,27 +6,21 @@
   .show-tour
     .show-main
       .show-tour-title
-        Берлин – Амстердам – Брюссель* – Париж  (3 дня) – Версаль* – Прага
-      .show-tour-slider
-        %ul.slider2
-          %li.tour-slide
-            = link_to(image_tag("france.jpg"), "#")
-          %li.tour-slide
-            = link_to(image_tag("france.jpg"), "#")
-          %li.tour-slide
-            = link_to(image_tag("elisey.jpg"), "#")
-        #bx-pager
-          %a{"data-slide-index" => "0", :href => ""}
-            .pager-thumb
-              = image_tag("france.jpg")
-          %a{"data-slide-index" => "1", :href => ""}
-            .pager-thumb
-              = image_tag("france.jpg")
-          %a{"data-slide-index" => "2", :href => ""}
-            .pager-thumb
-              = image_tag("elisey.jpg")
-        .tour-slider-title
-          Эйфелева башня, Париж, Франция
+        = @tour.title
+
+      - if @tour.galleries.present?
+        .show-tour-slider
+          %ul.slider2
+            - @tour.galleries.each do |gallery|
+              %li.tour-slide
+                = link_to(image_tag(gallery.attachment.url), "#")
+                .tour-slider-title
+                  = gallery.title
+          #bx-pager
+            - @tour.galleries.each do |gallery|
+              %a{"data-slide-index" => "#{@slider_counter+=1}", :href => ""}
+                .pager-thumb
+                  = image_tag(gallery.attachment.url(:slider_thumb))
 
       %ul.show-tour-days
         %li.days-item.first-item

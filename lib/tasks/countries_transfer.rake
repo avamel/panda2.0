@@ -23,6 +23,10 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "tour_in_the_countries"
     end
+    class Manufacturer5 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "tour_date_links"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
       new_tour.id = old_tour.id
@@ -53,6 +57,13 @@ namespace :countries_transfer do
       new_country_tour.tour_id = old_country_tour.tour_id
       new_country_tour.country_id = old_country_tour.country_id
       new_country_tour.save!
+    end
+    Manufacturer5.all.each do |old_date_link|
+      new_date_link = TourDateLink.new
+      new_date_link.id = old_date_link.id
+      new_date_link.tour_id = old_date_link.tour_id
+      new_date_link.tour_date_id = old_date_link.tour_date_id
+      new_date_link.save!
     end
   end
 

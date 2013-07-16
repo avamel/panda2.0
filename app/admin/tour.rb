@@ -11,10 +11,16 @@ ActiveAdmin.register Tour do
         fu.input :date
         fu.input :_destroy, :as => :boolean, :required => false, :label => "Delete date"
       end
-      f.inputs "Attachment", :multipart => true do
-        f.has_many :galleries do |fu|
-          fu.input :title
-          fu.input :attachment, :as => :file
+
+
+
+      f.has_many :galleries do |g|
+        g.input :title, :label => "Заголовок"
+        if g.object.attachment.present?
+          g.input :attachment, :hint => f.template.image_tag(g.object.attachment.url(:thumb)), :label => "Файл"
+          g.input :_destroy, :as => :boolean, :label => "Удалить"
+        else
+          g.input :attachment, :label => "Файл"
         end
       end
       f.buttons
