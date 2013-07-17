@@ -11,6 +11,7 @@ class Tour < ActiveRecord::Base
   # has_many :tour_dates, dependent: :destroy
 
   accepts_nested_attributes_for :tour_dates, allow_destroy: true
+  accepts_nested_attributes_for :days, allow_destroy: true
   accepts_nested_attributes_for :galleries, allow_destroy: true
   # accpets_nested_attributes_for :tour_dates, allow_destroy: true
 
