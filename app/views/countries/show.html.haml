@@ -1,4 +1,4 @@
-.menu-bg.contacts-menu-bg
+.menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -10,16 +10,14 @@
       #tab-container.tab-container
         %ul.etabs
           %li.tab
-            %a{:href => "#info"} Информация о стране
-          %li.tab
             %a{:href => "#tours"} Туры
+          %li.tab
+            %a{:href => "#info"} Информация о стране
             %span.tours-count
               = @country.tours.size
           %li.tab
             %a{:href => "#visas"} Визы
         .panel-container
-          #info.markdown-country
-            = markdown @country.overview
           #tours
             - if @country.tours.present?
               .tours-list
@@ -40,7 +38,8 @@
                       .tl-cost
                         415
                         %span €
-
+          #info.markdown-country
+            = markdown @country.overview
           #visas
             %h2 CSS Styles for these tabs
         .undermap
