@@ -8,71 +8,64 @@
       .show-tour-title
         = @tour.title
 
-      - if @tour.galleries.present?
+      - if @tour_galleries.present?
         .show-tour-slider
           %ul.slider2
-            - @tour.galleries.each do |gallery|
+            - @tour_galleries.each do |gallery|
               %li.tour-slide
                 = link_to(image_tag(gallery.attachment.url), "#")
                 .tour-slider-title
                   = gallery.title
           #bx-pager
-            - @tour.galleries.each do |gallery|
+            - @tour_galleries.each do |gallery|
               %a{"data-slide-index" => "#{@slider_counter+=1}", :href => ""}
                 .pager-thumb
                   = image_tag(gallery.attachment.url(:slider_thumb))
 
-      %ul.show-tour-days
-        %li.days-item.first-item
-          .day-number.first
-            Дни
-          .day-description.first
-            Программа тура
-        %li.days-item
-          .day-number
-            .number-bg 1
-          .day-description
-            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
-        %li.days-item
-          .day-number
-            .number-bg 2
-          .day-description
-            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
-        %li.days-item
-          .day-number
-            .number-bg 3
-          .day-description
-            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
-        %li.days-item
-          .day-number
-            .number-bg 4
-          .day-description
-            Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибытии Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти Выезд из Минска. Транзит по территории РБ (ок. 350 км). Прибыти
-      .tour-links
-        .roadmap
-          %span= image_tag('roadmap.png')
-          = link_to "Маршрут на карте", "#"
-        .tour-pdf
-          %span= image_tag('compass.png')
-          = link_to "Скачать программу тура", "#"
-          %span.pdf-meta
-            PDF, 2MB
+      - if @tour_days.present?
+        %ul.show-tour-days
+          %li.days-item.first-item
+            .day-number.first
+              Дни
+            .day-description.first
+              Программа тура
+
+          - @tour_days.each do |day|
+            %li.days-item
+              .day-number
+                .number-bg= day.number
+              .day-description= day.overview.html_safe
+
+        .tour-links
+          .roadmap
+            %span= image_tag('roadmap.png')
+            = link_to "Маршрут на карте", "#"
+          .tour-pdf
+            %span= image_tag('compass.png')
+            = link_to "Скачать программу тура", "#"
+            %span.pdf-meta
+              PDF, 2MB
 
       .buy-block
         .base-cost
           .title
             Базовая стоимость:
           .cost
-            335 евро
-        .special-cost
-          .title
-            Специальная цена  на 29.06 и 27.07
-          .cost
-            305 евро!
+            = "#{@tour.price} " + "#{@tour.currency}"
+        - if @tour.special_price.present?
+          .special-cost
+            .title
+              = "#{@tour.special_price_comment}:"
+            .cost
+              = "#{@tour.special_price} " + "#{@tour.currency}"
         .buy-btn
           = link_to "Заказать тур", "#"
       .markdown-tour
-        = render partial: 'partials/tour_overview_example'
+
+
+      .markdown-tour
+        = markdown @tour.overview
+        / # = render partial: 'partials/tour_overview_example'
       .undermap
         = render partial: 'partials/share'
         .print-page
@@ -88,45 +81,36 @@
           .title
             Базовая стоимость:
           .cost
-            335 евро
-        .special-cost
-          .title
-            Специальная цена  на 29.06 и 27.07
-          .cost
-            305 евро!
+            = "#{@tour.price} " + "#{@tour.currency}"
+        - if @tour.special_price.present?
+          .special-cost
+            .title
+              = "#{@tour.special_price_comment}:"
+            .cost
+              = "#{@tour.special_price} " + "#{@tour.currency}"
         .buy-btn
           = link_to "Заказать тур", "#"
       .side-country-block
-        %ul
-          .title
-            Страны:
-          %li.country
-            %span.flag
-              = image_tag("blr.png")
-            .countryName
-              = link_to "Австрия", "#"
-          %li.country
-            %span.flag
-              = image_tag("blr.png")
-            .countryName
-              = link_to "Австрия", "#"
-          %li.country
-            %span.flag
-              = image_tag("blr.png")
-            .countryName
-              = link_to "Великобритания", "#"
-      .side-dates-block
-        .dates-title
-          Даты выездов:
-        %ul.tour-dates-list
-          %li.td-season
-            Лето 2013
-          %li.td-item
-            27 июля
-          %li.td-item
-            10 августа
-          %li.td-item
-            21 августа
+        - if @tour_countries.present?
+          %ul
+            .title
+              Страны:
+            - @tour_countries.each do |country|
+              %li.country
+
+                %span.flag{:country => "#{country.title}-small"}
+                .countryName= link_to country.title, country_path(country)
+
+      - if @tour_dates.present?
+        .side-dates-block
+          .dates-title
+            Даты выездов:
+          %ul.tour-dates-list
+            - @tour_dates.each do |date|
+              / %li.td-season
+              /   Лето 2013
+              %li.td-item
+                = time_tag date.date
       .links-dates-block
         .tour-links
           .visa
@@ -165,42 +149,24 @@
               <a href="skype:evg.petrova?call">evg.petrova</a>
             .manager-mail
               <a href="mailto:evg@panda-travel.by">evg@panda-travel.by</a>
-        .side-history-block
-          .history-title
-            Вы смотрели:
-          %ul.tl.mini-list
-            %li.tl-item.mini-item
-              .tl-thumb
-                = image_tag("tour_thumb.png")
-              .tl-body
-                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                %br
-                .tl-cost
-                  от 487 $
-            %li.tl-item.mini-item
-              .tl-thumb
-                = image_tag("tour_thumb.png")
-              .tl-body
-                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                %br
-                .tl-cost
-                  от 487 $
-            %li.tl-item.mini-item
-              .tl-thumb
-                = image_tag("tour_thumb.png")
-              .tl-body
-                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                %br
-                .tl-cost
-                  от 487 $
-            %li.tl-item.mini-item
-              .tl-thumb
-                = image_tag("tour_thumb.png")
-              .tl-body
-                = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                %br
-                .tl-cost
-                  от 487 $
+
+        - if @tours_history.present?
+          .side-history-block
+            .history-title
+              Вы смотрели:
+            %ul.tl.mini-list
+              - @tours_history.each do |tour|
+
+                %li.tl-item.mini-item
+                  .tl-thumb
+                    - if tour.galleries.present?
+                      = image_tag(tour.galleries.first.attachment(:thumb))
+                  .tl-body
+                    = link_to tour.title, tour_path(tour)
+                    %br
+                    .tl-cost
+                      = "#{tour.price} " + "#{tour.currency}"
+              
 #footer.new-tours-bg
   .new-tours
     .new-tours-header

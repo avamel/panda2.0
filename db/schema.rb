@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130716145700) do
+ActiveRecord::Schema.define(version: 20130717075705) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20130716145700) do
     t.integer  "tour_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number"
   end
 
   create_table "galleries", force: true do |t|
@@ -89,10 +90,6 @@ ActiveRecord::Schema.define(version: 20130716145700) do
     t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -118,8 +115,10 @@ ActiveRecord::Schema.define(version: 20130716145700) do
     t.text     "overview"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",         precision: 10, scale: 0
-    t.decimal  "special_price", precision: 10, scale: 0
+    t.decimal  "price",                 precision: 10, scale: 0
+    t.decimal  "special_price",         precision: 10, scale: 0
+    t.string   "special_price_comment"
+    t.string   "currency"
   end
 
 end
