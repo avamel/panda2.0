@@ -19,7 +19,7 @@
             %a{:href => "#visas"} Визы
         .panel-container
           #info.markdown-country
-            = raw @country.overview
+            = markdown @country.overview
           #tours
             - if @country.tours.present?
               .tours-list

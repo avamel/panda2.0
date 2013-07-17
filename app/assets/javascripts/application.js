@@ -16,4 +16,27 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require masonry.js
+//= require_self
 //= require_tree .
+
+// $(document).ready(function() {
+
+//   $('.search-btn').click(function(){
+//     var re = /\D+/
+//     var place_param = $('.place.to_param').text();
+//     var date_param = $('.date.to_param').text();
+//     var price_range = $('.rangeText').text().split(re);
+
+//     console.log(place_param);
+//     console.log(date_param);
+//     console.log(price_range);
+
+//     // $.post('/search/index/', { country_name: place_param, start: date_param, min: price_range[1], max: price_range[2] });
+
+//     $.ajax({
+//       type: "POST",
+//       url: "/search/",
+//       data: { country_name: place_param, start: date_param, min: price_range[1], max: price_range[2] }
+//     })
+//   });
+// });

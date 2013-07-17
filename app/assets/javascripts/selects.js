@@ -26,11 +26,13 @@ $(function($) {
       $(item).click(function(e) {
         $(wrapper).removeClass('.active');
         $(wrapper_inner).text($(this).text());
+        $(wrapper_inner).addClass('to_param');
       });
 
       $(input).bind('keyup', function(e) {
         if ( e.keyCode === 13 ) {
           $(wrapper_inner).text($(input).val());
+          $(wrapper_inner).addClass('to_param');
           $(wrapper).removeClass('active');
         }
       });
@@ -73,6 +75,9 @@ $(function($) {
     changeMonth: true,
     onSelect: function(dateText, inst) {
       $('span.date').text(dateText);
+
+      $('span.date').addClass('to_param');
+
       $('.dateSelectWrapper').removeClass('active');
     }
   });

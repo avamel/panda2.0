@@ -42,6 +42,8 @@ namespace :countries_transfer do
       new_country.id = old_country.id
       new_country.title = old_country.title
       new_country.overview = old_country.overview
+      new_country.created_at = old_country.created_at
+      new_country.updated_at = old_country.updated_at
       new_country.slug = old_country.slug
       new_country.save!
     end
