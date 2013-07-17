@@ -11,10 +11,10 @@
         %ul.etabs
           %li.tab
             %a{:href => "#tours"} Туры
-          %li.tab
-            %a{:href => "#info"} Информация о стране
             %span.tours-count
               = @country.tours.size
+          %li.tab
+            %a{:href => "#info"} Информация о стране
           %li.tab
             %a{:href => "#visas"} Визы
         .panel-container
@@ -26,7 +26,7 @@
                     %li.tl-item
                       .tl-thumb
                         - if tour.galleries.present?
-                          = image_tag(tour.galleries.first.attachment(:thumb))
+                          = image_tag(tour.galleries.first.source(:thumb))
                       .tl-body
                         .tl-title
                           = link_to tour.title, tour_path(tour)

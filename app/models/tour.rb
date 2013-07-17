@@ -4,7 +4,7 @@ class Tour < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_many :galleries, :as => :imageable, dependent: :destroy
+  has_many :galleries
   has_many :days, dependent: :destroy
   has_many :country_tours
   has_many :countries, through: :country_tours
@@ -18,6 +18,8 @@ class Tour < ActiveRecord::Base
 
   validates :title, presence: true
   validates :overview, presence: true
+
+  has_attached_file :teaser, :styles => { :thumb => ["210x180#", :jpg] }
 
 
   mapping do

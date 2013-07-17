@@ -17,11 +17,11 @@ ActiveAdmin.register Tour do
 
       f.has_many :galleries do |g|
         g.input :title, :label => "Заголовок"
-        if g.object.attachment.present?
-          g.input :attachment, :hint => f.template.image_tag(g.object.attachment.url(:slider_thumb)), :label => "Файл"
+        if g.object.source.present?
+          g.input :source, :hint => f.template.image_tag(g.object.source.url(:slider_thumb)), :label => "Файл"
           g.input :_destroy, :as => :boolean, :label => "Удалить"
         else
-          g.input :attachment, :label => "Файл"
+          g.input :source, :label => "Файл"
         end
       end
 
