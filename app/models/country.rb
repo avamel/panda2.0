@@ -1,4 +1,9 @@
 class Country < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  has_many :country_tours
+  has_many :tours, :through => :country_tours
 
   scope :europe, -> { where(:region => "Europe") }
   scope :africa, -> { where(:region => "Africa") }
@@ -6,6 +11,7 @@ class Country < ActiveRecord::Base
   scope :asia, -> { where(:region => "Asia") }
   scope :also, -> { where(:region => "Also") }
 
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
+  end
 end

@@ -5,7 +5,6 @@ $(document).ready(function() {
   return $container.imagesLoaded(function() {
     $('.slide img').css('display', 'block');
     $('.caption').css('display', 'block');
-    $('.tour-slide img').css('display', 'block');
     $container.masonry({
       columnWidth: 240,
       itemSelector: '.hits-item'
@@ -18,7 +17,11 @@ $(document).ready(function() {
       auto: false,
       controls: true,
       pagerCustom: '#bx-pager',
-      touchEnabled: false
+      touchEnabled: false,
+      onSliderLoad: function() {
+        $('.tour-slide img').css('display', 'block');
+        $('.tour-slider-title').css('display', 'block');
+      }
     });
     return $(".slider").bxSlider({
       minSlides: 3,

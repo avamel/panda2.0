@@ -39,5 +39,11 @@ $(document).ready(function() {
       }
     }
   });
+
+  $container = $(".bx-wrapper");
+  $container.imagesLoaded(function() {
+    $('.show-tour-slider').css('display', 'block');
+    $('.tour-slide img').css('display', 'block');
+  });
 }); 
 

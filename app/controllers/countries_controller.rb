@@ -3,6 +3,6 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @country = Country.find(params[:id])
+    @country = Country.includes(tours: [:galleries, :tour_dates]).find(params[:id])
   end
 end

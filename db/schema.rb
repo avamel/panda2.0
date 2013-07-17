@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715175336) do
+ActiveRecord::Schema.define(version: 20130717140903) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -63,10 +63,19 @@ ActiveRecord::Schema.define(version: 20130715175336) do
   create_table "countries", force: true do |t|
     t.string   "title"
     t.text     "overview"
-    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "region"
+    t.string   "slug"
+  end
+
+  add_index "countries", ["slug"], name: "index_countries_on_slug", unique: true, using: :btree
+
+  create_table "country_tours", force: true do |t|
+    t.integer  "country_id"
+    t.integer  "tour_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "days", force: true do |t|
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 20130715175336) do
     t.integer  "tour_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number"
   end
 
   create_table "galleries", force: true do |t|
@@ -82,13 +92,38 @@ ActiveRecord::Schema.define(version: 20130715175336) do
     t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "tour_date_links", force: true do |t|
+    t.integer  "tour_id"
+    t.integer  "tour_date_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tour_dates", force: true do |t|
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tour_id"
   end
 
   create_table "tours", force: true do |t|
     t.string   "title"
-    t.string   "overview"
+    t.text     "overview"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price",                 precision: 10, scale: 0
+    t.decimal  "special_price",         precision: 10, scale: 0
+    t.string   "special_price_comment"
+    t.string   "currency"
+    t.string   "slug"
   end
+
+  add_index "tours", ["slug"], name: "index_tours_on_slug", unique: true, using: :btree
 
 end
