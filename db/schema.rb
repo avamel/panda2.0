@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717122631) do
+ActiveRecord::Schema.define(version: 20130717140903) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -121,6 +121,9 @@ ActiveRecord::Schema.define(version: 20130717122631) do
     t.decimal  "special_price",         precision: 10, scale: 0
     t.string   "special_price_comment"
     t.string   "currency"
+    t.string   "slug"
   end
+
+  add_index "tours", ["slug"], name: "index_tours_on_slug", unique: true, using: :btree
 
 end

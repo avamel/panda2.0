@@ -32,6 +32,7 @@ namespace :countries_transfer do
       new_tour.id = old_tour.id
       new_tour.title = old_tour.title
       new_tour.overview = old_tour.overview
+      new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
       new_tour.created_at = old_tour.created_at
       new_tour.updated_at = old_tour.updated_at

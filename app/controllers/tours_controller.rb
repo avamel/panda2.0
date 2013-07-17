@@ -20,10 +20,10 @@ class ToursController < ApplicationController
     end
 
     def store_history
+      tour_id = Tour.find(params[:id]).id
       session[:history] ||= []
       session[:history].delete_at(0) if session[:history].size >= 5
-      session[:history] << params[:id]
+      session[:history] << tour_id
       session[:history].uniq!
-      puts session[:history]
     end
 end

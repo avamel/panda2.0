@@ -1,6 +1,8 @@
 class Tour < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   has_many :galleries, :as => :imageable, dependent: :destroy
   has_many :days, dependent: :destroy
@@ -38,5 +40,8 @@ class Tour < ActiveRecord::Base
       end
       sort { by :price, "asc" }
     end
+  end
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
   end
 end

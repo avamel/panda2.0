@@ -5,7 +5,7 @@
   - Country.europe.each do |country|
     %li.country
       %span.flag{:country => "#{country.title}"}
-      = link_to "#{country.title}", country_path(country.id)
+      = link_to "#{country.title}", country_path(country)
 
 .to-left
   %ul.asia
@@ -15,7 +15,7 @@
     - Country.asia.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}
-        = link_to "#{country.title}", country_path(country.id)
+        = link_to "#{country.title}", country_path(country)
 
 .to-left
   %ul.south-america
@@ -25,7 +25,7 @@
     - Country.south_america.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}
-        = link_to "#{country.title}", country_path(country.id)
+        = link_to "#{country.title}", country_path(country)
   %ul.also
     .region-title
       - if Country.also.size != 0
@@ -33,4 +33,4 @@
     - Country.also.each do |country|
       %li.country
         %span.flag{:country => "#{country.title}"}
-        = link_to "#{country.title}", country_path(country.id)
+        = link_to "#{country.title}", country_path(country)
