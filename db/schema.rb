@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130718164816) do
+ActiveRecord::Schema.define(version: 20130718165955) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(version: 20130718164816) do
     t.string   "region"
     t.string   "slug"
     t.boolean  "month_country"
+    t.string   "teaser_file_name"
+    t.string   "teaser_content_type"
+    t.integer  "teaser_file_size"
+    t.datetime "teaser_updated_at"
   end
 
   add_index "countries", ["slug"], name: "index_countries_on_slug", unique: true, using: :btree
