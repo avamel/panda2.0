@@ -21,7 +21,7 @@ ActiveAdmin.register Country do
   index do
     column :id
     column "Регион", :region
-    column "Страна" do |country|
+    column "Страна", sortable: 'title' do |country|
       link_to country.title, admin_country_path(country)
     end
     column "Описание" do |country|
@@ -48,7 +48,7 @@ ActiveAdmin.register Country do
     f.inputs do
       #f.input :activate, as: :boolean, label: "Страна месяца"
       f.input :region, collection: [["Европа","Europe"],["Азия","Asia"],["Южная Америка","South_america"],["Африка","Africa"],["а также","Also"]], label: "Регион"
-      f.input :title, label: "Название страны"
+      f.input :title, sortable: true, label: "Название страны"
       f.input :overview, :as => :html, label: "Описание страны"
     end
     f.buttons
