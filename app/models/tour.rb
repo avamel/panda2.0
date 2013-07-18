@@ -25,8 +25,6 @@ class Tour < ActiveRecord::Base
 
   has_attached_file :teaser, :styles => { :thumb => ["70x60#", :jpg], :masonry_little => ["208x180#", :jpg], :masonry_big => ["450x396#", :jpg],
                                           :slider => ["468x352#", :jpg], :slider_thumb => ["104x52#", :jpg], :tour_slider => ["670x406#", :jpg] }
-
-
   mapping do
     indexes :title
     indexes :overview
@@ -34,7 +32,6 @@ class Tour < ActiveRecord::Base
     indexes :dates, :as => 'tour_dates.pluck(:date)', type: 'date', :index => :not_analyzed
     indexes :country_name, :as => 'countries.pluck(:title)', :type => :string, :index => :not_analyzed
   end
-
   def self.search(params)
     tire.search(page: params[:page], per_page: 1000, load: true) do
       query do

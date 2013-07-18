@@ -8,7 +8,7 @@ class CountriesController < ApplicationController
   def show
     # @newest_tours = Tour.last(3)
     @newest_tours = Tour.take(3)
-    @month_country = Month.where(:activate => true).order(:created_at).last
+    @month_country = Country.where(month_country: true).first
     @country = Country.includes(tours: [:galleries, :tour_dates]).find(params[:id])
   end
 end

@@ -4,7 +4,6 @@ class Country < ActiveRecord::Base
 
   has_many :country_tours
   has_many :tours, :through => :country_tours
-  has_many :months
 
   scope :europe, -> { where(:region => "Europe") }
   scope :africa, -> { where(:region => "Africa") }
