@@ -27,15 +27,37 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "tour_date_links"
     end
+    class Manufacturer6 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "galleries"
+    end
+    class Manufacturer7 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "cur_moneys"
+    end
+    class Manufacturer8 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "travels"
+    end
+    class Manufacturer9 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "months"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
+      new_tour.currency_id = old_tour.cur_money_id
       new_tour.id = old_tour.id
       new_tour.title = old_tour.title
+      new_tour.preview = old_tour.preview
       new_tour.overview = old_tour.overview
       new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
       new_tour.created_at = old_tour.created_at
       new_tour.updated_at = old_tour.updated_at
+      new_tour.teaser_file_name = old_tour.teaser_file_name
+      new_tour.teaser_content_type = old_tour.teaser_content_type
+      new_tour.teaser_file_size = old_tour.teaser_file_size
+      new_tour.teaser_updated_at = old_tour.teaser_updated_at
       new_tour.save!
     end
     Manufacturer2.all.each do |old_country|
@@ -68,7 +90,55 @@ namespace :countries_transfer do
       new_date_link.tour_date_id = old_date_link.tour_date_id
       new_date_link.save!
     end
+    Manufacturer6.all.each do |old_gallery|
+      new_gallery = Gallery.new
+      new_gallery.id = old_gallery.id
+      new_gallery.tour_id = old_gallery.tour_id
+      new_gallery.title = old_gallery.title
+      new_gallery.source_file_name = old_gallery.source_file_name
+      new_gallery.source_content_type = old_gallery.source_content_type
+      new_gallery.source_file_size = old_gallery.source_file_size
+      new_gallery.source_updated_at = old_gallery.source_updated_at
+      new_gallery.created_at = old_gallery.created_at
+      new_gallery.updated_at = old_gallery.updated_at
+      new_gallery.save!
+    end
+    Manufacturer7.all.each do |old_cur|
+      new_cur = Currency.new
+      new_cur.id = old_cur.id
+      new_cur.title = old_cur.title
+      new_cur.save!
+    end
+    Manufacturer8.all.each do |old_travel|
+      new_travel = Travel.new
+      new_travel.id = old_travel.id
+      new_travel.title = old_travel.title
+      new_travel.preview = old_travel.preview
+      new_travel.overview = old_travel.overview
+      new_travel.slug = old_travel.slug
+      new_travel.created_at = old_travel.created_at
+      new_travel.updated_at = old_travel.updated_at
+      new_travel.teaser_file_name = old_travel.teaser_file_name
+      new_travel.teaser_content_type = old_travel.teaser_content_type
+      new_travel.teaser_file_size = old_travel.teaser_file_size
+      new_travel.teaser_updated_at = old_travel.teaser_updated_at
+      new_travel.save!
+    end
+    Manufacturer9.all.each do |old_month|
+      new_month = Month.new
+      new_month.country_id = old_month.country_id
+      new_month.preview = old_month.preview
+      new_month.activate = old_month.activate
+      new_month.created_at = old_month.created_at
+      new_month.updated_at = old_month.updated_at
+      new_month.teaser_file_name = old_month.teaser_file_name
+      new_month.teaser_content_type = old_month.teaser_content_type
+      new_month.teaser_file_size = old_month.teaser_file_size
+      new_month.teaser_updated_at = old_month.teaser_updated_at
+      new_month.save!
+    end
   end
+
 
   task regions: :environment do
 

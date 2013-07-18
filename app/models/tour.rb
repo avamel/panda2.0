@@ -4,20 +4,26 @@ class Tour < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_many :galleries, :as => :imageable, dependent: :destroy
+  has_many :galleries
   has_many :days, dependent: :destroy
   has_many :country_tours
   has_many :countries, through: :country_tours
   has_many :tour_date_links
   has_many :tour_dates, :through => :tour_date_links
-  # has_many :tour_dates, dependent: :destroy
+  belongs_to :currency
 
   accepts_nested_attributes_for :tour_dates, allow_destroy: true
   accepts_nested_attributes_for :days, allow_destroy: true
   accepts_nested_attributes_for :galleries, allow_destroy: true
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :preview, presence: true
   validates :overview, presence: true
+  validates :price, presence: true
+  validates :currency, presence: true
+  validates :country_ids, presence: true
+
+  has_attached_file :teaser, :styles => { :thumb => ["210x180#", :jpg] }
 
 
   mapping do
@@ -28,7 +34,7 @@ class Tour < ActiveRecord::Base
     indexes :country_name, :as => 'countries.pluck(:title)', :type => :string, :index => :not_analyzed
   end
 
-  def self.search_elastic(params)
+  def self.search(params)
     tire.search(page: params[:page], per_page: 1000, load: true) do
       query do
         boolean do

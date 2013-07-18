@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717140903) do
+ActiveRecord::Schema.define(version: 20130718101337) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20130717140903) do
     t.datetime "updated_at"
   end
 
+  create_table "currencies", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "days", force: true do |t|
     t.text     "overview"
     t.integer  "tour_id"
@@ -88,14 +94,27 @@ ActiveRecord::Schema.define(version: 20130717140903) do
 
   create_table "galleries", force: true do |t|
     t.string   "title"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
+    t.string   "source_file_name"
+    t.string   "source_content_type"
+    t.integer  "source_file_size"
+    t.datetime "source_updated_at"
+    t.integer  "tour_id"
+  end
+
+  add_index "galleries", ["tour_id"], name: "index_galleries_on_tour_id", using: :btree
+
+  create_table "months", force: true do |t|
+    t.text     "preview"
+    t.boolean  "activate"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "teaser_file_name"
+    t.string   "teaser_content_type"
+    t.integer  "teaser_file_size"
+    t.datetime "teaser_updated_at"
   end
 
   create_table "tour_date_links", force: true do |t|
@@ -122,8 +141,29 @@ ActiveRecord::Schema.define(version: 20130717140903) do
     t.string   "special_price_comment"
     t.string   "currency"
     t.string   "slug"
+    t.integer  "clicks"
+    t.string   "teaser_file_name"
+    t.string   "teaser_content_type"
+    t.integer  "teaser_file_size"
+    t.datetime "teaser_updated_at"
+    t.integer  "currency_id"
+    t.text     "preview"
   end
 
   add_index "tours", ["slug"], name: "index_tours_on_slug", unique: true, using: :btree
+
+  create_table "travels", force: true do |t|
+    t.string   "title"
+    t.text     "preview"
+    t.text     "overview"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "teaser_file_name"
+    t.string   "teaser_content_type"
+    t.integer  "teaser_file_size"
+    t.datetime "teaser_updated_at"
+    t.string   "slug"
+  end
 
 end

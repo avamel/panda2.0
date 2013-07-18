@@ -1,5 +1,5 @@
 .menu-bg
-  = render partial: 'partials/slider'
+  = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -7,11 +7,11 @@
   .search
     = render partial: 'partials/search'
 .hits-bg
-  = render partial: 'partials/hits'
+  = render partial: 'partials/hits', locals: { :tours => @tours }
 .about-bg
   = render partial: 'partials/about'
 .travels-bg
-  = render partial: 'partials/travels'
+  = render partial: 'partials/travels', locals: { :travels => @travels, :month => @month_country }
   .countries-line
   .countries
     .countries-title

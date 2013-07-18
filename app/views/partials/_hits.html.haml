@@ -2,108 +2,32 @@
   %h2.hits-header
     Хиты продаж
   .hits-masonry
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 45$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", root_path, :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+
+    - tours.each_with_index do |tour, idx|
 
 
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+      .hits-item
+        .hit-photo
+          = link_to(image_tag(tour.teaser.url), tour_path(tour))
+          - if tour.currency.present?
+            .hits-cost
+              от
+              = "#{tour.price} #{tour.currency.title}"
+        .hit-meta
+          = link_to tour.title, tour_path(tour), :class => 'hit-title'
+          = tour.preview
 
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+      - if((idx) == 2)
 
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-        Хороший экономичный  вариант для летнего отдыха на море!
-
-    .hits-item.center
-      .hit-photo
-        = link_to(image_tag("france.jpg"), "#")
-        .hits-cost.center
-          от 459$
-        .center-meta
-          .center-title Ближайший автобусный тур
-          .center-time Франция, отправление 23 июня
-          = link_to "Берлин – Амстердам – Париж (2 дня) - Версаль - Ницца - Монако - Венеция", "#", :class => "center-route"
-          .center-shadow
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("hit-image.png"), "#")
-        .hits-cost
-          от 459$
-      .hit-meta
-        = link_to "Отдых в Затоке —  пансионат «Рута»", "#", :class => 'hit-title'
-        Хороший экономичный  вариант для летнего отдыха на море! Хороший экономичный  вариант для летнего отдыха на море!
+        .hits-item.center
+          .hit-photo
+            = link_to(image_tag(tour.teaser.url), tour_path(tour))
+            - if tour.currency.present?
+              .hits-cost.center
+                от
+                = "#{tour.price} #{tour.currency.title}"
+            .center-meta
+              .center-title Ближайший автобусный тур
+              .center-time Отправление 23 июня
+              = link_to tour.title, tour_path(tour), :class => "center-route"
+              .center-shadow

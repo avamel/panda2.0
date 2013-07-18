@@ -1,4 +1,4 @@
-.menu-bg.contacts-menu-bg
+.menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -10,16 +10,14 @@
       #tab-container.tab-container
         %ul.etabs
           %li.tab
-            %a{:href => "#info"} Информация о стране
-          %li.tab
             %a{:href => "#tours"} Туры
             %span.tours-count
               = @country.tours.size
           %li.tab
+            %a{:href => "#info"} Информация о стране
+          %li.tab
             %a{:href => "#visas"} Визы
         .panel-container
-          #info.markdown-country
-            = markdown @country.overview
           #tours
             - if @country.tours.present?
               .tours-list
@@ -28,7 +26,7 @@
                     %li.tl-item
                       .tl-thumb
                         - if tour.galleries.present?
-                          = image_tag(tour.galleries.first.attachment(:thumb))
+                          = image_tag(tour.galleries.first.source(:thumb))
                       .tl-body
                         .tl-title
                           = link_to tour.title, tour_path(tour)
@@ -40,7 +38,8 @@
                       .tl-cost
                         415
                         %span €
-
+          #info.markdown-country
+            = markdown @country.overview
           #visas
             %h2 CSS Styles for these tabs
         .undermap
@@ -54,17 +53,17 @@
       = render partial: 'partials/news'
       .hits-item.center
         .hit-photo
-          = link_to(image_tag("greece.png"), "#")
+          = image_tag(@month_country.teaser.url)
           .travels-meta
             .travels-title Страна месяца
-            = link_to "Греция", "#", :class => "country-name"
+            = link_to @month_country.country.title, country_path(@month_country.country), :class => "country-name"
             .travels-hint
-              Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+              = @month_country.preview
 .new-tours-bg
   .new-tours
     .new-tours-header
       Смотрите также
-    = render partial: 'partials/slider'
+    = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
     .countries
       .countries-title
         Страны

@@ -4,6 +4,7 @@ class Country < ActiveRecord::Base
 
   has_many :country_tours
   has_many :tours, :through => :country_tours
+  has_many :months
 
   scope :europe, -> { where(:region => "Europe") }
   scope :africa, -> { where(:region => "Africa") }
@@ -11,7 +12,10 @@ class Country < ActiveRecord::Base
   scope :asia, -> { where(:region => "Asia") }
   scope :also, -> { where(:region => "Also") }
 
-def should_generate_new_friendly_id?
-  new_record? || slug.blank?
-end
+  validates :title, presence: true, uniqueness: true
+  validates :overview, presence: true
+  validates :region, presence: true
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
+  end
 end

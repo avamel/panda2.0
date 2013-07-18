@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @tours = Tour.search_elastic(params)
+    @tours = Tour.search(params)
   end
 end

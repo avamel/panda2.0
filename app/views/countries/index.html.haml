@@ -1,2 +1,15 @@
-%h1 Countries#index
-%p Find me in app/views/countries/index.html.haml
+.menu-bg.contacts-menu-bg
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+  .countries
+    .countries-title
+      Страны
+    = render partial: 'partials/countries'
+  .countries-line
+.hits-bg
+  = render partial: 'partials/hits', locals: { :tours => @tours }
+.about-bg
+  = render partial: 'partials/about'
+.travels-bg
+  = render partial: 'partials/travels', locals: { :travels => @travels, :month => @month_country }

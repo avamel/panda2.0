@@ -1,8 +1,5 @@
 class Gallery < ActiveRecord::Base
-  belongs_to :imageable, polymorphic: true
+  belongs_to :tour
 
-  has_attached_file :attachment, :styles => { :slider_thumb => "104x52#", :thumb  => "70x60>", :slider => "670x400" }, :url  => "/assets/galleries/:id/:style/:basename.:extension"
-
-  validates :title, presence: true
-
+  has_attached_file :source, :styles => { :thumb => ["128x128>", :jpg], :medium => ["670x340#", :jpg], :slider_thumb => "104x52#", :index_thumb  => "70x60>", :slider_big => "670x400" }
 end

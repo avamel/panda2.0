@@ -11,7 +11,9 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.inputs "Admin Details" do
-      f.input :email
+      f.input :email do |admin_user|
+        link_to admin_user.email, admin_admin_user_path(admin_user)
+      end
       f.input :password
       f.input :password_confirmation
     end
@@ -21,7 +23,7 @@ ActiveAdmin.register AdminUser do
   controller do
     def resource_params
       return [] if request.get?
-      [ params.require(:admin_user).permit(:email, :password, :password_confirmation) ]
+      [params.require(:admin_user).permit(:email, :password, :password_confirmation)]
     end
   end
 end

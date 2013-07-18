@@ -1,4 +1,4 @@
-.menu-bg.contacts-menu-bg
+.menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -15,7 +15,7 @@
 
         %li.tl-item
           .tl-thumb
-            = image_tag("tour_thumb.png")
+            = image_tag(tour.teaser.url(:thumb))
           .tl-body
             .tl-title
               = link_to "#{tour.title}", tour_path(tour)
@@ -24,18 +24,18 @@
                 .date-item
                   = time_tag date.date if date.date.present?
           .tl-cost
-            415
-            %span €
+            = "#{tour.price} "
+            = tour.currency.title if tour.currency.present?
     .tl-news
       = render partial: 'partials/news'
       .hits-item.center
         .hit-photo
-          = link_to(image_tag("greece.png"), "#")
+          = image_tag(@month_country.teaser.url)
           .travels-meta
             .travels-title Страна месяца
-            = link_to "Греция", "#", :class => "country-name"
+            = link_to @month_country.country.title, country_path(@month_country.country), :class => "country-name"
             .travels-hint
-              Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+              = @month_country.preview
   .countries
     .countries-title
       Страны
