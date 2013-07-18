@@ -14,6 +14,14 @@ ActiveAdmin.register Country do
 
   menu label: "Страны"
 
+  scope :all, :default => true
+  scope :month_country do |country|
+    country.where("countries.month_country IS TRUE")
+  end
+  scope :not_month_country do |country|
+    country.where("countries.month_country IS NOT TRUE")
+  end
+
   filter :region, label: "Регион", as: :check_boxes, collection:  [["Европа","Europe"],["Азия","Asia"],["Южная Америка","South_america"],["Африка","Africa"],["а также","Also"]]
   filter :title, label: "Название страны", as: :check_boxes, collection: proc { Country.all.map{|x| [x.title,x.title]} }
 
@@ -21,6 +29,7 @@ ActiveAdmin.register Country do
   index do
     column :id
     column "Регион", :region
+    column "Страна месяца", :month_country
     column "Страна", sortable: 'title' do |country|
       link_to country.title, admin_country_path(country)
     end
