@@ -39,6 +39,10 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "travels"
     end
+    class Manufacturer9 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "months"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
       new_tour.currency_id = old_tour.cur_money_id
@@ -105,7 +109,7 @@ namespace :countries_transfer do
       new_cur.title = old_cur.title
       new_cur.save!
     end
-    Manufacturer1.all.each do |old_travel|
+    Manufacturer8.all.each do |old_travel|
       new_travel = Travel.new
       new_travel.id = old_travel.id
       new_travel.title = old_travel.title
@@ -119,6 +123,19 @@ namespace :countries_transfer do
       new_travel.teaser_file_size = old_travel.teaser_file_size
       new_travel.teaser_updated_at = old_travel.teaser_updated_at
       new_travel.save!
+    end
+    Manufacturer9.all.each do |old_month|
+      new_month = Month.new
+      new_month.country_id = old_month.country_id
+      new_month.preview = old_month.preview
+      new_month.activate = old_month.activate
+      new_month.created_at = old_month.created_at
+      new_month.updated_at = old_month.updated_at
+      new_month.teaser_file_name = old_month.teaser_file_name
+      new_month.teaser_content_type = old_month.teaser_content_type
+      new_month.teaser_file_size = old_month.teaser_file_size
+      new_month.teaser_updated_at = old_month.teaser_updated_at
+      new_month.save!
     end
   end
 

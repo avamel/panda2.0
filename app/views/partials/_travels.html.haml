@@ -2,55 +2,22 @@
   .travels-header
     Путешествия
   .hits-masonry
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
 
-    .hits-item.center
-      .hit-photo
-        = link_to(image_tag("greece.png"), "#")
-        .travels-meta
-          .travels-title Страна месяца
-          = link_to "Греция", "#", :class => "country-name"
-          .travels-hint
-            Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+    - travels.each_with_index do |travel, idx|
 
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+      .hits-item
+        .hit-photo
+          = link_to(image_tag(travel.teaser.url), travel_path(travel))
+        .hit-meta
+          = link_to travel.title, travel_path(travel), :class => 'hit-title'
+          Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
 
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
-
-    .hits-item
-      .hit-photo
-        = link_to(image_tag("travels-image.png"), "#")
-      .hit-meta
-        = link_to "Мальдивы от А до Я", "#", :class => 'hit-title'
-        Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
+      - if((idx) == 0)
+        .hits-item.center
+          .hit-photo
+            = image_tag(month.teaser.url)
+            .travels-meta
+              .travels-title Страна месяца
+              = link_to month.country.title, country_path(month.country), :class => "country-name"
+              .travels-hint
+                = month.preview

@@ -11,7 +11,7 @@
 .about-bg
   = render partial: 'partials/about'
 .travels-bg
-  = render partial: 'partials/travels'
+  = render partial: 'partials/travels', locals: { :travels => @travels, :month => @month_country }
   .countries-line
   .countries
     .countries-title

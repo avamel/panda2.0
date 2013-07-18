@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  preview: MyText
+  activate: false
+  country_id: 1
+
+two:
+  preview: MyText
+  activate: false
+  country_id: 1
