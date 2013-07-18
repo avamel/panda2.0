@@ -1,5 +1,6 @@
 ActiveAdmin.register Tour do
-  menu :label => "Туры"
+  menu label: "Туры"
+
   filter :title, as: :string, label: "Название тура"
   filter :tour_dates_date, as: :date_range, label: "Даты тура"
   filter :price, as: :numeric, label: "Цена тура"
@@ -48,7 +49,7 @@ ActiveAdmin.register Tour do
     end
   end
 
-  index :title => "Туры" do
+  index title: "Туры" do
     column :id
     column "Популярность тура", :clicks
     column "Название тура", :title do |tour|
@@ -68,7 +69,7 @@ ActiveAdmin.register Tour do
     f.inputs do
 
       f.input :title, label: "Название тура"
-      f.input :preview, as: :html, label: "Превью тура"
+      f.input :preview, as: :html, label: "Превью для тура"
       f.input :overview, as: :html, label: "Описание тура"
       f.input :currency, label: "Валюта"
       f.input :price, label: "Цена тура"
@@ -84,7 +85,7 @@ ActiveAdmin.register Tour do
           fu.input :date, label: "Дата"
         end
       end
-      f.input :teaser, label: "Превью тура"
+      f.input :teaser, label: "Файл для превью"
       f.has_many :galleries do |g|
         g.input :title, label: "Заголовок"
         if g.object.source.present?
