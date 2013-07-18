@@ -23,5 +23,5 @@ Panda20::Application.routes.draw do
 
   get "home/index"
   root "home#index"
-  get "search/index"
+  get '/search/:params', to: 'search#search', as: 'search'
 end

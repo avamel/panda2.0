@@ -1,0 +1,23 @@
+.menu-bg.contacts-menu-bg.c
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.tours-list-search
+  .tours-list-bg
+    .tours-list
+      %ul.tl
+        - @tours.each do |tour|
+
+          %li.tl-item
+            .tl-thumb
+              = image_tag(tour.teaser.url(:thumb))
+            .tl-body
+              .tl-title
+                = link_to "#{tour.title}", tour_path(tour)
+              .tl-dates
+                - tour.tour_dates.each do |date|
+                  .date-item
+                    = time_tag date.date if date.date.present?
+            .tl-cost
+              = "#{tour.price} "
+              = tour.currency.title if tour.currency.present?

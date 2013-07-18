@@ -8,7 +8,7 @@
 
       .hits-item
         .hit-photo
-          = link_to(image_tag(tour.teaser.url), tour_path(tour))
+          = link_to(image_tag(tour.teaser.url(:masonry_little)), tour_path(tour))
           - if tour.currency.present?
             .hits-cost
               от
@@ -21,7 +21,7 @@
 
         .hits-item.center
           .hit-photo
-            = link_to(image_tag(tour.teaser.url), tour_path(tour))
+            = link_to(image_tag(tour.teaser.url(:masonry_big)), tour_path(tour))
             - if tour.currency.present?
               .hits-cost.center
                 от

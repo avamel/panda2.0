@@ -1,7 +1,7 @@
 %ul.slider
   - newest_tours.each do |tour|
     %li.slide
-      = link_to(image_tag(tour.teaser.url), tour_path(tour))
+      = link_to(image_tag(tour.teaser.url(:slider)), tour_path(tour))
       .caption
         .caption-title
           = link_to tour.preview, tour_path(tour)
