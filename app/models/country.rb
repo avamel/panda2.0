@@ -11,6 +11,10 @@ class Country < ActiveRecord::Base
   scope :asia, -> { where(:region => "Asia") }
   scope :also, -> { where(:region => "Also") }
 
+  validates :title, presence: true, uniqueness: true
+  validates :overview, presence: true
+  validates :region, presence: true
+
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end

@@ -1,11 +1,12 @@
 ActiveAdmin.register Tour do
   menu :label => "Туры"
-  filter :title, as: :string
+  filter :title, as: :string, label: "Название тура"
   filter :tour_dates_date, as: :date_range, label: "Даты тура"
-  filter :price, as: :numeric
-  filter :special_price, as: :numeric
+  filter :price, as: :numeric, label: "Цена тура"
+  filter :special_price, as: :numeric, label: "Специальная цена"
   filter :countries_id, as: :check_boxes,
-         collection: proc { Tour.select('countries.id as id, countries.title as title').joins(:countries).group('countries.id').map { |x| [x.title, x.id] } }
+         collection: proc { Tour.select('countries.id as id, countries.title as title').joins(:countries).group('countries.id').map { |x| [x.title, x.id] } },
+         label: "Страны"
 
   show :title => "Описание тура" do
 
@@ -21,10 +22,10 @@ ActiveAdmin.register Tour do
           simple_format tour.overview
         end
         row "Цена" do
-          tour.price
+          "#{tour.price}" + " #{tour.currency.title}"
         end
         row "Специальная цена" do
-          tour.special_price
+          "#{tour.special_price}" + " #{tour.currency.title}"
         end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
@@ -50,8 +51,12 @@ ActiveAdmin.register Tour do
       link_to tour.title, admin_tour_path(tour)
     end
     column("Страны") { |tour| raw tour.countries.map { |x| link_to x.title, admin_country_path(x.id) }.join(', ') }
-    column "Цена", :price
-    column "Специальная цена", :special_price
+    column "Цена" do |tour|
+      "#{tour.price}" + " #{tour.currency.title}"
+    end
+    column "Специальная цена" do |tour|
+      "#{tour.special_price}" + " #{tour.currency.title}"
+    end
     default_actions
   end
 

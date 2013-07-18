@@ -16,7 +16,7 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :days, allow_destroy: true
   accepts_nested_attributes_for :galleries, allow_destroy: true
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :overview, presence: true
 
   has_attached_file :teaser, :styles => { :thumb => ["210x180#", :jpg] }
