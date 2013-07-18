@@ -39,7 +39,7 @@ ActiveAdmin.register Tour do
       return [] if request.get?
       [params.require(:tour).permit(:title, :overview, :price, :special_price, :special_price_comment, :currency,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
-                                    galleries_attributes: [:imageable_type, :imageable_id, :id, :title, :_destroy, :attachment, :attachment_file_name,
+                                    galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :attachment_content_type, :attachment_file_size, :attachment_updated_at],
                                     days_attributes: [:id, :overview, :number, :_destroy])]
     end
