@@ -42,7 +42,7 @@ ActiveAdmin.register Tour do
       attributes_table_for tour.days do
         tour.days.each do |f|
           row "День #{f.number}" do
-            simple_format f.overview
+            raw f.overview
           end
         end
       end
@@ -101,7 +101,7 @@ ActiveAdmin.register Tour do
           d.input :overview, as: :html, label: "Программа дня"
           d.input :_destroy, as: :boolean, label: "Удалить"
         else
-          d.input :number
+          d.input :number, label: "Номер дня"
           d.input :overview, as: :html, label: "Программа дня"
         end
       end
