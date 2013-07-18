@@ -7,7 +7,6 @@ ActiveAdmin.register Tour do
       f.input :price
       f.input :special_price
       f.input :special_price_comment
-      f.input :currency, :as => :select, :collection => ['€', '$', 'BYR', 'RUB']
       f.input :country_ids, :as => :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }]
       f.has_many :tour_dates do |fu|
         fu.input :date

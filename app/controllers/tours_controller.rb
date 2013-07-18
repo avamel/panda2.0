@@ -7,7 +7,7 @@ class ToursController < ApplicationController
   def show
     @tour = Tour.find params[:id]
     @slider_counter = -1
-    @tour_galleries = @tour.galleries
+    @tour_galleries = @tour.galleries.take(6)
     @tour_days = @tour.days
     @tour_countries = @tour.countries
     @tour_dates = @tour.tour_dates
@@ -17,6 +17,10 @@ class ToursController < ApplicationController
   private
     def person_params
       params.require(:tour).permit!
+    end
+
+    def count_clicks
+      Tour.increment_counter(:clicks, @tour.id)
     end
 
     # def store_history
