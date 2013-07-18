@@ -27,14 +27,23 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "tour_date_links"
     end
+    class Manufacturer6 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "galleries"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
       new_tour.id = old_tour.id
       new_tour.title = old_tour.title
       new_tour.overview = old_tour.overview
+      new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
       new_tour.created_at = old_tour.created_at
       new_tour.updated_at = old_tour.updated_at
+      new_tour.teaser_file_name = old_tour.teaser_file_name
+      new_tour.teaser_content_type = old_tour.teaser_content_type
+      new_tour.teaser_file_size = old_tour.teaser_file_size
+      new_tour.teaser_updated_at = old_tour.teaser_updated_at
       new_tour.save!
     end
     Manufacturer2.all.each do |old_country|
@@ -42,6 +51,8 @@ namespace :countries_transfer do
       new_country.id = old_country.id
       new_country.title = old_country.title
       new_country.overview = old_country.overview
+      new_country.created_at = old_country.created_at
+      new_country.updated_at = old_country.updated_at
       new_country.slug = old_country.slug
       new_country.save!
     end
@@ -64,6 +75,19 @@ namespace :countries_transfer do
       new_date_link.tour_id = old_date_link.tour_id
       new_date_link.tour_date_id = old_date_link.tour_date_id
       new_date_link.save!
+    end
+    Manufacturer6.all.each do |old_gallery|
+      new_gallery = Gallery.new
+      new_gallery.id = old_gallery.id
+      new_gallery.tour_id = old_gallery.tour_id
+      new_gallery.title = old_gallery.title
+      new_gallery.source_file_name = old_gallery.source_file_name
+      new_gallery.source_content_type = old_gallery.source_content_type
+      new_gallery.source_file_size = old_gallery.source_file_size
+      new_gallery.source_updated_at = old_gallery.source_updated_at
+      new_gallery.created_at = old_gallery.created_at
+      new_gallery.updated_at = old_gallery.updated_at
+      new_gallery.save!
     end
   end
 

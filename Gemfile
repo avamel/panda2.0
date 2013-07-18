@@ -48,6 +48,9 @@ gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'ckeditor'
 gem 'paperclip',           github: 'thoughtbot/paperclip', branch: 'rails-4'
 gem 'tire'
+gem 'russian'
+gem 'redcarpet'
+gem 'yaml_db'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

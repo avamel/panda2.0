@@ -1,4 +1,4 @@
-.menu-bg.contacts-menu-bg
+.menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -22,7 +22,7 @@
             .tl-dates
               - tour.tour_dates.each do |date|
                 .date-item
-                  = time_tag(date.date) if date.date.present?
+                  = time_tag date.date if date.date.present?
           .tl-cost
             415
             %span €

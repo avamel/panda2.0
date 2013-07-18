@@ -1,0 +1,1 @@
+Paperclip::Attachment.default_options.update(url: "/system/:attachment/:id/:style/:filename")

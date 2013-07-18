@@ -1,4 +1,4 @@
-.menu-bg.contacts-menu-bg
+.menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
@@ -10,47 +10,36 @@
       #tab-container.tab-container
         %ul.etabs
           %li.tab
-            %a{:href => "#info"} Информация о стране
-          %li.tab
             %a{:href => "#tours"} Туры
             %span.tours-count
-              12
+              = @country.tours.size
+          %li.tab
+            %a{:href => "#info"} Информация о стране
           %li.tab
             %a{:href => "#visas"} Визы
         .panel-container
-          #info.markdown-country
-            = raw @country.overview
           #tours
-            .tours-list
-              %ul.tl
-                %li.tl-item
-                  .tl-thumb
-                    = image_tag("tour_thumb.png")
-                  .tl-body
-                    .tl-title
-                      = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                    .tl-dates
-                      .date-item
-                        27 июня 2013
-                      .date-item
-                        27 июня 2013
-                  .tl-cost
-                    415
-                    %span €
-                %li.tl-item
-                  .tl-thumb
-                    = image_tag("tour_thumb.png")
-                  .tl-body
-                    .tl-title
-                      = link_to "Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена Берлин – Амстердам – Париж (3 дня) – Фонтенбло* –  Прага – Вена", "#"
-                    .tl-dates
-                      .date-item
-                        27 июня 2013
-                      .date-item
-                        27 июня 2013
-                  .tl-cost
-                    415
-                    %span €
+            - if @country.tours.present?
+              .tours-list
+                %ul.tl
+                  - @country.tours.each do |tour|
+                    %li.tl-item
+                      .tl-thumb
+                        - if tour.galleries.present?
+                          = image_tag(tour.galleries.first.source(:thumb))
+                      .tl-body
+                        .tl-title
+                          = link_to tour.title, tour_path(tour)
+                        - if tour.tour_dates.present?
+                          .tl-dates
+                            - tour.tour_dates.each do |date|
+                              .date-item
+                                = time_tag date.date
+                      .tl-cost
+                        415
+                        %span €
+          #info.markdown-country
+            = markdown @country.overview
           #visas
             %h2 CSS Styles for these tabs
         .undermap
