@@ -46,7 +46,7 @@ ActiveAdmin.register Country do
 
   form do |f|
     f.inputs do
-      #f.input :activate, as: :boolean, label: "Страна месяца"
+      f.input :month_country, as: :boolean, label: "Страна месяца"
       f.input :region, collection: [["Европа","Europe"],["Азия","Asia"],["Южная Америка","South_america"],["Африка","Africa"],["а также","Also"]], label: "Регион"
       f.input :title, sortable: true, label: "Название страны"
       f.input :overview, :as => :html, label: "Описание страны"
@@ -57,7 +57,7 @@ ActiveAdmin.register Country do
   controller do
     def resource_params
       return [] if request.get?
-      [ params.require(:country).permit(:title, :overview, :region) ]
+      [ params.require(:country).permit(:title, :overview, :region, :month_country) ]
     end
   end
 

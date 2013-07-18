@@ -51,7 +51,10 @@ ActiveAdmin.register Tour do
 
   index title: "Туры" do
     column :id
-    column "Популярность тура", :clicks
+    column "Опубликован" do |tour|
+      status_tag("#{tour.publish}") if tour.publish.present?
+    end
+    column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|
       link_to tour.title, admin_tour_path(tour)
     end
@@ -69,6 +72,7 @@ ActiveAdmin.register Tour do
     f.inputs do
 
       f.input :title, label: "Название тура"
+      f.input :publish, as: :boolean, label: "Опубликован"
       f.input :preview, as: :html, label: "Превью для тура"
       f.input :overview, as: :html, label: "Описание тура"
       f.input :currency, label: "Валюта"
@@ -85,7 +89,7 @@ ActiveAdmin.register Tour do
           fu.input :date, label: "Дата"
         end
       end
-      f.input :teaser, label: "Файл для превью"
+      f.input :teaser, label: "Картинка для превью"
       f.has_many :galleries do |g|
         g.input :title, label: "Заголовок"
         if g.object.source.present?
@@ -112,7 +116,7 @@ ActiveAdmin.register Tour do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:tour).permit(:teaser, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
+      [params.require(:tour).permit(:teaser, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :source_content_type, :source_file_size, :source_updated_at],
