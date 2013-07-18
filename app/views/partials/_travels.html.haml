@@ -7,7 +7,7 @@
 
       .hits-item
         .hit-photo
-          = link_to(image_tag(travel.teaser.url), travel_path(travel))
+          = link_to(image_tag(travel.teaser.url(:masonry_little)), travel_path(travel))
         .hit-meta
           = link_to travel.title, travel_path(travel), :class => 'hit-title'
           Мальдивские острова,  известные «резиденты»  экваториальных вод Мальдивские острова,  известные «резиденты»  экваториальных вод
@@ -15,7 +15,7 @@
       - if((idx) == 0)
         .hits-item.center
           .hit-photo
-            = image_tag(month.teaser.url)
+            = image_tag(month.teaser.url(:thumb))
             .travels-meta
               .travels-title Страна месяца
               = link_to month.country.title, country_path(month.country), :class => "country-name"

@@ -1,2 +1,6 @@
-%h1 Travels#index
-%p Find me in app/views/travels/index.html.haml
+.menu-bg.contacts-menu-bg.c
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.travels-bg.index
+  = render partial: 'partials/travels', locals: { :travels => @travels, :month => @month_country }

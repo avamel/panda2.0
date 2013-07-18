@@ -23,7 +23,8 @@ class Tour < ActiveRecord::Base
   validates :currency, presence: true
   validates :country_ids, presence: true
 
-  has_attached_file :teaser, :styles => { :thumb => ["210x180#", :jpg] }
+  has_attached_file :teaser, :styles => { :thumb => ["70x60#", :jpg], :masonry_little => ["208x180#", :jpg], :masonry_big => ["450x396#", :jpg],
+                                          :slider => ["468x352#", :jpg], :slider_thumb => ["104x52#", :jpg], :tour_slider => ["670x406#", :jpg] }
 
 
   mapping do
@@ -39,8 +40,8 @@ class Tour < ActiveRecord::Base
       query do
         boolean do
           should { string params[:search], default_operator: "OR" } if params[:search].present?
-          must { terms :country_name, params[:country_name] } if params[:country_name].present?
-          must { range :dates, from: params[:start], to: (Date.today+10.years).to_date } if params[:start].present?
+          must { term :country_name, params[:country_name] } if params[:country_name].present?
+          must { range :dates, from: params[:start].to_date, to: (Date.today+10.years).to_date } if params[:start].present?
           must { range :price, from: params[:min].to_i, to: params[:max].to_i } if params[:min].present? && params[:max].present?
         end
       end
