@@ -21,10 +21,10 @@ ActiveAdmin.register Tour do
           simple_format tour.overview
         end
         row "Цена" do
-          "#{tour.price}"+" #{tour.currency}"
+          tour.price
         end
         row "Специальная цена" do
-          "#{tour.special_price}"+" #{tour.currency}"
+          tour.special_price
         end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
@@ -50,20 +50,22 @@ ActiveAdmin.register Tour do
       link_to tour.title, admin_tour_path(tour)
     end
     column("Страны") { |tour| raw tour.countries.map { |x| link_to x.title, admin_country_path(x.id) }.join(', ') }
-    column "Цена", :price+"#{:currency}"
+    column "Цена", :price
     column "Специальная цена", :special_price
     default_actions
   end
 
   form do |f|
     f.inputs do
+
       f.input :title, label: "Название тура"
       f.input :overview, :as => :html, label: "Описание тура"
-      f.input :currency, :as => :select, :collection => ['€', '$', 'BYR', 'RUB'], label: "Валюта"
+      f.input :currency, label: "Валюта"
       f.input :price, :label => "Цена тура"
       f.input :special_price, label: "Специальная цена тура"
       f.input :special_price_comment, label: "Комментарии к специальной цене"
       f.input :country_ids, :as => :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }], label: "Страны"
+
       f.has_many :tour_dates do |fu|
         if fu.object.date.present?
           fu.input :date, label: "Дата"
@@ -99,7 +101,7 @@ ActiveAdmin.register Tour do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:tour).permit(:teaser, :title, :overview, :price, :special_price, :special_price_comment, :currency,
+      [params.require(:tour).permit(:teaser, :title, :overview, :price, :special_price, :special_price_comment, :currency_id,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :source_content_type, :source_file_size, :source_updated_at],

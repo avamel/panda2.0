@@ -31,10 +31,16 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "galleries"
     end
+    class Manufacturer7 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "cur_moneys"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
+      new_tour.currency_id = old_tour.cur_money_id
       new_tour.id = old_tour.id
       new_tour.title = old_tour.title
+      new_tour.preview = old_tour.preview
       new_tour.overview = old_tour.overview
       new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
@@ -88,6 +94,12 @@ namespace :countries_transfer do
       new_gallery.created_at = old_gallery.created_at
       new_gallery.updated_at = old_gallery.updated_at
       new_gallery.save!
+    end
+    Manufacturer7.all.each do |old_cur|
+      new_cur = Currency.new
+      new_cur.id = old_cur.id
+      new_cur.title = old_cur.title
+      new_cur.save!
     end
   end
 

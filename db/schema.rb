@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717151313) do
+ActiveRecord::Schema.define(version: 20130718082304) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20130717151313) do
     t.datetime "updated_at"
   end
 
+  create_table "currencies", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "days", force: true do |t|
     t.text     "overview"
     t.integer  "tour_id"
@@ -97,7 +103,7 @@ ActiveRecord::Schema.define(version: 20130717151313) do
     t.integer  "tour_id"
   end
 
-  add_index "galleries", ["tour_id"], :name => "index_galleries_on_tour_id"
+  add_index "galleries", ["tour_id"], name: "index_galleries_on_tour_id", using: :btree
 
   create_table "tour_date_links", force: true do |t|
     t.integer  "tour_id"
@@ -128,6 +134,7 @@ ActiveRecord::Schema.define(version: 20130717151313) do
     t.string   "teaser_content_type"
     t.integer  "teaser_file_size"
     t.datetime "teaser_updated_at"
+    t.integer  "currency_id"
   end
 
   add_index "tours", ["slug"], name: "index_tours_on_slug", unique: true, using: :btree

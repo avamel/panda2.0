@@ -15,7 +15,7 @@
 
         %li.tl-item
           .tl-thumb
-            = image_tag("tour_thumb.png")
+            = image_tag(tour.teaser.url(:thumb))
           .tl-body
             .tl-title
               = link_to "#{tour.title}", tour_path(tour)
@@ -24,8 +24,8 @@
                 .date-item
                   = time_tag date.date if date.date.present?
           .tl-cost
-            415
-            %span €
+            = "#{tour.price} "
+            = tour.currency.title if tour.currency.present?
     .tl-news
       = render partial: 'partials/news'
       .hits-item.center

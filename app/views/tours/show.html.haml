@@ -51,13 +51,15 @@
           .title
             Базовая стоимость:
           .cost
-            = "#{@tour.price} " + "#{@tour.currency}"
+            = "#{@tour.price}"
+            = @tour.currency.title if @tour.currency.present?
         - if @tour.special_price.present?
           .special-cost
             .title
               = "#{@tour.special_price_comment}:"
             .cost
-              = "#{@tour.special_price} " + "#{@tour.currency}"
+              = "#{@tour.special_price} "
+              = @tour.currency.title if @tour.currency.present?
         .buy-btn
           = link_to "Заказать тур", "#"
       .markdown-tour
@@ -72,22 +74,21 @@
           %span.print-icon
           = link_to 'Распечатать страницу', "#"
 
-
-
-
     .show-sidebar
       .side-buy-block
         .base-cost
           .title
             Базовая стоимость:
           .cost
-            = "#{@tour.price} " + "#{@tour.currency}"
-        - if @tour.special_price.present?
-          .special-cost
-            .title
-              = "#{@tour.special_price_comment}:"
+            = "#{@tour.price} "
+            = @tour.currency.title if @tour.currency.present?
+          - if @tour.special_price.present?
+            .special-cost
+              .title
+                = "#{@tour.special_price_comment}:"
             .cost
-              = "#{@tour.special_price} " + "#{@tour.currency}"
+              = "#{@tour.special_price} "
+              = @tour.currency.title if @tour.currency.present?
         .buy-btn
           = link_to "Заказать тур", "#"
       .side-country-block
@@ -159,13 +160,14 @@
 
                 %li.tl-item.mini-item
                   .tl-thumb
-                    - if tour.galleries.present?
-                      = image_tag(tour.galleries.first.source(:thumb))
+                    - if tour.teaser.present?
+                      = image_tag(tour.teaser.url(:thumb))
                   .tl-body
                     = link_to tour.title, tour_path(tour)
                     %br
                     .tl-cost
-                      = "#{tour.price} " + "#{tour.currency}"
+                      = "#{tour.price} "
+                      = @tour.currency.title if @tour.currency.present?
               
 #footer.new-tours-bg
   .new-tours

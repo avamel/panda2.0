@@ -7,7 +7,7 @@
   .search
     = render partial: 'partials/search'
 .hits-bg
-  = render partial: 'partials/hits'
+  = render partial: 'partials/hits', locals: { :tours => @tours }
 .about-bg
   = render partial: 'partials/about'
 .travels-bg
