@@ -14,6 +14,7 @@ class Country < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :overview, presence: true
   validates :region, presence: true
+
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end
