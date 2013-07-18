@@ -4,8 +4,12 @@ ActiveAdmin.register Travel do
   config.sort_order = "published_des"
 
   scope :all, :default => true
-  scope :published
-  scope :unpublished
+  scope :published do |travel|
+    travel.where("travels.published IS TRUE")
+  end
+  scope :unpublished do |travel|
+    travel.where("travels.published IS NOT TRUE")
+  end
 
   index title: "Путешествия" do
     column :id

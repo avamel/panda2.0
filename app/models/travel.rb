@@ -2,9 +2,6 @@ class Travel < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  scope :published, where("travels.published IS TRUE")
-  scope :unpublished, where("travels.published IS NOT TRUE")
-
   has_attached_file :teaser, :styles => { :thumb => ["210x180#", :jpg] }
 
 
