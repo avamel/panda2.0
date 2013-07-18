@@ -21,10 +21,10 @@ ActiveAdmin.register Tour do
           simple_format tour.overview
         end
         row "Цена" do
-          tour.price
+          "#{tour.price}"+" #{tour.currency}"
         end
         row "Специальная цена" do
-          tour.special_price
+          "#{tour.special_price}"+" #{tour.currency}"
         end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
@@ -45,11 +45,12 @@ ActiveAdmin.register Tour do
 
   index :title => "Туры" do
     column :id
+    column "Популярность тура", :clicks
     column "Название тура", :title do |tour|
       link_to tour.title, admin_tour_path(tour)
     end
     column("Страны") { |tour| raw tour.countries.map { |x| link_to x.title, admin_country_path(x.id) }.join(', ') }
-    column "Цена", :price
+    column "Цена", :price+"#{:currency}"
     column "Специальная цена", :special_price
     default_actions
   end
