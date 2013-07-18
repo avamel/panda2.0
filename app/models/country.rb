@@ -15,6 +15,8 @@ class Country < ActiveRecord::Base
   validates :overview, presence: true
   validates :region, presence: true
 
+  has_attached_file :teaser, :styles => { :masonry_little => ["208x180#", :jpg], :masonry_big => ["450x396#", :jpg] }
+
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end
