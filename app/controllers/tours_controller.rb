@@ -1,18 +1,19 @@
 class ToursController < ApplicationController
-  before_filter [:store_history, :count_clicks], only: :show
+  before_filter [:count_clicks], only: :show
   def index
     @month_country = Month.where(:activate => true).order(:created_at).last
     @tours = Tour.all
   end
 
   def show
+    @newest_tours = Tour.take(3)
     @tour = Tour.find params[:id]
     @slider_counter = -1
     @tour_galleries = @tour.galleries.take(6)
     @tour_days = @tour.days
     @tour_countries = @tour.countries
     @tour_dates = @tour.tour_dates
-    @tours_history = Tour.find session[:history]
+    # @tours_history = Tour.find session[:history]
   end
 
   private
