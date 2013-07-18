@@ -39,10 +39,6 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "travels"
     end
-    class Manufacturer9 < ActiveRecord::Base
-      establish_connection Rails.configuration.database_configuration["old_panda"]
-      self.table_name = "months"
-    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
       new_tour.currency_id = old_tour.cur_money_id
@@ -58,7 +54,8 @@ namespace :countries_transfer do
       new_tour.teaser_content_type = old_tour.teaser_content_type
       new_tour.teaser_file_size = old_tour.teaser_file_size
       new_tour.teaser_updated_at = old_tour.teaser_updated_at
-      new_tour.save!
+      new_tour.publish = old_tour.publish
+      new_tour.save(validate: false)
     end
     Manufacturer2.all.each do |old_country|
       new_country = Country.new
@@ -68,27 +65,27 @@ namespace :countries_transfer do
       new_country.created_at = old_country.created_at
       new_country.updated_at = old_country.updated_at
       new_country.slug = old_country.slug
-      new_country.save!
+      new_country.save(validate: false)
     end
     Manufacturer3.all.each do |old_date|
       new_date = TourDate.new
       new_date.date = old_date.date_start
       new_date.tour_id = old_date.tour_id
-      new_date.save!
+      new_date.save(validate: false)
     end
     Manufacturer4.all.each do |old_country_tour|
       new_country_tour = CountryTour.new
       new_country_tour.id = old_country_tour.id
       new_country_tour.tour_id = old_country_tour.tour_id
       new_country_tour.country_id = old_country_tour.country_id
-      new_country_tour.save!
+      new_country_tour.save(validate: false)
     end
     Manufacturer5.all.each do |old_date_link|
       new_date_link = TourDateLink.new
       new_date_link.id = old_date_link.id
       new_date_link.tour_id = old_date_link.tour_id
       new_date_link.tour_date_id = old_date_link.tour_date_id
-      new_date_link.save!
+      new_date_link.save(validate: false)
     end
     Manufacturer6.all.each do |old_gallery|
       new_gallery = Gallery.new
@@ -101,13 +98,13 @@ namespace :countries_transfer do
       new_gallery.source_updated_at = old_gallery.source_updated_at
       new_gallery.created_at = old_gallery.created_at
       new_gallery.updated_at = old_gallery.updated_at
-      new_gallery.save!
+      new_gallery.save(validate: false)
     end
     Manufacturer7.all.each do |old_cur|
       new_cur = Currency.new
       new_cur.id = old_cur.id
       new_cur.title = old_cur.title
-      new_cur.save!
+      new_cur.save(validate: false)
     end
     Manufacturer8.all.each do |old_travel|
       new_travel = Travel.new
@@ -122,20 +119,7 @@ namespace :countries_transfer do
       new_travel.teaser_content_type = old_travel.teaser_content_type
       new_travel.teaser_file_size = old_travel.teaser_file_size
       new_travel.teaser_updated_at = old_travel.teaser_updated_at
-      new_travel.save!
-    end
-    Manufacturer9.all.each do |old_month|
-      new_month = Month.new
-      new_month.country_id = old_month.country_id
-      new_month.preview = old_month.preview
-      new_month.activate = old_month.activate
-      new_month.created_at = old_month.created_at
-      new_month.updated_at = old_month.updated_at
-      new_month.teaser_file_name = old_month.teaser_file_name
-      new_month.teaser_content_type = old_month.teaser_content_type
-      new_month.teaser_file_size = old_month.teaser_file_size
-      new_month.teaser_updated_at = old_month.teaser_updated_at
-      new_month.save!
+      new_travel.save(validate: false)
     end
   end
 
@@ -160,7 +144,7 @@ namespace :countries_transfer do
       else
         country.region = "Also"
       end
-      country.save!
+      country.save(validate: false)
     end
   end
 end

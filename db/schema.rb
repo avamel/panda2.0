@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130718101337) do
+ActiveRecord::Schema.define(version: 20130718164816) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20130718101337) do
     t.datetime "updated_at"
     t.string   "region"
     t.string   "slug"
+    t.boolean  "month_country"
   end
 
   add_index "countries", ["slug"], name: "index_countries_on_slug", unique: true, using: :btree
@@ -148,6 +149,7 @@ ActiveRecord::Schema.define(version: 20130718101337) do
     t.datetime "teaser_updated_at"
     t.integer  "currency_id"
     t.text     "preview"
+    t.boolean  "publish"
   end
 
   add_index "tours", ["slug"], name: "index_tours_on_slug", unique: true, using: :btree
