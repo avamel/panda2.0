@@ -30,7 +30,7 @@ class Tour < ActiveRecord::Base
     indexes :country_name, :as => 'countries.pluck(:title)', :type => :string, :index => :not_analyzed
   end
 
-  def self.search_elastic(params)
+  def self.search(params)
     tire.search(page: params[:page], per_page: 1000, load: true) do
       query do
         boolean do

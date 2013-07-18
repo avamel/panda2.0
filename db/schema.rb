@@ -121,13 +121,13 @@ ActiveRecord::Schema.define(version: 20130718082304) do
 
   create_table "tours", force: true do |t|
     t.string   "title"
-    t.text     "preview"
     t.text     "overview"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",                 precision: 10, scale: 0
     t.decimal  "special_price",         precision: 10, scale: 0
     t.string   "special_price_comment"
+    t.string   "currency"
     t.string   "slug"
     t.integer  "clicks"
     t.string   "teaser_file_name"
