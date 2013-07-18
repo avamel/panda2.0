@@ -1,5 +1,5 @@
 .menu-bg
-  = render partial: 'partials/slider'
+  = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
