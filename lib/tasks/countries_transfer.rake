@@ -35,6 +35,10 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "cur_moneys"
     end
+    class Manufacturer8 < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "travels"
+    end
     Manufacturer1.all.each do |old_tour|
       new_tour = Tour.new
       new_tour.currency_id = old_tour.cur_money_id
@@ -42,7 +46,7 @@ namespace :countries_transfer do
       new_tour.title = old_tour.title
       new_tour.preview = old_tour.preview
       new_tour.overview = old_tour.overview
-      # new_tour.slug = old_tour.slug
+      new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
       new_tour.created_at = old_tour.created_at
       new_tour.updated_at = old_tour.updated_at
@@ -59,7 +63,7 @@ namespace :countries_transfer do
       new_country.overview = old_country.overview
       new_country.created_at = old_country.created_at
       new_country.updated_at = old_country.updated_at
-      # new_country.slug = old_country.slug
+      new_country.slug = old_country.slug
       new_country.save!
     end
     Manufacturer3.all.each do |old_date|
@@ -101,7 +105,23 @@ namespace :countries_transfer do
       new_cur.title = old_cur.title
       new_cur.save!
     end
+    Manufacturer1.all.each do |old_travel|
+      new_travel = Travel.new
+      new_travel.id = old_travel.id
+      new_travel.title = old_travel.title
+      new_travel.preview = old_travel.preview
+      new_travel.overview = old_travel.overview
+      new_travel.slug = old_travel.slug
+      new_travel.created_at = old_travel.created_at
+      new_travel.updated_at = old_travel.updated_at
+      new_travel.teaser_file_name = old_travel.teaser_file_name
+      new_travel.teaser_content_type = old_travel.teaser_content_type
+      new_travel.teaser_file_size = old_travel.teaser_file_size
+      new_travel.teaser_updated_at = old_travel.teaser_updated_at
+      new_travel.save!
+    end
   end
+
 
   task regions: :environment do
 
