@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
-  # before_filter :store_history, only: :show
+  before_filter [:store_history, :count_clicks], only: :show
   def index
+    @month_country = Month.where(:activate => true).order(:created_at).last
     @tours = Tour.all
   end
 
@@ -23,11 +24,11 @@ class ToursController < ApplicationController
       Tour.increment_counter(:clicks, @tour.id)
     end
 
-    # def store_history
-    #   tour_id = Tour.find(params[:id]).id
-    #   session[:history] ||= []
-    #   session[:history].delete_at(0) if session[:history].size >= 5
-    #   session[:history] << tour_id
-    #   session[:history].uniq!
-    # end
+    def store_history
+      tour_id = Tour.find(params[:id]).id
+      session[:history] ||= []
+      session[:history].delete_at(0) if session[:history].size >= 5
+      session[:history] << tour_id
+      session[:history].uniq!
+    end
 end

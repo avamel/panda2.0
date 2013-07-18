@@ -95,7 +95,7 @@
   .new-tours
     .new-tours-header
       Новые туры
-    = render partial: 'partials/slider'
+    = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
     .countries
       .countries-title
         Страны
