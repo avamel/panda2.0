@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   before_filter [:store_history, :count_clicks], only: :show
   def index
+    @month_country = Month.where(:activate => true).order(:created_at).last
     @tours = Tour.all
   end
 

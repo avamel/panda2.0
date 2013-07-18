@@ -30,12 +30,12 @@
       = render partial: 'partials/news'
       .hits-item.center
         .hit-photo
-          = link_to(image_tag("greece.png"), "#")
+          = image_tag(@month_country.teaser.url)
           .travels-meta
             .travels-title Страна месяца
-            = link_to "Греция", "#", :class => "country-name"
+            = link_to @month_country.country.title, country_path(@month_country.country), :class => "country-name"
             .travels-hint
-              Всем туристам, заказавшим авиа тур  в Грецию в июне, скидка 3%!
+              = @month_country.preview
   .countries
     .countries-title
       Страны
