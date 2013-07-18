@@ -42,7 +42,7 @@ namespace :countries_transfer do
       new_tour.title = old_tour.title
       new_tour.preview = old_tour.preview
       new_tour.overview = old_tour.overview
-      new_tour.slug = old_tour.slug
+      # new_tour.slug = old_tour.slug
       new_tour.price = old_tour.price
       new_tour.created_at = old_tour.created_at
       new_tour.updated_at = old_tour.updated_at
@@ -59,7 +59,7 @@ namespace :countries_transfer do
       new_country.overview = old_country.overview
       new_country.created_at = old_country.created_at
       new_country.updated_at = old_country.updated_at
-      new_country.slug = old_country.slug
+      # new_country.slug = old_country.slug
       new_country.save!
     end
     Manufacturer3.all.each do |old_date|
