@@ -21,16 +21,16 @@ ActiveAdmin.register Tour do
         end
 
         row "Превью тура" do
-          simple_format tour.preview
+          raw tour.preview
         end
         row "Описание тура" do
-          simple_format tour.overview
+          raw tour.overview
         end
         row "Цена" do
           "#{tour.price}" + " #{tour.currency.title}"
         end
         row "Специальная цена" do
-          "#{tour.special_price}" + " #{tour.currency.title}"
+          "#{tour.special_price}" + " #{tour.currency.title}" if tour.special_price.present?
         end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
@@ -57,10 +57,10 @@ ActiveAdmin.register Tour do
     end
     column("Страны") { |tour| raw tour.countries.map { |x| link_to x.title, admin_country_path(x.id) }.join(', ') }
     column "Цена" do |tour|
-      "#{tour.price}" + " #{tour.currency.title}"
+      "#{tour.price}" + "#{tour.currency.title}"
     end
     column "Специальная цена" do |tour|
-      "#{tour.special_price}" + " #{tour.currency.title}"
+      "#{tour.special_price}" + "#{tour.currency.title}" if tour.special_price.present?
     end
     default_actions
   end
