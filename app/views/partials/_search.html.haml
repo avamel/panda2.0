@@ -24,3 +24,11 @@
     .rangeText
   = link_to "Подобрать варианты", "#", :class => "search-btn"
   = link_to(image_tag("tourtrans.png"), "#", :class => "tourtrans")
+
+
+
+
+%input{:name => "country_name", :type => "hidden", :value => params[:country_name]}
+%input{:name => "min", :type => "hidden", :value => params[:min]}
+%input{:name => "max", :type => "hidden", :value => params[:max]}
+%input{:name => "start", :type => "hidden", :value => params[:start]}

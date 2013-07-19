@@ -13,7 +13,7 @@ class ToursController < ApplicationController
     @tour_galleries = @tour.galleries.take(6)
     @tour_days = @tour.days
     @tour_countries = @tour.countries
-    @tour_dates = @tour.tour_dates
+    @tour_dates = @tour.tour_dates.where("date > ?", Date.today)
     # @tours_history = Tour.find session[:history]
   end
 
