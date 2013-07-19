@@ -12,11 +12,10 @@ ActiveAdmin.register Travel do
   end
 
   index title: "Путешествия" do
-    column :id
     column "Опубликован" do |travel|
       status_tag("#{travel.published}") if travel.published.present?
     end
-    column :title
+    column "Заголовок", :title
     default_actions
   end
 
