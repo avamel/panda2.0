@@ -20,6 +20,10 @@ ActiveAdmin.register Tour do
           tour.countries.map(&:title).join(", ")
         end
 
+        row "Публикация" do
+          status_tag("#{tour.publish}") if tour.publish.present?
+        end
+
         row "Превью тура" do
           raw tour.preview
         end
