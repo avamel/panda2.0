@@ -4,11 +4,16 @@ ActiveAdmin.register News do
   filter :title, as: :string, label: "Заголовок"
   filter :content, as: :string, label: "Контент"
 
-  index do
+  index title: "Новости" do
     column :id
     column "Заголовок", :title
-    column  "Контент" do  |news|
+    column "Контент" do |news|
       truncate(strip_tags(news.content), length: 80)
+    end
+    column "Налиличие картинки" do |news|
+      if news.teaser.present?
+        status_tag("есть")
+      end
     end
     column "Дата создания", :created_at
     column "Дата обнавления", :updated_at

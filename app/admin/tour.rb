@@ -1,6 +1,14 @@
 ActiveAdmin.register Tour do
   menu label: "Туры"
 
+  scope :all, default: true
+  scope :publish do |tour|
+    tour.where("publish IS TRUE")
+  end
+  scope :not_punlish do |tour|
+    tour.where("publish IS NOT TRUE")
+  end
+
   filter :title, as: :string, label: "Название тура"
   filter :tour_dates_date, as: :date_range, label: "Даты тура"
   filter :price, as: :numeric, label: "Цена тура"
@@ -54,9 +62,8 @@ ActiveAdmin.register Tour do
   end
 
   index title: "Туры" do
-    column :id
     column "Опубликован" do |tour|
-      status_tag("#{tour.publish}") if tour.publish.present?
+      status_tag("Опубликован") if tour.publish.present?
     end
     column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|
@@ -72,7 +79,7 @@ ActiveAdmin.register Tour do
     default_actions
   end
 
-  form do |f|
+  form html: {:multipart => true} do |f|
     f.inputs do
 
       f.input :title, label: "Название тура"
@@ -83,6 +90,7 @@ ActiveAdmin.register Tour do
       f.input :price, label: "Цена тура"
       f.input :special_price, label: "Специальная цена тура"
       f.input :special_price_comment, label: "Комментарии к специальной цене"
+      f.input :type_of_holiday_ids, as: :check_boxes, :collection => Hash[TypeOfHoliday.all.map { |b| [b.title, b.id] }], label: "Тип тура"
       f.input :country_ids, as: :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }], label: "Страны"
 
       f.has_many :tour_dates do |fu|
@@ -121,7 +129,7 @@ ActiveAdmin.register Tour do
     def resource_params
       return [] if request.get?
       [params.require(:tour).permit(:teaser, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
-                                    tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
+                                    tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [], :type_of_holiday_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :source_content_type, :source_file_size, :source_updated_at],
                                     days_attributes: [:id, :overview, :number, :_destroy])]
