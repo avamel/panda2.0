@@ -21,8 +21,9 @@
 
 $(document).ready(function() {
 
-  if jQuery.browser.mobile == false
+  if (jQuery.browser.mobile == false){
     $('a[href^="tel"]').attr( 'onClick', 'return false' );
+  }
 
   $('.search-btn').click(function(){
     var re = /\D+/
