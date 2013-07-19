@@ -1,6 +1,5 @@
 Panda20::Application.routes.draw do
 
-
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -17,6 +16,9 @@ Panda20::Application.routes.draw do
   end
 
   resources :news, only: [:index, :show] do
+  end
+
+  resources :type_of_holidays, only: :show do
   end
 
   get 'contacts', to: 'contacts#index'

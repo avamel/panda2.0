@@ -1,0 +1,42 @@
+.menu-bg.contacts-menu-bg.c
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.tours-list-bg.holiday-bg
+  .tours-list
+    .countries-title
+      = @type_title.title
+    %ul.tl
+      - @tours.each do |tour|
+        %li.tl-item
+          .tl-thumb
+            = image_tag(tour.teaser.url(:thumb))
+          .tl-body
+            .tl-title
+              = link_to "#{tour.title}", tour_path(tour)
+            .tl-dates
+              - tour.tour_dates.each do |date|
+                .date-item
+                  = time_tag date.date if date.date.present?
+          .tl-cost
+            = "#{tour.price} "
+            = tour.currency.title if tour.currency.present?
+    .tl-news
+      = render partial: 'partials/news', locals: { :news => @news }
+      .hits-item.center
+        .hit-photo
+          = image_tag(@month_country.teaser.url(:masonry_little))
+          .travels-meta
+            .travels-title Страна месяца
+            = link_to @month_country.title, country_path(@month_country), :class => "country-name"
+            .travels-hint
+              = @month_country.month_preview
+.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Смотрите также
+    = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'

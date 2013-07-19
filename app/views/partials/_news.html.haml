@@ -1,8 +1,8 @@
-- if @news.present?
+- if news.present?
   .right-title
     Новости компании
   %ul.news-list
-    - @news.each do |item|
+    - news.each do |item|
       %li.news-item
         = link_to item.title, news_path(item), :class => "news-link"
         .news-date
