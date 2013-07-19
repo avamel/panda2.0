@@ -77,9 +77,6 @@ ActiveAdmin.register Tour do
 
       f.input :title, label: "Название тура"
       f.input :publish, as: :boolean, label: "Опубликован"
-      f.input :type, as: :check_boxes, collection: ["Экскурсионные автобусные туры","Экскурсионные туры с отдыхом на море",
-                                                    "Туры выходного дня","Отдых на море","Экскурсионные авиа туры","Морские круизы",
-                                                    "Отдых в Крыму","Детский и молодежный отдых в Болгарии"]
       f.input :preview, as: :html, label: "Превью для тура"
       f.input :overview, as: :html, label: "Описание тура"
       f.input :currency, label: "Валюта"

@@ -55,9 +55,10 @@ ActiveAdmin.register Country do
       row "Страна месяца, описание" do
         raw country.month_preview
       end
-
-      row "Картинка" do
-        image_tag(country.teaser.url(:slider_thumb))
+      if country.teaser.present?
+        row "Картинка" do
+          image_tag(country.teaser.url(:slider_thumb))
+        end
       end
     end
   end

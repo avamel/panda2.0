@@ -17,7 +17,6 @@ ActiveAdmin.register News do
     end
     column "Дата создания", :created_at
     column "Дата обнавления", :updated_at
-    default_actions
   end
 
   show :title => "Новость" do

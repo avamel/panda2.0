@@ -31,6 +31,11 @@ ActiveAdmin.register Travel do
       row "Статья" do
         raw travel.overview
       end
+      if travel.teaser.present?
+        row "Картинка" do
+          image_tag(travel.teaser.url(:slider_thumb))
+        end
+      end
     end
   end
 
