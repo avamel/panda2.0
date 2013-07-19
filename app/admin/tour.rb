@@ -1,6 +1,14 @@
 ActiveAdmin.register Tour do
   menu label: "Туры"
 
+  scope :all, default: true
+  scope :publish do |tour|
+    tour.where("publish IS TRUE")
+  end
+  scope :not_punlish do |tour|
+    tour.where("publish IS NOT TRUE")
+  end
+
   filter :title, as: :string, label: "Название тура"
   filter :tour_dates_date, as: :date_range, label: "Даты тура"
   filter :price, as: :numeric, label: "Цена тура"
@@ -54,9 +62,8 @@ ActiveAdmin.register Tour do
   end
 
   index title: "Туры" do
-    column :id
     column "Опубликован" do |tour|
-      status_tag("#{tour.publish}") if tour.publish.present?
+      status_tag("Опубликован") if tour.publish.present?
     end
     column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|
