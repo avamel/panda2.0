@@ -4,12 +4,16 @@ class Tour < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  # scope :closest, -> { |after = DateTime.now, limit = 1| where('created_at > ?', after).order("end_date ASC").limit(limit) }
+
   has_many :galleries
   has_many :days, dependent: :destroy
   has_many :country_tours
   has_many :countries, through: :country_tours
   has_many :tour_date_links
   has_many :tour_dates, :through => :tour_date_links
+  has_many :type_of_tours
+  has_many :type_of_holidays, :through => :type_of_tours
   belongs_to :currency
 
   accepts_nested_attributes_for :tour_dates, allow_destroy: true

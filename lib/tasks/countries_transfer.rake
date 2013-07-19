@@ -47,6 +47,14 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "news"
     end
+    class TypeOfHolidaysManufacturer < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "type_of_holidays"
+    end
+    class TypeOfToursManufacturer < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "type_of_tours"
+    end
     # Manufacturer1.all.each do |old_tour|
     #   new_tour = Tour.new
     #   new_tour.currency_id = old_tour.cur_money_id
@@ -140,15 +148,31 @@ namespace :countries_transfer do
 
     #   country.save(validate: false)
     # end
-    NewsManufacturer.all.each do |old_news|
-      new_news = News.new
-      new_news.id = old_news.id
-      new_news.title = old_news.title
-      new_news.slug = old_news.slug
-      new_news.created_at = old_news.created_at
-      new_news.updated_at = old_news.updated_at
-      new_news.content = old_news.content
-      new_news.save(validate: false)
+    # NewsManufacturer.all.each do |old_news|
+    #   new_news = News.new
+    #   new_news.id = old_news.id
+    #   new_news.title = old_news.title
+    #   new_news.slug = old_news.slug
+    #   new_news.created_at = old_news.created_at
+    #   new_news.updated_at = old_news.updated_at
+    #   new_news.content = old_news.content
+    #   new_news.save(validate: false)
+    # end
+    TypeOfHolidaysManufacturer.all.each do |old_holiday|
+      new_holiday = TypeOfHoliday.new
+      new_holiday.id = old_holiday.id
+      new_holiday.title = old_holiday.title
+      new_holiday.slug = old_holiday.slug
+      new_holiday.created_at = old_holiday.created_at
+      new_holiday.updated_at = old_holiday.updated_at
+      new_holiday.save(validate: false)
+    end
+    TypeOfToursManufacturer.all.each do |old_type|
+      new_type = TypeOfTour.new
+      new_type.id = old_type.id
+      new_type.type_of_holiday_id = old_type.type_of_holiday_id
+      new_type.tour_id = old_type.tour_id
+      new_type.save(validate: false)
     end
   end
 

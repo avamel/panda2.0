@@ -28,6 +28,8 @@
                 = "#{tour.price} #{tour.currency.title}"
             .center-meta
               .center-title Ближайший автобусный тур
-              .center-time Отправление 23 июня
+              .center-time
+                Отправление
+                = time_tag tour.tour_dates.last.date
               = link_to tour.title, tour_path(tour), :class => "center-route"
               .center-shadow

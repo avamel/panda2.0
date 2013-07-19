@@ -7,3 +7,5 @@
         = link_to item.title, news_path(item), :class => "news-link"
         .news-date
           = time_tag item.created_at
+    %li.news-item.all-news
+      = link_to "Все новости", news_index_path, :class => "news-link"

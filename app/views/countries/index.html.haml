@@ -9,7 +9,7 @@
     = render partial: 'partials/countries'
   .countries-line
 .hits-bg
-  = render partial: 'partials/hits', locals: { :tours => @tours }
+  = render partial: 'partials/hits', locals: { :tours => @tours, :closest => @closest_tour }
 .about-bg
   = render partial: 'partials/about'
 .travels-bg
