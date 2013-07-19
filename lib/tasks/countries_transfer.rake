@@ -47,6 +47,10 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "news"
     end
+    class ToursTypesManufacturer < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = ""
+    end
     # Manufacturer1.all.each do |old_tour|
     #   new_tour = Tour.new
     #   new_tour.currency_id = old_tour.cur_money_id
@@ -140,7 +144,17 @@ namespace :countries_transfer do
 
     #   country.save(validate: false)
     # end
-    NewsManufacturer.all.each do |old_news|
+    # NewsManufacturer.all.each do |old_news|
+    #   new_news = News.new
+    #   new_news.id = old_news.id
+    #   new_news.title = old_news.title
+    #   new_news.slug = old_news.slug
+    #   new_news.created_at = old_news.created_at
+    #   new_news.updated_at = old_news.updated_at
+    #   new_news.content = old_news.content
+    #   new_news.save(validate: false)
+    # end
+    ToursTypesManufacturer.all.each do |old_news|
       new_news = News.new
       new_news.id = old_news.id
       new_news.title = old_news.title
