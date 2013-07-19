@@ -27,7 +27,7 @@
             = "#{tour.price} "
             = tour.currency.title if tour.currency.present?
     .tl-news
-      = render partial: 'partials/news'
+      = render partial: 'partials/news', locals: { :news => @news }
       .hits-item.center
         .hit-photo
           = image_tag(@month_country.teaser.url(:masonry_little))

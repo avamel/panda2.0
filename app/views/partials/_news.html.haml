@@ -1,21 +1,9 @@
-.right-title
-  Новости компании
-%ul.news-list
-  %li.news-item
-    = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
-    .news-date
-      23 июня
-  %li.news-item
-    = link_to "Посольство Франции  прекращает выдачу виз в Испанию", "#", :class => "news-link"
-    .news-date
-      21 июня
-  %li.news-item
-    = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
-    .news-date
-      23 июня
-  %li.news-item
-    = link_to "Изменение графика работы 29.06.2013", "#", :class => "news-link"
-    .news-date
-      23 июня
-  %li.news-item.all-news
-    = link_to "Все новости", "#", :class => "news-link"
+- if @news.present?
+  .right-title
+    Новости компании
+  %ul.news-list
+    - @news.each do |item|
+      %li.news-item
+        = link_to item.title, news_path(item), :class => "news-link"
+        .news-date
+          = time_tag item.created_at
