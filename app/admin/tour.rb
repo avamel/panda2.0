@@ -77,6 +77,9 @@ ActiveAdmin.register Tour do
 
       f.input :title, label: "Название тура"
       f.input :publish, as: :boolean, label: "Опубликован"
+      f.input :type, as: :check_boxes, collection: ["Экскурсионные автобусные туры","Экскурсионные туры с отдыхом на море",
+                                                    "Туры выходного дня","Отдых на море","Экскурсионные авиа туры","Морские круизы",
+                                                    "Отдых в Крыму","Детский и молодежный отдых в Болгарии"]
       f.input :preview, as: :html, label: "Превью для тура"
       f.input :overview, as: :html, label: "Описание тура"
       f.input :currency, label: "Валюта"
@@ -120,7 +123,7 @@ ActiveAdmin.register Tour do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:tour).permit(:teaser, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
+      [params.require(:tour).permit(:type, :teaser, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :source_content_type, :source_file_size, :source_updated_at],

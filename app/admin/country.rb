@@ -26,7 +26,7 @@ ActiveAdmin.register Country do
   filter :title, label: "Название страны", as: :check_boxes, collection: proc { Country.all.map { |x| [x.title, x.title] } }
 
 
-  index do
+  index title: "Страны" do
     column :id
     column "Регион", :region
     column "Страна месяца" do |country|
@@ -67,7 +67,7 @@ ActiveAdmin.register Country do
       f.input :month_country, as: :boolean, label: "Страна месяца"
       f.input :region, collection: [["Европа", "Europe"], ["Азия", "Asia"], ["Южная Америка", "South_america"], ["Африка", "Africa"], ["а также", "Also"]], label: "Регион"
       f.input :title, sortable: true, label: "Название страны"
-      f.input :overview, :as => :html, label: "Описание страны"
+      f.input :overview, as: :html, label: "Описание страны"
       f.input :month_preview, as: :html, label: "Страна месяца"
       f.input :teaser, label: "Картинка"
     end

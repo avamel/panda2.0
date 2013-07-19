@@ -16,6 +16,8 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :days, allow_destroy: true
   accepts_nested_attributes_for :galleries, allow_destroy: true
 
+  serialize :type
+
   validates :title, presence: true, uniqueness: true
   validates :preview, presence: true
   validates :overview, presence: true
