@@ -50,6 +50,8 @@ ActiveAdmin.register Country do
       row "Описание страны" do
         raw country.overview
       end
+      row "Страна месяца, описание"
+        raw country.preview
     end
   end
 
@@ -59,6 +61,8 @@ ActiveAdmin.register Country do
       f.input :region, collection: [["Европа","Europe"],["Азия","Asia"],["Южная Америка","South_america"],["Африка","Africa"],["а также","Also"]], label: "Регион"
       f.input :title, sortable: true, label: "Название страны"
       f.input :overview, :as => :html, label: "Описание страны"
+      f.input :month_preview, as: :html, label: "Страна месяца"
+      f.input :teaser, label: "Картинка"
     end
     f.buttons
   end
@@ -66,7 +70,7 @@ ActiveAdmin.register Country do
   controller do
     def resource_params
       return [] if request.get?
-      [ params.require(:country).permit(:title, :overview, :region, :month_country) ]
+      [ params.require(:country).permit(:title, :overview, :region, :month_country, :teaser) ]
     end
   end
 
