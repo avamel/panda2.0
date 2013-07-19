@@ -20,4 +20,4 @@
               .travels-title Страна месяца
               = link_to month.title, country_path(month), :class => "country-name"
               .travels-hint
-                = month.month_preview
+                = raw month.month_preview
