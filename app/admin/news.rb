@@ -5,8 +5,9 @@ ActiveAdmin.register News do
   filter :content, as: :string, label: "Контент"
 
   index title: "Новости" do
-    column :id
-    column "Заголовок", :title
+    column "Заголовок" do |news|
+      link_to news.title, admin_news_path(news)
+    end
     column "Контент" do |news|
       truncate(strip_tags(news.content), length: 80)
     end

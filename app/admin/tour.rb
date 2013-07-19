@@ -21,6 +21,9 @@ ActiveAdmin.register Tour do
 
     panel "Информация о туре" do
       attributes_table_for tour do
+        row "Тип тура" do
+          tour.type_of_holidays.map(&:title).join(", ")
+        end
         row "Название тура" do
           tour.title
         end
@@ -47,6 +50,15 @@ ActiveAdmin.register Tour do
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
         end
+        row "Галерея" do
+          ul do
+            tour.galleries.each do |img|
+              li do
+                image_tag(img.source.url(:slider_thumb))
+              end
+            end
+          end
+        end
       end
     end
 
@@ -63,7 +75,7 @@ ActiveAdmin.register Tour do
 
   index title: "Туры" do
     column "Опубликован" do |tour|
-      status_tag("Опубликован") if tour.publish.present?
+      status_tag("#{tour.publish}") if tour.publish.present?
     end
     column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|
@@ -79,7 +91,7 @@ ActiveAdmin.register Tour do
     default_actions
   end
 
-  form html: {:multipart => true} do |f|
+  form html: {multipart: true} do |f|
     f.inputs do
 
       f.input :title, label: "Название тура"
@@ -90,8 +102,8 @@ ActiveAdmin.register Tour do
       f.input :price, label: "Цена тура"
       f.input :special_price, label: "Специальная цена тура"
       f.input :special_price_comment, label: "Комментарии к специальной цене"
-      f.input :type_of_holiday_ids, as: :check_boxes, :collection => Hash[TypeOfHoliday.all.map { |b| [b.title, b.id] }], label: "Тип тура"
-      f.input :country_ids, as: :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }], label: "Страны"
+      f.input :type_of_holidays, as: :check_boxes, label: "Тип тура"
+      f.input :countries, as: :check_boxes, label: "Страны"
 
       f.has_many :tour_dates do |fu|
         if fu.object.date.present?

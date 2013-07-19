@@ -27,7 +27,6 @@ ActiveAdmin.register Country do
 
 
   index title: "Страны" do
-    column :id
     column "Регион", :region
     column "Страна месяца" do |country|
       status_tag("#{country.month_country}") if country.month_country.present?
@@ -37,6 +36,11 @@ ActiveAdmin.register Country do
     end
     column "Описание" do |country|
       truncate(strip_tags(country.overview), length: 80)
+    end
+    column "Налиличие картинки" do |country|
+      if country.teaser.present?
+        status_tag("есть")
+      end
     end
     default_actions
   end
@@ -48,6 +52,11 @@ ActiveAdmin.register Country do
       end
       row "Название страны" do
         country.title
+      end
+      if country.month_country.present?
+        row "СТрана месяца"   do
+          status_tag("#{country.month_country}")
+        end
       end
       row "Описание страны" do
         raw country.overview

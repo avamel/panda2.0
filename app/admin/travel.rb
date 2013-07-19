@@ -11,31 +11,46 @@ ActiveAdmin.register Travel do
     travel.where("travels.published IS NOT TRUE")
   end
 
+  filter :title, as: :string, label: "Заголовок"
+
   index title: "Путешествия" do
     column "Опубликован" do |travel|
       status_tag("#{travel.published}") if travel.published.present?
     end
-    column "Заголовок", :title
+    column "Заголовок" do |travel|
+      link_to travel.title, admin_travel_path(travel)
+    end
+    column "Налиличие картинки" do |travel|
+      if travel.teaser.present?
+        status_tag("есть")
+      end
+    end
     default_actions
   end
 
-  show :title => "Описание путешествия" do |travel|
-    attributes_table do
-      row "Заголовок к статье" do
-        travel.title
-      end
-      row "Краткое описание" do
-        raw travel.preview
-      end
-      row "Статья" do
-        raw travel.overview
-      end
-      if travel.teaser.present?
-        row "Картинка" do
-          image_tag(travel.teaser.url(:slider_thumb))
+  show title: "Описание путешествия" do |travel|
+      attributes_table do
+        row "Заголовок к статье" do
+          travel.title
+        end
+
+        if travel.published.present?
+          row "Опубликовано" do
+            status_tag("#{travel.published}")
+          end
+        end
+        row "Краткое описание" do
+          raw travel.preview
+        end
+        row "Статья" do
+          raw travel.overview
+        end
+        if travel.teaser.present?
+          row "Картинка" do
+            image_tag(travel.teaser.url(:slider_thumb))
+          end
         end
       end
-    end
   end
 
   form do |f|
