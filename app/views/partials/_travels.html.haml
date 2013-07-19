@@ -15,9 +15,9 @@
       - if((idx) == 0)
         .hits-item.center
           .hit-photo
-            = image_tag(month.teaser.url(:thumb))
+            = image_tag(month.teaser.url)
             .travels-meta
               .travels-title Страна месяца
-              = link_to month.country.title, country_path(month.country), :class => "country-name"
+              = link_to month.title, country_path(month), :class => "country-name"
               .travels-hint
-                = month.preview
+                = month.month_preview

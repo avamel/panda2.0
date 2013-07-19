@@ -30,12 +30,12 @@
       = render partial: 'partials/news'
       .hits-item.center
         .hit-photo
-          = image_tag(@month_country.teaser.url(:thumb))
+          = image_tag(@month_country.teaser.url(:masonry_little))
           .travels-meta
             .travels-title Страна месяца
-            = link_to @month_country.country.title, country_path(@month_country.country), :class => "country-name"
+            = link_to @month_country.title, country_path(@month_country), :class => "country-name"
             .travels-hint
-              = @month_country.preview
+              = @month_country.month_preview
   .countries
     .countries-title
       Страны
