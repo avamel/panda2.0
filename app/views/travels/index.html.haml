@@ -4,3 +4,14 @@
     = render partial: 'partials/menu_bottom'
 .travels-bg.index
   = render partial: 'partials/travels', locals: { :travels => @travels, :month => @month_country }
+.about-bg
+  = render partial: 'partials/about'
+.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Новые туры
+    = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'
