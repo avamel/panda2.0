@@ -22,7 +22,7 @@
       = render partial: 'partials/news', locals: { :news => @news }
       .hits-item.center
         .hit-photo
-          = image_tag(@month_country.teaser.url(:masonry_little))
+          = link_to(image_tag(@month_country.teaser.url(:masonry_little)), country_path(@month_country))
           .travels-meta
             .travels-title Страна месяца
             = link_to @month_country.title, country_path(@month_country), :class => "country-name"
