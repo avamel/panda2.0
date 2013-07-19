@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+  	@news = News.last(5)
     @tours = Tour.order("clicks DESC").includes(:currency).limit(11)
     @travels = Travel.take(11)
     @month_country = Country.where(month_country: true).first

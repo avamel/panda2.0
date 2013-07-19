@@ -25,4 +25,4 @@
     .card
       = image_tag("card.png")
   .about-right
-    = render partial: 'partials/news'
+    = render partial: 'partials/news', locals: { :news => @news }

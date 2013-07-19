@@ -3,6 +3,7 @@ class ToursController < ApplicationController
   def index
     @month_country = Country.where(month_country: true).first
     @tours = Tour.all
+    @news = News.last(5)
   end
 
   def show
