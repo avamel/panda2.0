@@ -7,7 +7,7 @@ ActiveAdmin.register Travel do
   scope :published do |travel|
     travel.where("travels.published IS TRUE")
   end
-  scope :unpublished do |travel|
+  scope :not_published do |travel|
     travel.where("travels.published IS NOT TRUE")
   end
 
@@ -15,7 +15,11 @@ ActiveAdmin.register Travel do
 
   index title: "Путешествия" do
     column "Опубликован" do |travel|
-      status_tag("#{travel.published}") if travel.published.present?
+      if travel.published.present?
+        status_tag("Да")
+      else
+        status_tag("Нет")
+      end
     end
     column "Заголовок" do |travel|
       link_to travel.title, admin_travel_path(travel)
@@ -29,28 +33,31 @@ ActiveAdmin.register Travel do
   end
 
   show title: "Описание путешествия" do |travel|
-      attributes_table do
-        row "Заголовок к статье" do
-          travel.title
-        end
+    attributes_table do
+      row "Заголовок к статье" do
+        travel.title
+      end
 
+
+      row "Опубликовано" do
         if travel.published.present?
-          row "Опубликовано" do
-            status_tag("#{travel.published}")
-          end
-        end
-        row "Краткое описание" do
-          raw travel.preview
-        end
-        row "Статья" do
-          raw travel.overview
-        end
-        if travel.teaser.present?
-          row "Картинка" do
-            image_tag(travel.teaser.url(:slider_thumb))
-          end
+          status_tag("Да")
+        else
+          status_tag("Нет")
         end
       end
+      row "Краткое описание" do
+        raw travel.preview
+      end
+      row "Статья" do
+        raw travel.overview
+      end
+      if travel.teaser.present?
+        row "Картинка" do
+          image_tag(travel.teaser.url(:slider_thumb))
+        end
+      end
+    end
   end
 
   form do |f|

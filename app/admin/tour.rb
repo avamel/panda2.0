@@ -30,11 +30,13 @@ ActiveAdmin.register Tour do
         row "Страны" do
           tour.countries.map(&:title).join(", ")
         end
-
-        row "Публикация" do
-          status_tag("#{tour.publish}") if tour.publish.present?
+        row "Опубликовано" do
+          if tour.publish == true
+            status_tag("Да")
+          else
+             status_tag("Нет")
+          end
         end
-
         row "Превью тура" do
           raw tour.preview
         end
@@ -47,14 +49,22 @@ ActiveAdmin.register Tour do
         row "Специальная цена" do
           "#{tour.special_price}" + " #{tour.currency.title}" if tour.special_price.present?
         end
+        row "Комментарии к специальной цене" do |tour|
+          tour.special_price_comment
+        end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
         end
-        row "Галерея" do
-          ul do
-            tour.galleries.each do |img|
-              li do
-                image_tag(img.source.url(:slider_thumb))
+        if tour.galleries.present?
+          row "Галерея" do
+            ul do
+              tour.galleries.each do |img|
+                li do
+                  img.title
+                end
+                li do
+                  image_tag(img.source.url(:slider_thumb))
+                end
               end
             end
           end
@@ -74,8 +84,12 @@ ActiveAdmin.register Tour do
   end
 
   index title: "Туры" do
-    column "Опубликован" do |tour|
-      status_tag("#{tour.publish}") if tour.publish.present?
+    column "Опубликовано" do |tour|
+      if tour.publish == true
+        status_tag("Да")
+      else
+        status_tag("Нет")
+      end
     end
     column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|

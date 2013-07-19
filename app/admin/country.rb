@@ -29,7 +29,7 @@ ActiveAdmin.register Country do
   index title: "Страны" do
     column "Регион", :region
     column "Страна месяца" do |country|
-      status_tag("#{country.month_country}") if country.month_country.present?
+      status_tag("Да") if country.month_country == true
     end
     column "Страна", sortable: 'title' do |country|
       link_to country.title, admin_country_path(country)
@@ -53,9 +53,9 @@ ActiveAdmin.register Country do
       row "Название страны" do
         country.title
       end
-      if country.month_country.present?
-        row "СТрана месяца"   do
-          status_tag("#{country.month_country}")
+      if country.month_country == true
+        row "Страна месяца"   do
+          status_tag("Да")
         end
       end
       row "Описание страны" do
