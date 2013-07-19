@@ -42,6 +42,7 @@ ActiveAdmin.register News do
       f.input :content, as: :html, label: "Новость"
       if news.teaser.present?
         f.input :teaser, hint: f.template.image_tag(news.teaser.url(:masonry_little)), label: "Картинка"
+        f.input :teaser_delete, as: :boolean, label: "Удалить"
       else
         f.input :teaser, label: "Картинка"
       end
@@ -52,7 +53,7 @@ ActiveAdmin.register News do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:news).permit(:title, :content, :teaser)]
+      [params.require(:news).permit(:title, :content, :teaser, :teaser_delete)]
     end
   end
 

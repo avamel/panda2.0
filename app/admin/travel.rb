@@ -67,8 +67,13 @@ ActiveAdmin.register Travel do
       f.input :preview, as: :html, label: "Краткое описание"
       f.input :overview, as: :html, label: "Статья"
       f.inputs "Картинка" do
-        f.input :teaser,  hint: f.template.image_tag(f.object.teaser.url(:masonry_little)), as: :file
+        if f.object.teaser.present?
+          f.input :teaser, hint: f.template.image_tag(f.object.teaser.url(:masonry_little)), as: :file
+          f.input :teaser_delete, as: :boolean, label: "Удалить"
+        else
+          f.input :teaser
         end
+      end
     end
     f.buttons
   end
@@ -76,7 +81,7 @@ ActiveAdmin.register Travel do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published, :remove_teaser)]
+      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published, :teaser_delete)]
     end
   end
 

@@ -29,6 +29,8 @@ class Tour < ActiveRecord::Base
 
   has_attached_file :teaser, :styles => { :thumb => ["70x60#", :jpg], :masonry_little => ["208x180#", :jpg], :masonry_big => ["450x396#", :jpg],
                                           :slider => ["468x352#", :jpg], :slider_thumb => ["104x52#", :jpg], :tour_slider => ["670x406#", :jpg] }
+  has_destroyable_file :teaser
+
   mapping do
     indexes :title
     indexes :overview
