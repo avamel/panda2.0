@@ -55,6 +55,13 @@ ActiveAdmin.register Tour do
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
         end
+
+        if tour.teaser.present?
+          row "Картинка для превью" do
+            image_tag(tour.teaser.url(:slider_thumb))
+          end
+        end
+
         if tour.galleries.present?
           row "Галерея" do
             ul do
@@ -127,7 +134,7 @@ ActiveAdmin.register Tour do
           fu.input :date, label: "Дата"
         end
       end
-      f.input :teaser, label: "Картинка для превью"
+      f.input :teaser, label: "Картинка для превью", hint: f.template.image_tag(f.object.teaser.url(:slider_thumb)), as: :file
       f.has_many :galleries do |g|
         g.input :title, label: "Заголовок"
         if g.object.source.present?

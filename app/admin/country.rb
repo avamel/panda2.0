@@ -66,7 +66,7 @@ ActiveAdmin.register Country do
       end
       if country.teaser.present?
         row "Картинка" do
-          image_tag(country.teaser.url(:slider_thumb))
+          image_tag(country.teaser.url(:masonry_little))
         end
       end
     end
@@ -79,7 +79,7 @@ ActiveAdmin.register Country do
       f.input :title, sortable: true, label: "Название страны"
       f.input :overview, as: :html, label: "Описание страны"
       f.input :month_preview, as: :html, label: "Страна месяца"
-      f.input :teaser, label: "Картинка"
+      f.input :teaser, label: "Картинка", hint: f.template.image_tag(f.object.teaser.url(:masonry_little)), as: :file
     end
     f.buttons
   end

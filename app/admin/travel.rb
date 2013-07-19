@@ -54,7 +54,7 @@ ActiveAdmin.register Travel do
       end
       if travel.teaser.present?
         row "Картинка" do
-          image_tag(travel.teaser.url(:slider_thumb))
+          image_tag(travel.teaser.url(:masonry_little)) if travel.teaser.present?
         end
       end
     end
@@ -66,7 +66,9 @@ ActiveAdmin.register Travel do
       f.input :published, as: :boolean, label: "Опубликовано"
       f.input :preview, as: :html, label: "Краткое описание"
       f.input :overview, as: :html, label: "Статья"
-      f.input :teaser, label: "Картинка"
+      f.inputs "Картинка" do
+        f.input :teaser,  hint: f.template.image_tag(f.object.teaser.url(:masonry_little)), as: :file
+        end
     end
     f.buttons
   end
@@ -74,7 +76,7 @@ ActiveAdmin.register Travel do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published)]
+      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published, :remove_teaser)]
     end
   end
 

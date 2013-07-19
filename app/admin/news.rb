@@ -30,7 +30,7 @@ ActiveAdmin.register News do
       end
       if news.teaser.present?
         row "Картинка" do
-          image_tag(news.teaser.url(:slider_thumb))
+          image_tag(news.teaser.url(:masonry_little))
         end
       end
     end
@@ -41,7 +41,7 @@ ActiveAdmin.register News do
       f.input :title, label: "Заголовок"
       f.input :content, as: :html, label: "Новость"
       if news.teaser.present?
-        f.input :teaser, hint: f.template.image_tag(news.teaser.url(:slider_thumb)), label: "Картинка"
+        f.input :teaser, hint: f.template.image_tag(news.teaser.url(:masonry_little)), label: "Картинка"
       else
         f.input :teaser, label: "Картинка"
       end
