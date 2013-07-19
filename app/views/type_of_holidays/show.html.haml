@@ -2,22 +2,25 @@
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
-.country-bg
-  .country-show
-    .country-tabs
-      .tabs-title
-        = @travel.title
-      .tab-container
-        .panel-container
-          #info.markdown-country
-            = markdown @travel.overview
-        .undermap
-          = render partial: 'partials/share'
-          .print-page
-            %span.print-icon
-            = link_to 'Распечатать страницу', "#"
-
-
+.tours-list-bg.holiday-bg
+  .tours-list
+    .countries-title
+      = @type_title.title
+    %ul.tl
+      - @tours.each do |tour|
+        %li.tl-item
+          .tl-thumb
+            = image_tag(tour.teaser.url(:thumb))
+          .tl-body
+            .tl-title
+              = link_to "#{tour.title}", tour_path(tour)
+            .tl-dates
+              - tour.tour_dates.each do |date|
+                .date-item
+                  = time_tag date.date if date.date.present?
+          .tl-cost
+            = "#{tour.price} "
+            = tour.currency.title if tour.currency.present?
     .tl-news
       = render partial: 'partials/news', locals: { :news => @news }
       .hits-item.center

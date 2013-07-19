@@ -2,24 +2,21 @@
   .menu
     = render partial: 'partials/menu_top'
     = render partial: 'partials/menu_bottom'
-.country-bg
-  .country-show
-    .country-tabs
-      .tabs-title
-        = @travel.title
-      .tab-container
-        .panel-container
-          #info.markdown-country
-            = markdown @travel.overview
-        .undermap
-          = render partial: 'partials/share'
-          .print-page
-            %span.print-icon
-            = link_to 'Распечатать страницу', "#"
-
-
+.tours-list-bg.holiday-bg
+  .tours-list
+    .countries-title
+      Новости
+    %ul.tl
+      - @news.each do |item|
+        %li.tl-item.news
+          .tl-body
+            .tl-title
+              = link_to "#{item.title}", news_path(item)
+            .tl-dates
+              .markdown-country
+                = markdown item.content
     .tl-news
-      = render partial: 'partials/news', locals: { :news => @news }
+      = render partial: 'partials/news', locals: { :news => @news_sidebar }
       .hits-item.center
         .hit-photo
           = image_tag(@month_country.teaser.url(:masonry_little))
@@ -37,3 +34,19 @@
       .countries-title
         Страны
       = render partial: 'partials/countries'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

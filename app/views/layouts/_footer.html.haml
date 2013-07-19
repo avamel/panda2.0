@@ -28,13 +28,10 @@
     %ul.footer-links
       %li= link_to "Каталог туров", tours_path
       %li= link_to "Визы", "#"
-      %li= link_to "Страны", "#"
-      %li= link_to "Путешествия", "#"
+      %li= link_to "Страны", countries_path
+      %li= link_to "Путешествия", travels_path
       %li= link_to "Контакты", contacts_path
 
     %ul.footer-features
-      %li= link_to "Экскурсионные автобусные туры", "#"
-      %li= link_to "Экскурсионные туры с отдыхом на море", "#"
-      %li= link_to "Страны", "#"
-      %li= link_to "Путешествия", "#"
-      %li= link_to "Контакты", contacts_path
+      - TypeOfHoliday.all.each do |item|
+        %li= link_to item.title, type_of_holiday_path(item)
