@@ -1,8 +1,7 @@
 ActiveAdmin.register Currency do
   menu label: "Валюта"
-
+  filter :title, as: :string, label: "Валюта"
   index do
-    column :id
     column "Валюта", :title
     default_actions
   end

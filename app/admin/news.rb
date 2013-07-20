@@ -5,8 +5,9 @@ ActiveAdmin.register News do
   filter :content, as: :string, label: "Контент"
 
   index title: "Новости" do
-    column :id
-    column "Заголовок", :title
+    column "Заголовок" do |news|
+      link_to news.title, admin_news_path(news)
+    end
     column "Контент" do |news|
       truncate(strip_tags(news.content), length: 80)
     end
@@ -29,7 +30,7 @@ ActiveAdmin.register News do
       end
       if news.teaser.present?
         row "Картинка" do
-          image_tag(news.teaser.url(:slider_thumb))
+          image_tag(news.teaser.url(:masonry_little))
         end
       end
     end
@@ -40,7 +41,8 @@ ActiveAdmin.register News do
       f.input :title, label: "Заголовок"
       f.input :content, as: :html, label: "Новость"
       if news.teaser.present?
-        f.input :teaser, hint: f.template.image_tag(news.teaser.url(:slider_thumb)), label: "Картинка"
+        f.input :teaser, hint: f.template.image_tag(news.teaser.url(:masonry_little)), label: "Картинка"
+        f.input :teaser_delete, as: :boolean, label: "Удалить"
       else
         f.input :teaser, label: "Картинка"
       end
@@ -51,7 +53,7 @@ ActiveAdmin.register News do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:news).permit(:title, :content, :teaser)]
+      [params.require(:news).permit(:title, :content, :teaser, :teaser_delete)]
     end
   end
 

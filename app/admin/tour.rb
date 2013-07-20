@@ -21,17 +21,22 @@ ActiveAdmin.register Tour do
 
     panel "Информация о туре" do
       attributes_table_for tour do
+        row "Тип тура" do
+          tour.type_of_holidays.map(&:title).join(", ")
+        end
         row "Название тура" do
           tour.title
         end
         row "Страны" do
           tour.countries.map(&:title).join(", ")
         end
-
-        row "Публикация" do
-          status_tag("#{tour.publish}") if tour.publish.present?
+        row "Опубликовано" do
+          if tour.publish == true
+            status_tag("Да")
+          else
+             status_tag("Нет")
+          end
         end
-
         row "Превью тура" do
           raw tour.preview
         end
@@ -44,8 +49,32 @@ ActiveAdmin.register Tour do
         row "Специальная цена" do
           "#{tour.special_price}" + " #{tour.currency.title}" if tour.special_price.present?
         end
+        row "Комментарии к специальной цене" do |tour|
+          tour.special_price_comment
+        end
         row "Дата тура" do
           tour.tour_dates.map { |x| status_tag(x.date.strftime("%B %e, %Y")) }.join(" ")
+        end
+
+        if tour.teaser.present?
+          row "Картинка для превью" do
+            image_tag(tour.teaser.url(:slider_thumb))
+          end
+        end
+
+        if tour.galleries.present?
+          row "Галерея" do
+            ul do
+              tour.galleries.each do |img|
+                li do
+                  img.title
+                end
+                li do
+                  image_tag(img.source.url(:slider_thumb))
+                end
+              end
+            end
+          end
         end
       end
     end
@@ -62,8 +91,12 @@ ActiveAdmin.register Tour do
   end
 
   index title: "Туры" do
-    column "Опубликован" do |tour|
-      status_tag("Опубликован") if tour.publish.present?
+    column "Опубликовано" do |tour|
+      if tour.publish == true
+        status_tag("Да")
+      else
+        status_tag("Нет")
+      end
     end
     column "Популярность  тура", :clicks
     column "Название тура", :title do |tour|
@@ -79,7 +112,7 @@ ActiveAdmin.register Tour do
     default_actions
   end
 
-  form html: {:multipart => true} do |f|
+  form html: {multipart: true} do |f|
     f.inputs do
 
       f.input :title, label: "Название тура"
@@ -90,8 +123,8 @@ ActiveAdmin.register Tour do
       f.input :price, label: "Цена тура"
       f.input :special_price, label: "Специальная цена тура"
       f.input :special_price_comment, label: "Комментарии к специальной цене"
-      f.input :type_of_holiday_ids, as: :check_boxes, :collection => Hash[TypeOfHoliday.all.map { |b| [b.title, b.id] }], label: "Тип тура"
-      f.input :country_ids, as: :check_boxes, :collection => Hash[Country.all.map { |b| [b.title, b.id] }], label: "Страны"
+      f.input :type_of_holidays, as: :check_boxes, label: "Тип тура"
+      f.input :countries, as: :check_boxes, label: "Страны"
 
       f.has_many :tour_dates do |fu|
         if fu.object.date.present?
@@ -101,7 +134,12 @@ ActiveAdmin.register Tour do
           fu.input :date, label: "Дата"
         end
       end
-      f.input :teaser, label: "Картинка для превью"
+      if f.object.teaser.present?
+      f.input :teaser, label: "Картинка для превью", hint: f.template.image_tag(f.object.teaser.url(:slider_thumb)), as: :file
+      f.input :teaser_delete, as: :boolean, label: "Удалить"
+      else
+        f.input :teaser, label: "Картинка для превью"
+        end
       f.has_many :galleries do |g|
         g.input :title, label: "Заголовок"
         if g.object.source.present?
@@ -128,7 +166,7 @@ ActiveAdmin.register Tour do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:tour).permit(:teaser, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
+      [params.require(:tour).permit(:teaser, :teaser_delete, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [], :type_of_holiday_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
                                                            :source_content_type, :source_file_size, :source_updated_at],

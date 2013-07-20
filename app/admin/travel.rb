@@ -7,22 +7,44 @@ ActiveAdmin.register Travel do
   scope :published do |travel|
     travel.where("travels.published IS TRUE")
   end
-  scope :unpublished do |travel|
+  scope :not_published do |travel|
     travel.where("travels.published IS NOT TRUE")
   end
 
+  filter :title, as: :string, label: "Заголовок"
+
   index title: "Путешествия" do
     column "Опубликован" do |travel|
-      status_tag("#{travel.published}") if travel.published.present?
+      if travel.published.present?
+        status_tag("Да")
+      else
+        status_tag("Нет")
+      end
     end
-    column "Заголовок", :title
+    column "Заголовок" do |travel|
+      link_to travel.title, admin_travel_path(travel)
+    end
+    column "Налиличие картинки" do |travel|
+      if travel.teaser.present?
+        status_tag("есть")
+      end
+    end
     default_actions
   end
 
-  show :title => "Описание путешествия" do |travel|
+  show title: "Описание путешествия" do |travel|
     attributes_table do
       row "Заголовок к статье" do
         travel.title
+      end
+
+
+      row "Опубликовано" do
+        if travel.published.present?
+          status_tag("Да")
+        else
+          status_tag("Нет")
+        end
       end
       row "Краткое описание" do
         raw travel.preview
@@ -32,7 +54,7 @@ ActiveAdmin.register Travel do
       end
       if travel.teaser.present?
         row "Картинка" do
-          image_tag(travel.teaser.url(:slider_thumb))
+          image_tag(travel.teaser.url(:masonry_little)) if travel.teaser.present?
         end
       end
     end
@@ -44,7 +66,14 @@ ActiveAdmin.register Travel do
       f.input :published, as: :boolean, label: "Опубликовано"
       f.input :preview, as: :html, label: "Краткое описание"
       f.input :overview, as: :html, label: "Статья"
-      f.input :teaser, label: "Картинка"
+      f.inputs "Картинка" do
+        if f.object.teaser.present?
+          f.input :teaser, hint: f.template.image_tag(f.object.teaser.url(:masonry_little)), as: :file
+          f.input :teaser_delete, as: :boolean, label: "Удалить"
+        else
+          f.input :teaser
+        end
+      end
     end
     f.buttons
   end
@@ -52,7 +81,7 @@ ActiveAdmin.register Travel do
   controller do
     def resource_params
       return [] if request.get?
-      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published)]
+      [params.require(:travel).permit(:teaser, :title, :preview, :overview, :published, :teaser_delete)]
     end
   end
 
