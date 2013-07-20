@@ -1,9 +1,7 @@
 $(document).ready(function() {
   var re = /\D+/
-
   var place_param = $('.place');
   var date_param = $('.date');
-
   if ($('input[name="country_name"]').val() != "") {
     $(place_param).text($('input[name="country_name"]').val());
     $(place_param).addClass('to_param');
@@ -12,7 +10,6 @@ $(document).ready(function() {
     $(date_param).text($('input[name="start"]').val());
     $(date_param).addClass('to_param');
   }
-
   $( "#slider-range" ).slider({
     range: true,
     min: 0,

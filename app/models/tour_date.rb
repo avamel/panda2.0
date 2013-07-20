@@ -1,4 +1,5 @@
 class TourDate < ActiveRecord::Base
+  scope :actual_dates, -> {where("date > ?", Date.today)}
   has_many :tour_date_links
   has_many :tours, :through => :tour_date_links
 

@@ -20,7 +20,7 @@
             .tl-title
               = link_to "#{tour.title}", tour_path(tour)
             .tl-dates
-              - tour.tour_dates.each do |date|
+              - tour.tour_dates.actual_dates.each do |date|
                 .date-item
                   = time_tag date.date if date.date.present?
           .tl-cost
