@@ -135,18 +135,22 @@ ActiveAdmin.register Tour do
         end
       end
       if f.object.teaser.present?
-      f.input :teaser, label: "Картинка для превью", hint: f.template.image_tag(f.object.teaser.url(:slider_thumb)), as: :file
-      f.input :teaser_delete, as: :boolean, label: "Удалить"
+        f.input :teaser, label: "Картинка для превью", hint: f.template.image_tag(f.object.teaser.url(:slider_thumb)), as: :file
+        f.input :teaser_delete, as: :boolean, label: "Удалить"
       else
         f.input :teaser, label: "Картинка для превью"
-        end
+      end
       f.has_many :galleries do |g|
         g.input :title, label: "Заголовок"
         if g.object.source.present?
           g.input :source, hint: f.template.image_tag(g.object.source.url(:slider_thumb)), label: "Файл"
+          g.input :video_url, label: "Ссылка на видео (vimeo, youtube)"
+          g.input :attachment_type, as: :select, collection: ["видео", "изображение"]
           g.input :_destroy, as: :boolean, label: "Удалить"
         else
           g.input :source, label: "Файл"
+          g.input :video_url, label: "Ссылка на видео (vimeo, youtube)"
+          g.input :attachment_type, as: :select, collection: ["видео", "изображение"]
         end
       end
       f.has_many :days do |d|
@@ -168,7 +172,7 @@ ActiveAdmin.register Tour do
       return [] if request.get?
       [params.require(:tour).permit(:teaser, :teaser_delete, :publish, :title, :preview, :overview, :price, :special_price, :special_price_comment, :currency_id,
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [], :type_of_holiday_ids => [],
-                                    galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name,
+                                    galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name, :video_url, :attachment_type,
                                                            :source_content_type, :source_file_size, :source_updated_at],
                                     days_attributes: [:id, :overview, :number, :_destroy])]
     end

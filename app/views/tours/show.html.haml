@@ -13,14 +13,20 @@
           %ul.slider2
             - @tour_galleries.each do |gallery|
               %li.tour-slide
-                = link_to(image_tag(gallery.source.url(:slider_big)), "#")
+                - if gallery.video_url.present?
+                  = video_embed(gallery.video_url, 670, 338)
+                - else
+                  = link_to(image_tag(gallery.source.url(:slider_big)), "#")
                 .tour-slider-title
                   = gallery.title
           #bx-pager
             - @tour_galleries.each do |gallery|
               %a{"data-slide-index" => "#{@slider_counter+=1}", :href => ""}
                 .pager-thumb
-                  = image_tag(gallery.source.url(:slider_thumb))
+                  - if gallery.video_url.present?
+                    = video_thumb(gallery.video_url, "small")
+                  - else
+                    = image_tag(gallery.source.url(:slider_thumb))
 
       - if @tour_days.present?
         %ul.show-tour-days
@@ -150,7 +156,6 @@
               <a href="skype:evg.petrova?call">evg.petrova</a>
             .manager-mail
               <a href="mailto:evg@panda-travel.by">evg@panda-travel.by</a>
-
         - if @tours_history.present?
           .side-history-block
             .history-title
@@ -168,7 +173,6 @@
                     .tl-cost
                       = "#{tour.price} "
                       = @tour.currency.title if @tour.currency.present?
-              
 #footer.new-tours-bg
   .new-tours
     .new-tours-header
