@@ -17,6 +17,15 @@ class ToursController < ApplicationController
     @tours_history = Tour.find session[:history]
   end
 
+  def visas
+    @tour = Tour.find params[:id]
+    @visas = @tour.visas
+    @month_country = Country.where(month_country: true).first
+    @news_sidebar = News.last(5)
+    @newest_tours = Tour.take(3)
+    @month_country = Country.where(month_country: true).first
+  end
+
   private
     def person_params
       params.require(:tour).permit!
@@ -30,7 +39,7 @@ class ToursController < ApplicationController
     def store_history
       tour_id = @tour.id
       session[:history] ||= []
-      session[:history].delete_at(0) if session[:history].size >= 4
+      session[:history].delete_at(0) if session[:history].size >= 5
       session[:history].push tour_id
       session[:history].uniq!
     end

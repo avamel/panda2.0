@@ -55,6 +55,10 @@ namespace :countries_transfer do
       establish_connection Rails.configuration.database_configuration["old_panda"]
       self.table_name = "type_of_tours"
     end
+    class VisasManufacturer < ActiveRecord::Base
+      establish_connection Rails.configuration.database_configuration["old_panda"]
+      self.table_name = "visas"
+    end
     # Manufacturer1.all.each do |old_tour|
     #   new_tour = Tour.new
     #   new_tour.currency_id = old_tour.cur_money_id
@@ -158,21 +162,30 @@ namespace :countries_transfer do
     #   new_news.content = old_news.content
     #   new_news.save(validate: false)
     # end
-    TypeOfHolidaysManufacturer.all.each do |old_holiday|
-      new_holiday = TypeOfHoliday.new
-      new_holiday.id = old_holiday.id
-      new_holiday.title = old_holiday.title
-      new_holiday.slug = old_holiday.slug
-      new_holiday.created_at = old_holiday.created_at
-      new_holiday.updated_at = old_holiday.updated_at
-      new_holiday.save(validate: false)
-    end
-    TypeOfToursManufacturer.all.each do |old_type|
-      new_type = TypeOfTour.new
-      new_type.id = old_type.id
-      new_type.type_of_holiday_id = old_type.type_of_holiday_id
-      new_type.tour_id = old_type.tour_id
-      new_type.save(validate: false)
+    # TypeOfHolidaysManufacturer.all.each do |old_holiday|
+    #   new_holiday = TypeOfHoliday.new
+    #   new_holiday.id = old_holiday.id
+    #   new_holiday.title = old_holiday.title
+    #   new_holiday.slug = old_holiday.slug
+    #   new_holiday.created_at = old_holiday.created_at
+    #   new_holiday.updated_at = old_holiday.updated_at
+    #   new_holiday.save(validate: false)
+    # end
+    # TypeOfToursManufacturer.all.each do |old_type|
+    #   new_type = TypeOfTour.new
+    #   new_type.id = old_type.id
+    #   new_type.type_of_holiday_id = old_type.type_of_holiday_id
+    #   new_type.tour_id = old_type.tour_id
+    #   new_type.save(validate: false)
+    # end
+    VisasManufacturer.all.each do |old_visa|
+      new_visa = Visa.new
+      new_visa.id = old_visa.id
+      new_visa.title = old_visa.title
+      new_visa.overview = old_visa.overview
+      new_visa.created_at = old_visa.created_at
+      new_visa.updated_at = old_visa.updated_at
+      new_visa.save(validate: false)
     end
   end
 

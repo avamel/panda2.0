@@ -125,6 +125,7 @@ ActiveAdmin.register Tour do
       f.input :special_price_comment, label: "Комментарии к специальной цене"
       f.input :type_of_holidays, as: :check_boxes, label: "Тип тура"
       f.input :countries, as: :check_boxes, label: "Страны"
+      f.input :visas, as: :check_boxes, label: "Визовые документы"
 
       f.has_many :tour_dates do |fu|
         if fu.object.date.present?
@@ -174,7 +175,8 @@ ActiveAdmin.register Tour do
                                     tour_dates_attributes: [:id, :date, :_destroy], :country_ids => [], :type_of_holiday_ids => [],
                                     galleries_attributes: [:id, :title, :_destroy, :source, :source_file_name, :video_url, :attachment_type,
                                                            :source_content_type, :source_file_size, :source_updated_at],
-                                    days_attributes: [:id, :overview, :number, :_destroy])]
+                                    days_attributes: [:id, :overview, :number, :_destroy],
+                                    :visa_ids => [] )]
     end
 
     def scoped_collection

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130720105455) do
+ActiveRecord::Schema.define(version: 20130720130108) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -151,6 +151,13 @@ ActiveRecord::Schema.define(version: 20130720105455) do
     t.integer  "tour_id"
   end
 
+  create_table "tour_visas", force: true do |t|
+    t.integer  "tour_id"
+    t.integer  "visa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tours", force: true do |t|
     t.string   "title"
     t.text     "overview"
@@ -203,5 +210,13 @@ ActiveRecord::Schema.define(version: 20130720105455) do
 
   add_index "type_of_tours", ["tour_id"], name: "index_type_of_tours_on_tour_id", using: :btree
   add_index "type_of_tours", ["type_of_holiday_id"], name: "index_type_of_tours_on_type_of_holiday_id", using: :btree
+
+  create_table "visas", force: true do |t|
+    t.text     "overview"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
 
 end

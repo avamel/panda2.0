@@ -14,6 +14,7 @@ $(document).ready(function() {
       maxSlides: 1,
       moveSlides: 1,
       responsive: true,
+      // video: true,
       auto: false,
       controls: true,
       pagerCustom: '#bx-pager',

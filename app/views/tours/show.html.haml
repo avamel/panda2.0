@@ -120,9 +120,10 @@
                 = time_tag date.date if date.date.present?
       .links-dates-block
         .tour-links
-          .visa
-            %span= image_tag('visa.png')
-            = link_to "Визовые документы", "#"
+          - if @tour.visas.present?
+            .visa
+              %span= image_tag('visa.png')
+              = link_to "Визовые документы", visas_tour_path(@tour)
           .roadmap
             %span= image_tag('roadmap.png')
             = link_to "Маршрут на карте", "#"

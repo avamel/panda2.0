@@ -1,2 +1,39 @@
-%h1 Visas#show
-%p Find me in app/views/visas/show.html.haml
+.menu-bg.contacts-menu-bg.c
+  .menu
+    = render partial: 'partials/menu_top'
+    = render partial: 'partials/menu_bottom'
+.country-bg
+  .country-show
+    .country-tabs
+      .tabs-title
+        = @visa.title
+      .tab-container
+        .panel-container
+          #info.markdown-country
+            = markdown @visa.overview
+        .undermap
+          = render partial: 'partials/share'
+          .print-page
+            %span.print-icon
+            = link_to 'Распечатать страницу', "#"
+
+
+    .tl-news
+      = render partial: 'partials/news', locals: { :news => @news }
+      .hits-item.center
+        .hit-photo
+          = link_to(image_tag(@month_country.teaser.url(:masonry_little)), country_path(@month_country))
+          .travels-meta
+            .travels-title Страна месяца
+            = link_to @month_country.title, country_path(@month_country), :class => "country-name"
+            .travels-hint
+              = raw @month_country.month_preview
+.new-tours-bg
+  .new-tours
+    .new-tours-header
+      Смотрите также
+    = render partial: 'partials/slider', locals: { :newest_tours => @newest_tours }
+    .countries
+      .countries-title
+        Страны
+      = render partial: 'partials/countries'

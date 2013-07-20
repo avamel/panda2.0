@@ -15,6 +15,8 @@ class Tour < ActiveRecord::Base
   has_many :type_of_tours
   has_many :type_of_holidays, :through => :type_of_tours
   belongs_to :currency
+  has_many :tour_visas
+  has_many :visas, through: :tour_visas
 
   accepts_nested_attributes_for :tour_dates, allow_destroy: true
   accepts_nested_attributes_for :days, allow_destroy: true
