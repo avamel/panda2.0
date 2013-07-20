@@ -4,7 +4,7 @@ class Tour < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  # scope :closest, -> { |after = DateTime.now, limit = 1| where('created_at > ?', after).order("end_date ASC").limit(limit) }
+  scope :published, -> {where(publish: true)}
 
   has_many :galleries
   has_many :days, dependent: :destroy
