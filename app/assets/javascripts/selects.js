@@ -75,9 +75,7 @@ $(function($) {
     changeMonth: true,
     onSelect: function(dateText, inst) {
       $('span.date').text(dateText);
-
       $('span.date').addClass('to_param');
-
       $('.dateSelectWrapper').removeClass('active');
     }
   });
@@ -90,19 +88,6 @@ $(function($) {
       event.preventPropagation();
     }
   });
-
-  $( "#slider-range" ).slider({
-    range: true,
-    min: 0,
-    max: 1000,
-    values: [ 200, 500 ],
-    slide: function( event, ui ) {
-      $(".rangeText").text( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-    }
-  });
-  $(".rangeText").text( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
 
 
   selectBox('.phoneSelectWrapper', null, null, '.phoneSelectList');
