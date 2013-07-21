@@ -4,7 +4,7 @@ class TypeOfHolidaysController < ApplicationController
   def show
   	@month_country = Country.where(month_country: true).first
     @news = News.last(5)
-    @newest_tours = Tour.take(3)
+    @newest_tours = Tour.published.take(9).sample(3)
     @type_title = @tp
     tours_ids = Array.new
     @type.each do |tour|

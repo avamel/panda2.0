@@ -15,7 +15,7 @@
             - @tour_galleries.each do |gallery|
               %li.tour-slide
                 - if gallery.video_url.present?
-                  = video_embed(gallery.video_url, 670, 338)
+                  = video_embed(gallery.video_url, 670, 405)
                 - else
                   = link_to(image_tag(gallery.source.url(:slider_big)), "#")
                 .tour-slider-title
@@ -97,7 +97,7 @@
               = "#{@tour.special_price} "
               = @tour.currency.title if @tour.currency.present?
         .buy-btn
-          = link_to "Заказать тур", "#"
+          = link_to "Заказать тур", new_tour_order_path(@tour), :class => 'btn btn-success', :remote => true
       .side-country-block
         - if @tour_countries.present?
           %ul
@@ -124,7 +124,7 @@
           - if @tour.visas.present?
             .visa
               %span= image_tag('visa.png')
-              = link_to "Визовые документы", visas_tour_path(@tour)
+              = link_to "Визовые документы", visas_tour_path(@tour), :target => "_blank"
           .roadmap
             %span= image_tag('roadmap.png')
             = link_to "Маршрут на карте", "#"

@@ -14,8 +14,8 @@
               от
               = "#{tour.price} #{tour.currency.title}"
         .hit-meta
-          = link_to tour.title, tour_path(tour), :class => 'hit-title'
-          = tour.preview
+          = link_to truncate(tour.title, :length => 100), tour_path(tour), :class => 'hit-title'
+          = truncate(raw(tour.preview), :length => 250).html_safe
 
       - if((idx) == 4)
 
@@ -31,5 +31,5 @@
               .center-time
                 Отправление
                 = time_tag tour.tour_dates.last.date
-              = link_to tour.title, tour_path(tour), :class => "center-route"
+              = link_to truncate(tour.title, :length => 100), tour_path(tour), :class => "center-route"
               .center-shadow

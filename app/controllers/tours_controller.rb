@@ -8,7 +8,7 @@ class ToursController < ApplicationController
   end
 
   def show
-    @newest_tours = Tour.take(3)
+    @newest_tours = Tour.published.take(9).sample(3)
     @slider_counter = -1
     @tour_galleries = @tour.galleries.take(6)
     @tour_days = @tour.days
@@ -22,7 +22,7 @@ class ToursController < ApplicationController
     @visas = @tour.visas
     @month_country = Country.where(month_country: true).first
     @news_sidebar = News.last(5)
-    @newest_tours = Tour.take(3)
+    @newest_tours = Tour.published.take(9).sample(3)
     @month_country = Country.where(month_country: true).first
   end
 

@@ -6,7 +6,7 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @newest_tours = Tour.last(9).sample(3)
+    @newest_tours = Tour.published.last(9).sample(3)
     @news = News.last(5)
     @month_country = Country.where(month_country: true).first
     @country = Country.includes(tours: [:galleries, :tour_dates]).find(params[:id])

@@ -23,7 +23,8 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :days, allow_destroy: true
   accepts_nested_attributes_for :galleries, allow_destroy: true
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
+  # , uniqueness: true
   validates :preview, presence: true
   validates :overview, presence: true
   validates :price, presence: true
@@ -31,7 +32,7 @@ class Tour < ActiveRecord::Base
   validates :country_ids, presence: true
 
   has_attached_file :teaser, :styles => { :thumb => ["70x60#", :jpg], :masonry_little => ["208x180#", :jpg], :masonry_big => ["450x396#", :jpg],
-                                          :slider => ["468x352#", :jpg], :slider_thumb => ["104x52#", :jpg], :tour_slider => ["670x406#", :jpg] }
+                                          :slider => ["468x352#", :jpg], :slider_thumb => ["78x52#", :jpg], :tour_slider => ["670x406#", :jpg] }
   has_destroyable_file :teaser
 
   mapping do

@@ -4,7 +4,7 @@
       = link_to(image_tag(tour.teaser.url(:slider)), tour_path(tour))
       .caption
         .caption-title
-          = link_to tour.preview.html_safe, tour_path(tour)
+          = link_to truncate(raw(tour.preview), :length => 80), tour_path(tour)
         .caption-text
           Цена тура всего
           = "#{tour.price} "
