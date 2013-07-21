@@ -1,10 +1,12 @@
 Panda20::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
+  mount Resque::Server, :at => "/resque"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :tours, only: [:index, :show] do
     get 'visas', on: :member
+    resources :orders
   end
 
   resources :visas, only: [:index, :show] do

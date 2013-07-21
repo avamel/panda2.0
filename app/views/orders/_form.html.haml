@@ -1,0 +1,20 @@
+= simple_form_for @order, :url => { :controller => :orders, :action => :create }, :remote => true, :html => { :multipart => true, :class => "form-horizontal order-form" }, :validate => true do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title, :placeholder => "имя",label: 'Ваше имя:', :input_html => { :class => "order-input input-mysize order-name" }
+    = f.input :phone,  :placeholder => "телефон",label: 'Телефон:', :input_html => { :class => "order-input input-mysize" }
+    %span.number.num-bold
+      %span с кодом оператора, например:
+      +375 29
+      %span 127 86 06
+    = f.input :email, :placeholder => "Email",label: 'Email', :input_html => { :class => "order-input input-mysize" }
+    = f.input :notation, :as => :text,label: 'Примечание:', :placeholder => "примечание", :input_html => { :class => "span4", :rows => 5 }
+    %span.number.num-bold
+      %span предпочитаемая дата выезда и любая другая дополнительная информация.
+    .input
+      - if @order.errors[:base]
+        %span.error
+          = @order.errors[:base].join(' ')
+
+  .order-actions
+    = f.button :submit, :value => "Заказать", :class => 'buy-btn'

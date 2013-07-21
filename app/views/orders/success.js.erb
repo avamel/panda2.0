@@ -1,0 +1,8 @@
+$(function(){
+  $('.order-header .header-text').text("Заказ успешно оформлен, наш менеджер свяжется с вами в ближайшее время, спасибо!");
+  $('.modal-body').html('<%= escape_javascript(render :partial => 'order', :object => @order) %>');
+  $('#my-modal').modal('show');
+  $('.buy-btn').click(function() {
+    $('#my-modal').modal('hide');
+  });
+});

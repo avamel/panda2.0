@@ -1,0 +1,11 @@
+// encoding: utf-8
+#my-modal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    Заказ тура
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  .order-header
+    .header-text
+      = raw @tour.title
+    .header-thumb
+      = image_tag(@tour.teaser.url(:thumb))
+  .modal-body

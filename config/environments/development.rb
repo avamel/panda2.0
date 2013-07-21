@@ -26,4 +26,12 @@ Panda20::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'panda2-a153fa1cbc5aa473',
+    :password => 'fe451cfeddd8842f',
+    :address => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :plain
+  }
 end

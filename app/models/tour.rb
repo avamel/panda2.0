@@ -6,6 +6,7 @@ class Tour < ActiveRecord::Base
 
   scope :published, -> {where(publish: true)}
 
+  has_many :orders
   has_many :galleries
   has_many :days, dependent: :destroy
   has_many :country_tours

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130720130108) do
+ActiveRecord::Schema.define(version: 20130721125128) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -98,6 +98,20 @@ ActiveRecord::Schema.define(version: 20130720130108) do
     t.integer  "number"
   end
 
+  create_table "feed_contacts", force: true do |t|
+    t.string   "contact_type"
+    t.string   "text"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
   create_table "galleries", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -135,6 +149,16 @@ ActiveRecord::Schema.define(version: 20130720130108) do
     t.string   "teaser_content_type"
     t.integer  "teaser_file_size"
     t.datetime "teaser_updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "title"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "notation"
+    t.integer  "tour_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tour_date_links", force: true do |t|

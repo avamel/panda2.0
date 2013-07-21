@@ -1,0 +1,6 @@
+$(function(){
+  $('.order-header .header-text').css('text-align', 'left');
+  $('.order-header .header-text').text('<%= @tour.title %>');
+  $('.modal-body').html('<%= escape_javascript(render :partial => 'form', :object => @order) %>');
+  $('#my-modal').modal('show');
+});

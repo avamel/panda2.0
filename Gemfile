@@ -52,6 +52,12 @@ gem 'russian'
 gem 'redcarpet'
 gem 'yaml_db'
 gem 'httparty'
+gem 'bootstrap-modal-rails'
+gem 'simple_form'
+gem 'resque', :require => 'resque/server'
+gem 'resque_mailer'
+# gem 'client_side_validations'
+# gem 'client_side_validations-simple_form'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

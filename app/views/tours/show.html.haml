@@ -1,3 +1,4 @@
+= render :partial => "partials/new_order_popup"
 .menu-bg.contacts-menu-bg.c
   .menu
     = render partial: 'partials/menu_top'
@@ -67,7 +68,7 @@
               = "#{@tour.special_price} "
               = @tour.currency.title if @tour.currency.present?
         .buy-btn
-          = link_to "Заказать тур", "#"
+          = link_to "Заказать тур", new_tour_order_path(@tour), :class => 'btn btn-success', :remote => true
       .markdown-tour
 
 

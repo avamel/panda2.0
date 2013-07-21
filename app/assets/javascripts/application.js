@@ -16,6 +16,8 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require masonry.js
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require_self
 //= require_tree .
 

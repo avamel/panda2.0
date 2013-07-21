@@ -1,0 +1,10 @@
+- if @order.errors.any?
+  #error_explanation
+    %h3
+      Произошли следующие ошибки:
+    %ul
+      - @order.errors.full_messages.each do |msg|
+        %li= msg
+
+.order-actions
+  = button_tag "Вернуться", :class => "btn back-btn"

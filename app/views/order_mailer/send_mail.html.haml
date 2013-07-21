@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      = @tour.title
+    %p
+      Заказчик:
+      = @order.title
+    %p
+      Телефон:
+      = @order.phone
+    %p
+      Имэйл:
+      = @order.email
+    %p
+      Примечание: 
+      = @order.notation
+    %p
+      Тур:
+      = @tour.title

@@ -22,7 +22,7 @@
             - if @country.tours.present?
               .tours-list
                 %ul.tl
-                  - @country.tours.each do |tour|
+                  - @country.tours.published.each do |tour|
                     %li.tl-item
                       .tl-thumb
                         - if tour.galleries.present?
