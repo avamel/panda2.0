@@ -1,5 +1,6 @@
 class WeatherController < ApplicationController
   def forecast
+    error = 'Что-то пошло не так'
     params[:forecast]= 'Минск, Республика Беларусь' if params[:forecast].nil?
     Barometer.config = {1 => [:wunderground]}
     barometer = Barometer.new(params[:forecast])
@@ -11,6 +12,6 @@ class WeatherController < ApplicationController
     forecast['temp'] = temperature
     render json: forecast
   rescue
-    render text: "Введите верное название города!"
+    render json: error, status: :unprocessable_entity
   end
 end

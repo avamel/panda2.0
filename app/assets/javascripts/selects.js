@@ -27,6 +27,9 @@ $(function($) {
         $(wrapper).removeClass('.active');
         $(wrapper_inner).text($(this).text());
         $(wrapper_inner).addClass('to_param');
+        var forecast = $('.weather1.to_param').text();
+        $('input#forecast').val(forecast);
+        $('.weather form').submit();
       });
 
       $(input).bind('keyup', function(e) {
@@ -34,11 +37,29 @@ $(function($) {
           $(wrapper_inner).text($(input).val());
           $(wrapper_inner).addClass('to_param');
           $(wrapper).removeClass('active');
+          var forecast = $(wrapper_inner).text();
+          $('input#forecast').val(forecast);
+          $('.weather form').submit();
         }
       });
       // makeUnactive(list, wrapper);
     });
   };
+
+  $(".city").click(function(){
+    var forecast = $('.weather1.to_param').text();
+    $('input#forecast').val(forecast);
+    $('.weather form').submit();
+  });
+
+  $('.weather form').on('submit', function(event) {
+    $.get($(this).attr('action'), $(this).serialize(), function(json) {
+      $('span.weather-text').text(json['temp'])
+    }, 'json');
+    return false;
+  });
+
+
 
   $(document).mouseup(function (e)
   {

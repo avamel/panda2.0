@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+  	@currency = CurrencyRate.last
     @news = News.last(5)
     # @closest_tour = Tour.closest
     @tours = Tour.published.order("clicks DESC").includes(:currency).limit(10)

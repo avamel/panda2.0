@@ -2,3 +2,6 @@
 
 To start resque worker:
 rake resque:work QUEUE='*'
+
+To start resque scheduler:
+rake resque:scheduler

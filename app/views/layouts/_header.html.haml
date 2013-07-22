@@ -3,7 +3,8 @@
     .logo
       =link_to(image_tag("logo.png"), root_path)
     .weather
-
+      = form_tag(forecast_path, method: :get, remote: true) do
+        = hidden_field_tag 'forecast'
       .weatherSelectWrapper.container
         %span.phone-icon
         %span.weather1
@@ -61,11 +62,7 @@
       - if @currency.present?
         .dollars
           %span= image_tag("dollar.png")
-          %span.course
-            = @currency.usd
+          %span.course= "#{@currency.usd} бел. руб."
         .euro
           %span= image_tag("euro.png")
-          %span.course
-          = @currency.eur
-      - else
-        Курсы валют недостунпы
+        %span.course= "#{@currency.eur} бел. руб."

@@ -1,5 +1,5 @@
 test_get_rate:
-  every: 30m
+  every: 10m
   queue: currency
   class: Rate
   args:
