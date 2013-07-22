@@ -25,7 +25,6 @@ module Rate
         rate['eur']= hash['DailyExRates'][i]['Currency'][4]['Rate']
         break if hash['DailyExRates'][i]['Currency'][1]['CharCode'] == "EUR"
       end
-      puts "ok"
       currency.usd = rate['usd'].to_i
       currency.eur = rate['eur'].to_i
       puts "ok"
