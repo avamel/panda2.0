@@ -181,6 +181,7 @@ namespace :countries_transfer do
     VisasManufacturer.all.each do |old_visa|
       new_visa = Visa.new
       new_visa.id = old_visa.id
+      # new_visa.slug = ""
       new_visa.title = old_visa.title
       new_visa.overview = old_visa.overview
       new_visa.created_at = old_visa.created_at

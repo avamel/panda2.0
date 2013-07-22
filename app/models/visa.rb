@@ -6,6 +6,6 @@ class Visa < ActiveRecord::Base
   has_many :tours, :through => :tour_visas
 
   def should_generate_new_friendly_id?
-    false
+  	true
   end
 end

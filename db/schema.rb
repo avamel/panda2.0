@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721125128) do
+ActiveRecord::Schema.define(version: 20130722093748) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -242,5 +242,7 @@ ActiveRecord::Schema.define(version: 20130721125128) do
     t.datetime "updated_at"
     t.string   "slug"
   end
+
+  add_index "visas", ["slug"], name: "index_visas_on_slug", using: :btree
 
 end
