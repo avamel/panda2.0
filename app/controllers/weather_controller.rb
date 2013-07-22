@@ -5,7 +5,11 @@ class WeatherController < ApplicationController
     barometer = Barometer.new(params[:forecast])
     weather = barometer.measure
     temperature = weather.current.temperature.c
-    render  json: weather
+    icon = weather.current.icon
+    forecast = {}
+    forecast['icon'] = icon
+    forecast['temp'] = temperature
+    render json: forecast
   rescue
     render text: "Введите верное название города!"
   end
