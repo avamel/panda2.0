@@ -91,8 +91,7 @@ ActiveRecord::Schema.define(version: 20130722113846) do
   end
 
   create_table "currency_rates", force: true do |t|
-    t.string   "usd"
-    t.string   "integer"
+    t.integer  "usd"
     t.integer  "eur"
     t.datetime "created_at"
     t.datetime "updated_at"
