@@ -29,4 +29,6 @@ Panda20::Application.routes.draw do
   get "home/index"
   root "home#index"
   get '/search', to: 'search#search', as: 'search'
+
+  get 'forecast', to: 'weather#forecast', :format => false, :defaults => { :format => 'json' }
 end
