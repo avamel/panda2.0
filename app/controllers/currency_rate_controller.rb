@@ -12,10 +12,18 @@ class CurrencyRateController < ApplicationController
     if  ping_url.ping?
       xml = Nokogiri::XML(open(url))
       hash = xml.to_hash
-      #render :text => hash
       rate = {}
-      rate['usd']= hash['DailyExRates'][4]['Currency'][4]['Rate']
-      rate['eur']= hash['DailyExRates'][5]['Currency'][4]['Rate']
+      i = -1
+      loop do
+        i+=1
+        rate['usd']= hash['DailyExRates'][i]['Currency'][4]['Rate']
+        break if hash['DailyExRates'][i]['Currency'][1]['CharCode'] == "USD"
+      end
+      loop do
+        i+=1
+        rate['eur']= hash['DailyExRates'][i]['Currency'][4]['Rate']
+        break if hash['DailyExRates'][i]['Currency'][1]['CharCode'] == "EUR"
+      end
     end
     if hash.nil?
       render json: error, status: :unprocessable_entity
