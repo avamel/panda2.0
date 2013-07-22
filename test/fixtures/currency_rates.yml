@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usd: MyString
+  eur: MyString
+
+two:
+  usd: MyString
+  eur: MyString
