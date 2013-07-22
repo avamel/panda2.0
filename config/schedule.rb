@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, at: ['3:17pm','3:18pm','3:19pm']  do
-  rake "rate"
+every :day, at: ['4:20pm','4:21pm','4:22pm']  do
+  rake "currency_rate"
 end

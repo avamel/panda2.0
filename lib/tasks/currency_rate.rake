@@ -23,5 +23,5 @@ task :currency_rate => :environment do
       break if hash['DailyExRates'][i]['Currency'][1]['CharCode'] == "EUR"
     end
   end
-  CurrencyRate.create(usd: rate['usd'], eur: rate['eur'])
+  CurrencyRate.first_or_create(usd: rate['usd'], eur: rate['eur'])
 end
