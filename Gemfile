@@ -61,7 +61,7 @@ gem 'ar_after_transaction'
 gem 'kaminari'
 gem 'nokogiri'
 gem 'net-ping'
-
+gem 'barometer'
 # gem 'client_side_validations'
 # gem 'client_side_validations-simple_form'
 # Use ActiveModel has_secure_password

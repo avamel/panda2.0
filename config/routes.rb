@@ -30,4 +30,5 @@ Panda20::Application.routes.draw do
   root "home#index"
   get '/search', to: 'search#search', as: 'search'
   get 'currency_rate', to: 'currency_rate#rate', :format => false, :defaults => { :format => 'json' }
+  get 'forecast', to: 'weather#forecast', :format => false, :defaults => { :format => 'json' }
 end
