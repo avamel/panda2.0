@@ -59,7 +59,7 @@
       -
       =link_to "Найти туры", "#", :class => "find-tours"
     .money
-      - if @currency.usd.nil?
+      - if !@currency.usd.nil?
         .dollars
           %span= image_tag("dollar.png")
           %span.course= "#{@currency.usd} бел. руб."
