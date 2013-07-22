@@ -10,9 +10,7 @@
 .tours-list-bg
   .tours-list
     %ul.tl
-
       - @tours.each do |tour|
-
         %li.tl-item
           .tl-thumb
             = image_tag(tour.teaser.url(:thumb))
@@ -26,6 +24,7 @@
           .tl-cost
             = "#{tour.price} "
             = tour.currency.title if tour.currency.present?
+      = paginate @tours
     .tl-news
       = render partial: 'partials/news', locals: { :news => @news }
       .hits-item.center

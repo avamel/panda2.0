@@ -19,5 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ru:
   hello: "Hello world"
+  views:
+    pagination:
+      previous: "&lt; Назад"
+      next: "Далее &gt;"
+      truncate: "..."
+      last: "последняя"

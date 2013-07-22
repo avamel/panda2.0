@@ -22,7 +22,7 @@
             - if @country.tours.present?
               .tours-list
                 %ul.tl
-                  - @country.tours.published.each do |tour|
+                  - @country_tours.each do |tour|
                     %li.tl-item
                       .tl-thumb
                         - if tour.galleries.present?
@@ -32,12 +32,13 @@
                           = link_to tour.title, tour_path(tour)
                         - if tour.tour_dates.present?
                           .tl-dates
-                            - tour.tour_dates.each do |date|
+                            - tour.tour_dates.actual_dates.each do |date|
                               .date-item
                                 = time_tag date.date
                       .tl-cost
                         415
                         %span €
+              = paginate @country_tours
           #info.markdown-country
             = markdown @country.overview
           #visas

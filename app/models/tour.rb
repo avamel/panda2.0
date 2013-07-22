@@ -25,7 +25,7 @@ class Tour < ActiveRecord::Base
 
   validates :title, presence: true
   # , uniqueness: true
-  validates :preview, presence: true
+  # validates :preview, presence: true
   validates :overview, presence: true
   validates :price, presence: true
   validates :currency, presence: true

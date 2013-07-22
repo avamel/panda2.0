@@ -3,7 +3,7 @@ class ToursController < ApplicationController
   before_filter :store_history, only: :show
   def index
     @month_country = Country.where(month_country: true).first
-    @tours = Tour.includes(:days).published
+    @tours = Tour.includes(:days).published.order("clicks DESC").page(params[:page]).per(10)
     @news = News.last(5)
   end
 

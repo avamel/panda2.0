@@ -10,5 +10,6 @@ class CountriesController < ApplicationController
     @news = News.last(5)
     @month_country = Country.where(month_country: true).first
     @country = Country.includes(tours: [:galleries, :tour_dates]).find(params[:id])
+    @country_tours = @country.tours.published.order("clicks DESC").page(params[:page]).per(10)
   end
 end
