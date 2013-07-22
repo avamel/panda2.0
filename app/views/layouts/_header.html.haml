@@ -58,11 +58,14 @@
       -
       =link_to "Найти туры", "#", :class => "find-tours"
     .money
-      .dollars
-        %span= image_tag("dollar.png")
-        %span.course
-          7600 бел. руб.
-      .euro
-        %span= image_tag("euro.png")
-        %span.course
-          11600 бел. руб.
+      - if @currency.present?
+        .dollars
+          %span= image_tag("dollar.png")
+          %span.course
+            = @currency.usd
+        .euro
+          %span= image_tag("euro.png")
+          %span.course
+          = @currency.eur
+      - else
+        Курсы валют недостунпы

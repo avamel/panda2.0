@@ -1,0 +1,6 @@
+test_get_rate:
+  every: 30m
+  queue: currency
+  class: Rate
+  args:
+  description: this job get currency

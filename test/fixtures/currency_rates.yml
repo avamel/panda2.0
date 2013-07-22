@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usd: MyString
+  integer: MyString
+  eur: 1
+
+two:
+  usd: MyString
+  integer: MyString
+  eur: 1

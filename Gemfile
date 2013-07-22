@@ -56,9 +56,12 @@ gem 'bootstrap-modal-rails'
 gem 'simple_form'
 gem 'resque', :require => 'resque/server'
 gem 'resque_mailer'
+gem 'resque-scheduler', :require => 'resque_scheduler'
+gem 'ar_after_transaction'
 gem 'kaminari'
 gem 'nokogiri'
 gem 'net-ping'
+
 # gem 'client_side_validations'
 # gem 'client_side_validations-simple_form'
 # Use ActiveModel has_secure_password
