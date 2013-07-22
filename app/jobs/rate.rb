@@ -9,6 +9,7 @@ module Rate
   def self.perform
     url = 'http://www.nbrb.by/Services/XmlExRates.aspx'
     ping_url = Net::Ping::HTTP.new(url)
+    currency = CurrencyRate.first_or_create
     if  ping_url.ping?
       xml = Nokogiri::XML(open(url))
       hash = xml.to_hash
@@ -25,12 +26,14 @@ module Rate
         break if hash['DailyExRates'][i]['Currency'][1]['CharCode'] == "EUR"
       end
       puts "ok"
-      currency = CurrencyRate.first_or_create
       currency.usd = rate['usd'].to_i
       currency.eur = rate['eur'].to_i
-      currency.save!
       puts "ok"
+    else
+      puts "bad"
+      currency.usd = nil
+      currency.eur = nil
     end
-    puts "bad"
+    currency.save!
   end
 end
